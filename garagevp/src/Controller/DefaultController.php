@@ -14,4 +14,13 @@ class DefaultController extends AbstractController
             'title' => 'Home Page',
         ]);
     }
+
+    #[Route('/a-propos', name: 'app_a_propos')]
+    public function about(): Response
+    {
+        return $this->render('a_propos.html.twig', [
+            'title' => 'À propos',
+        ]);
+    }
 }
+

@@ -1,9 +1,10 @@
+{# templates/a_propos.html.twig #}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Garage v.p{% endblock %}</title>
+    <title>À propos de nous - Garage Automobile</title>
     <link rel="stylesheet" href="{{ asset('styles/styles.css') }}">
 </head>
 <body>
@@ -27,9 +28,17 @@
 
     <!-- Main Content -->
     <main>
-        {% block content %}
-        <!-- Le contenu spécifique aux pages sera inséré ici -->
-        {% endblock %}
+        <!-- À Propos -->
+        <section id="about">
+            <div class="container">
+                <h2>À propos de nous</h2>
+                <p>
+                    Vincent Parrot, fort de ses 15 années d'expérience dans la réparation automobile, a ouvert son propre garage à Toulouse en 2021.
+                    Depuis 2 ans, il propose une large gamme de services: réparation de la carrosserie et de la mécanique des voitures ainsi que leur entretien régulier pour garantir leur performance et leur sécurité. De plus, le Garage V. Parrot met en vente des véhicules d'occasion afin d'accroître son chiffre d'affaires.
+                    Vincent Parrot considère son atelier comme un véritable lieu de confiance pour ses clients et leurs voitures doivent, selon lui, à tout prix être entre de bonnes mains.
+                </p>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -58,7 +67,3 @@
     </footer>
 </body>
 </html>
-
-
-
-
