@@ -1,0 +1,56 @@
+{# templates/petites-annonces.html.twig #}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ title }}</h1>
+
+        <div class="filter">
+            <form id="filterForm" method="GET">
+                <div class="filters"> 
+                    <label for="prix">Prix Max:</label>
+                    <input type="number" id="maxPrice" name="maxPrice" min="0" placeholder="Max">
+                    
+                    <label for="kilometrage">Kilométrage Max:</label>
+                    <input type="number" id="maxKm" name="maxKm" min="0" placeholder="Max">
+                    
+                    <label for="annee">Année Min:</label>
+                    <input type="number" id="minYear" name="minYear" min="1900" placeholder="Min">
+                    
+                    <button type="submit">Appliquer les filtres</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="annonces-list">
+            {% for annonce in annonces %}
+                <div class="annonce-item">
+                    <img src="{{ annonce.imagePrincipale }}" alt="{{ annonce.marque }} {{ annonce.model }}">
+                    <h2>{{ annonce.marque }} {{ annonce.model }}</h2>
+                    <p><strong>Prix:</strong> {{ annonce.prix }} €</p>
+                    <p><strong>Année:</strong> {{ annonce.anneeMiseEnCirculation|date('Y') }}</p>
+                    <p><strong>Kilométrage:</strong> {{ annonce.kilometrage }} km</p>
+                    <p><strong>Équipements:</strong> {{ annonce.equipements|join(', ') }}</p>
+                    <a href="{{ path('app_annonce_details', { id: annonce.id }) }}" class="btn">Voir Détails</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('filterForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+            const formData = new FormData(this);
+            fetch('{{ path('app_petites_annonces') }}?' + new URLSearchParams(formData), {
+                method: 'GET',
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Mettez à jour la liste des annonces ici avec les nouvelles données
+                document.querySelector('.annonces-list').innerHTML = data; // Assurez-vous que le serveur renvoie le bon HTML
+            });
+        });
+    </script>
+{% endblock %}
+

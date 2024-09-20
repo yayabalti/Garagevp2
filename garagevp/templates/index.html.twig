@@ -1,4 +1,4 @@
-{# templates/index.html.twig #}
+{# templates/base.html.twig #}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,10 +17,10 @@
             <nav>
                 <ul>
                     <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                    {# <li><a href="{{ path('services') }}">Découvrez nos services</a></li>
-                    <li><a href="{{ path('registration') }}">Inscription</a></li>
-                    <li><a href="{{ path('login') }}">Connexion</a></li>
-                    <li><a href="{{ path('contact') }}">Contact</a></li> #}
+                     <li><a href="{{ path('app_services') }}">Découvrez nos services</a></li>
+                    {#<li><a href="{{ path('registration') }}">Inscription</a></li>
+                    <li><a href="{{ path('login') }}">Connexion</a></li>#}
+                    <li><a href="{{ path('app_contact') }}">Contact</a></li> 
                 </ul>
             </nav>
         </div>
@@ -29,10 +29,10 @@
     <!-- Main Content -->
     <main>
         <!-- Banniere Principale -->
-        <section class="hero" style="background-image: url('{{ asset('images/garage-background.jpg') }}');">
+        <section class="hero" style="background-image: url('/images/garage.png);">
             <div class="hero-content">
                 <h2>Votre expert automobile, de la vente à l'entretien</h2>
-                {# <a href="{{ path('services') }}" class="btn">Découvrez nos services</a> #}
+                <a href="{{ path('app_services') }}" class="btn">Découvrez nos services</a>
             </div>
         </section>
 
@@ -43,19 +43,19 @@
                     <h3>Vente de Voitures d'Occasion</h3>
                     <img src="{{ asset('images/voiture.jpg') }}" alt="Voiture d'occasion">
                     <p>Découvrez notre sélection de voitures d'occasion.</p>
-                    {# <a href="{{ path('voiture') }}" class="btn">Voir nos voitures</a> #}
+                    <a href="{{ path('app_petites_annonces') }}" class="btn">Voir nos voitures</a>
                 </div>
                 <div class="service">
                     <h3>Mécanique & Entretien</h3>
                     <img src="{{ asset('images/mecanique.jpg') }}" alt="Mécanique">
                     <p>Des services de mécanique complets pour votre véhicule.</p>
-                    {# <a href="{{ path('mecanique') }}" class="btn">En savoir plus</a> #}
+                    <a href="{{ path('app_contact') }}" class="btn">En savoir plus</a>
                 </div>
                 <div class="service">
                     <h3>Carrosserie</h3>
                     <img src="{{ asset('images/carrosserie.jpg') }}" alt="Carrosserie">
                     <p>Réparations et rénovations de qualité pour votre voiture.</p>
-                    {# <a href="{{ path('carrosserie') }}" class="btn">Demandez un devis</a> #}
+                    <a href="{{ path('app_contact') }}" class="btn">Demandez un devis</a>
                 </div>
             </div>
         </section>

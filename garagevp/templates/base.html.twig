@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Garage v.p{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('styles/styles.css') }}">
+    <script src="{{ asset('js/filrepetiteannonces.js') }}" defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -16,10 +17,10 @@
             <nav>
                 <ul>
                     <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                    {# <li><a href="{{ path('services') }}">Découvrez nos services</a></li>
-                    <li><a href="{{ path('registration') }}">Inscription</a></li>
-                    <li><a href="{{ path('login') }}">Connexion</a></li>
-                    <li><a href="{{ path('contact') }}">Contact</a></li> #}
+                     <li><a href="{{ path('app_services') }}">Découvrez nos services</a></li>
+                    {#<li><a href="{{ path('registration') }}">Inscription</a></li>
+                    <li><a href="{{ path('login') }}">Connexion</a></li>#}
+                    <li><a href="{{ path('app_contact') }}">Contact</a></li> 
                 </ul>
             </nav>
         </div>

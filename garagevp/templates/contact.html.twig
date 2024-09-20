@@ -1,0 +1,22 @@
+{# templates/contact/index.html.twig #}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+<div class="contact-container">
+    <h1>Contactez-Nous</h1>
+
+    <form action="{{ path('contact') }}" method="post">
+        <input type="text" name="nom" placeholder="Votre Nom" required>
+        <input type="email" name="email" placeholder="Votre Email" required>
+        <textarea name="message" placeholder="Votre Message" required></textarea>
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <h2>Horaires du Garage</h2>
+    <p>Lundi - Vendredi: 9h00 - 18h00</p>
+    <h2>Coordonnées</h2>
+    <p>Téléphone: 01 23 45 67 89</p>
+    <p>Email: contact@garage.com</p>
+</div>
+{% endblock %}

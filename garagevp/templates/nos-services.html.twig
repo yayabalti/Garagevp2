@@ -1,0 +1,37 @@
+{# templates/nos-services.html.twig #}
+
+{% block title %}Nos Services{% endblock %}
+
+{% block body %}
+<div class="services-container">
+    <h1>Nos Services</h1>
+
+    <section class="service">
+        <h2>Vente de Voitures d'Occasion</h2>
+        <img src="{{ asset('images/car.jpg') }}" alt="Voiture en vente" class="service-image">
+        <p>Nous proposons une large sélection de voitures d'occasion vérifiées.</p>
+        <a href="{{ path('petites-annonces') }}" class="button">Voir nos voitures</a>
+    </section>
+
+    <section class="service">
+        <h2>Mécanique</h2>
+        <img src="{{ asset('images/mechanic.jpg') }}" alt="Mécanicien au travail" class="service-image">
+        <p>Réparations et entretiens par des professionnels.</p>
+        <a href="{{ path('contact') }}" class="button">En savoir plus</a>
+    </section>
+
+    <section class="service">
+        <h2>Entretien</h2>
+        <img src="{{ asset('images/maintenance.jpg') }}" alt="Entretien de voiture" class="service-image">
+        <p>Services d'entretien pour votre véhicule.</p>
+        <a href="{{ path('contact') }}" class="button">En savoir plus</a>
+    </section>
+
+    <section class="service">
+        <h2>Carrosserie</h2>
+        <img src="{{ asset('images/bodywork.jpg') }}" alt="Carrossier en service" class="service-image">
+        <p>Réparations de carrosserie de haute qualité.</p>
+        <a href="{{ path('contact') }}" class="button">En savoir plus</a>
+    </section>
+</div>
+{% endblock %}
