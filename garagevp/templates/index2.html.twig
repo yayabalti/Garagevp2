@@ -1,0 +1,44 @@
+{# templates/index2.html.twig #}
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Acceuil{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('styles/index2.css') }}">
+    </head>
+
+    <body>
+        <!-- Header -->
+        
+        <header>
+        
+            <div class="header-container">
+            
+                <div class="logo">
+                    
+                </div>
+                 <nav class="navbar">
+                    
+                </nav>
+                <ul class="menu">
+                    <img src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                        <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                        <p class="separation">|</p>
+                        <li><a href="{{ path('app_services') }}">Découvrez nos services</a></li>
+                        <p class="separation">|</p>
+                        <li><a href="{{ path('app_home') }}">Inscription</a></li>
+                        <p class="separation">|</p>
+                        <li><a href="{{ path('app_home') }}">Connexion</a></li>
+                        <p class="separation">|</p> 
+                        <li><a href="{{ path('app_contact') }}">Contact</a></li>
+                    </ul> 
+            </div>
+            
+        </header>
+        
+
+        
+    </body>
+</html>

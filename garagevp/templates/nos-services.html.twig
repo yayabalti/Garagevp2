@@ -1,37 +1,101 @@
 {# templates/nos-services.html.twig #}
+<!DOCTYPE html>
+<html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>{% block title %}Nos services{% endblock %}</title>
+            <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
+        </head>
 
-{% block title %}Nos Services{% endblock %}
+    <body>
+        <header>
+                
+            <div class="header-container">
+                    
+                <div class="logo">
+                    <img src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                </div>
+                    <nav>
+                        <ul>
+                            <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                            <li><a href="{{ path('app_home') }}">Inscription</a></li>
+                            <li><a href="{{ path('app_home') }}">Connexion</a></li>
+                            <li><a href="{{ path('app_contact') }}">Contact</a></li> 
+                        </ul>
+                    </nav>
+                </div>   
+        </header>
+            
+        <main>
+            <section class="hero">
+                <img class"skyline_img" src="{{ asset('images/imgheader.png') }}" alt="Garage Auto" >
+                <div class="opacity"></div>
+                    <div class="hero-content">
+                    <h2>Votre expert automobile, de la vente à l'entretien</h2>
+                </div>
+            </section
 
-{% block body %}
-<div class="services-container">
-    <h1>Nos Services</h1>
+                
+            <div class="services-container">
+                <h1>Nos Services</h1>
 
-    <section class="service">
-        <h2>Vente de Voitures d'Occasion</h2>
-        <img src="{{ asset('images/car.jpg') }}" alt="Voiture en vente" class="service-image">
-        <p>Nous proposons une large sélection de voitures d'occasion vérifiées.</p>
-        <a href="{{ path('petites-annonces') }}" class="button">Voir nos voitures</a>
-    </section>
+                <section class="service">
+                    <h2>Vente de Voitures d'Occasion</h2>
+                    <img src="{{ asset('images/car.jpg') }}" alt="Voiture en vente" class="service-image">
+                    <p>Nous proposons une large sélection de voitures d'occasion vérifiées.</p>
+                    <a href="{{ path('app_petites_annonces') }}" class="button">Voir nos voitures</a>
+                </section>
 
-    <section class="service">
-        <h2>Mécanique</h2>
-        <img src="{{ asset('images/mechanic.jpg') }}" alt="Mécanicien au travail" class="service-image">
-        <p>Réparations et entretiens par des professionnels.</p>
-        <a href="{{ path('contact') }}" class="button">En savoir plus</a>
-    </section>
+                <section class="service">
+                    <h2>Mécanique</h2>
+                    <img src="{{ asset('images/mechanic.jpg') }}" alt="Mécanicien au travail" class="service-image">
+                    <p>Réparations et entretiens par des professionnels.</p>
+                    <a href="{{ path('app_contact') }}" class="button">En savoir plus</a>
+                </section>
 
-    <section class="service">
-        <h2>Entretien</h2>
-        <img src="{{ asset('images/maintenance.jpg') }}" alt="Entretien de voiture" class="service-image">
-        <p>Services d'entretien pour votre véhicule.</p>
-        <a href="{{ path('contact') }}" class="button">En savoir plus</a>
-    </section>
+                <section class="service">
+                    <h2>Entretien</h2>
+                    <img src="{{ asset('images/maintenance.jpg') }}" alt="Entretien de voiture" class="service-image">
+                    <p>Services d'entretien pour votre véhicule.</p>
+                    <a href="{{ path('app_contact') }}" class="button">En savoir plus</a>
+                </section>
 
-    <section class="service">
-        <h2>Carrosserie</h2>
-        <img src="{{ asset('images/bodywork.jpg') }}" alt="Carrossier en service" class="service-image">
-        <p>Réparations de carrosserie de haute qualité.</p>
-        <a href="{{ path('contact') }}" class="button">En savoir plus</a>
-    </section>
-</div>
-{% endblock %}
+                <section class="service">
+                    <h2>Carrosserie</h2>
+                    <img src="{{ asset('images/bodywork.jpg') }}" alt="Carrossier en service" class="service-image">
+                    <p>Réparations de carrosserie de haute qualité.</p>
+                    <a href="{{ path('app_contact') }}" class="button">En savoir plus</a>
+                </section>
+                </div>
+            </main> 
+
+            <!-- footer -->
+            <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <img src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                    </div>
+
+                    <div class="footer-info">
+                        <p>Adresse : 123 Rue de l'Aube, Paris</p>
+                        <p>Téléphone : 01 23 45 67 89</p>
+                        <p>Email : contact@garagevp.fr</p>
+                    </div>
+
+                    <div class="footer-social-media">
+                        <a href="#">Facebook</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Instagram</a>
+                    </div>
+
+                    <div class="footer-legal">
+                        <p>Mentions légales</p>
+                        <p>Politique de confidentialité</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,4 +1,4 @@
-{# templates/petites-annonces.html.twig #}
+{# templates/petites_annonces.html.twig #}
 
 {% block title %}{{ title }}{% endblock %}
 
@@ -32,7 +32,7 @@
                     <p><strong>Année:</strong> {{ annonce.anneeMiseEnCirculation|date('Y') }}</p>
                     <p><strong>Kilométrage:</strong> {{ annonce.kilometrage }} km</p>
                     <p><strong>Équipements:</strong> {{ annonce.equipements|join(', ') }}</p>
-                    <a href="{{ path('app_annonce_details', { id: annonce.id }) }}" class="btn">Voir Détails</a>
+                    <a href="{{ path('app_annonce', { id: annonce.id }) }}" class="btn">Voir Détails</a>
                 </div>
             {% endfor %}
         </div>

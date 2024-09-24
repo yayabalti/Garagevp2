@@ -1,125 +1,200 @@
 {# templates/base.html.twig #}
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Garage v.p {% endblock %}</title>
-    <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="{{ asset('images/logo.png') }}" alt="Garage Auto">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                     <li><a href="{{ path('app_services') }}">Découvrez nos services</a></li>
-                    {#<li><a href="{{ path('registration') }}">Inscription</a></li>
-                    <li><a href="{{ path('login') }}">Connexion</a></li>#}
-                    <li><a href="{{ path('app_contact') }}">Contact</a></li> 
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Acceuil{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
+    </head>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Banniere Principale -->
-        <section class="hero" style="background-image: url('/images/garage.png);">
-            <div class="hero-content">
-                <h2>Votre expert automobile, de la vente à l'entretien</h2>
-                <a href="{{ path('app_services') }}" class="btn">Découvrez nos services</a>
-            </div>
-        </section>
-
-        <!-- Services -->
-        <section id="services">
-            <div class="container">
-                <div class="service">
-                    <h3>Vente de Voitures d'Occasion</h3>
-                    <img src="{{ asset('images/voiture.jpg') }}" alt="Voiture d'occasion">
-                    <p>Découvrez notre sélection de voitures d'occasion.</p>
-                    <a href="{{ path('app_petites_annonces') }}" class="btn">Voir nos voitures</a>
-                </div>
-                <div class="service">
-                    <h3>Mécanique & Entretien</h3>
-                    <img src="{{ asset('images/mecanique.jpg') }}" alt="Mécanique">
-                    <p>Des services de mécanique complets pour votre véhicule.</p>
-                    <a href="{{ path('app_contact') }}" class="btn">En savoir plus</a>
-                </div>
-                <div class="service">
-                    <h3>Carrosserie</h3>
-                    <img src="{{ asset('images/carrosserie.jpg') }}" alt="Carrosserie">
-                    <p>Réparations et rénovations de qualité pour votre voiture.</p>
-                    <a href="{{ path('app_contact') }}" class="btn">Demandez un devis</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Formulaire de Contact -->
-        <section id="contact-form">
-            <div class="container">
-                <div class="contact-form">
-                    <h3>Garage V.P est la solution contactez-nous !</h3>
-                    <p>Nos horaires : du lundi au vendredi 8h - 20h, samedi de 9h à 19h</p>
-                    <form>
-                        <label for="name">Nom :</label>
-                        <input type="text" id="name" name="name" required>
-                        <label for="email">Email :</label>
-                        <input type="email" id="email" name="email" required>
-                        <label for="message">Message :</label>
-                        <textarea id="message" name="message" required></textarea>
-                        <button type="submit" class="btn">Envoyer</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- Témoignages -->
-        <section id="testimonials">
-            <div class="container">
-                <h2>Avis de nos clients</h2>
-                <div class="carousel">
-                    <div class="testimonial">
-                        <p>"Excellent service, très professionnel!"</p>
-                        <p>- Client Satisfait</p>
-                    </div>
-                    <!-- Ajoute plus de témoignages ici -->
-                </div>
-                <a href="{{ path('app_a_propos') }}" class="btn">Qui sommes-nous ?</a> 
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
+    <body>
+        <!-- Header -->
+        {% block header %}
+        <header>
+        
+            <div class="header-container">
+            
+                <div class="logo">
                     <img src="{{ asset('images/logo.png') }}" alt="Garage Auto">
                 </div>
-                <div class="footer-info">
-                    <p>Adresse : 123 Rue de l'Aube, Paris</p>
-                    <p>Téléphone : 01 23 45 67 89</p>
-                    <p>Email : contact@garagevp.fr</p>
+                <nav>
+                    <ul>
+                        <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                        <p class="separation">|</p>
+                        <li><a href="{{ path('app_services') }}">Découvrez nos services</a></li>
+                        <p class="separation">|</p>
+                        <li><a href="{{ path('app_home') }}">Inscription</a></li>
+                        <p class="separation">|</p>
+                        <li><a href="{{ path('app_home') }}">Connexion</a></li>
+                        <p class="separation">|</p>
+                        <li><a href="{{ path('app_contact') }}">Contact</a></li>
+                        
+                         
+                    </ul>
+                </nav>
+            </div>
+            
+        </header>
+        {% endblock %}
+
+        <main>
+            
+            <section class="hero">
+                <img class"skyline_img" src="{{ asset('images/imgheader.png') }}" alt="Garage Auto" >
+                <div class="opacity"></div>
+                <div class="hero-content">
+                    <img class="logo_main" src="{{ asset('images/logo.png') }}" alt="Garage Auto" >
+                    <h2>Votre expert automobile, de la vente à l'entretien</h2>
+                    <li><a href="{{ path('app_home2') }}">index2</a></li>
+                    
                 </div>
-                <div class="footer-social-media">
-                    <a href="#">Facebook</a>
-                    <a href="#">Twitter</a>
-                    <a href="#">Instagram</a>
+            </section>
+
+            
+
+            <!-- Services -->
+            <section id="services">
+            <h2>Nos services</h2>
+                <div class="container">
+                    <div class="service">
+                        <h3>Vente de Voitures d'Occasion</h3>
+                        <img src="{{ asset('images/voiture.jpg') }}" alt="Voiture d'occasion">
+                        <p>Découvrez notre sélection de voitures d'occasion.</p>
+                        <a href="{{ path('app_petites_annonces') }}" class="btn">Voir nos voitures</a>
+                    </div>
+
+                    <div class="service">
+                        <h3>Mécanique & Entretien</h3>
+                        <img src="{{ asset('images/mecanique.jpg') }}" alt="Mécanique">
+                        <p>Des services de mécanique complets pour votre véhicule.</p>
+                        <a href="{{ path('app_services') }}" class="btn">En savoir plus</a>
+                    </div>
+
+                    <div class="service">
+                        <h3>Carrosserie</h3>
+                        <img src="{{ asset('images/carrosserie.jpg') }}" alt="Carrosserie">
+                        <p>Réparations et rénovations de qualité pour votre voiture.</p>
+                        <a href="{{ path('app_services') }}" class="btn">En savoir plus</a>
+                    </div>
                 </div>
-                <div class="footer-legal">
-                    <p>Mentions légales</p>
-                    <p>Politique de confidentialité</p>
+            </section>
+
+            <!-- choisir garage vp -->
+
+            {# <section>
+                <div class="full_div"> 
+                <h2>Choisir gagare v.p</h2>
+                    <div>
+                        <div>
+                            <img src="">
+                            <p> </p>
+                        </div>
+                            
+                        <div>
+                            <img src="">
+                            <p> </p>
+                        </div>
+                            
+                        <div>
+                            <img src="">
+                            <p> </p>
+                        </div>
+                            
+                        <div>
+                            <img src="">
+                            <p> </p>
+                        </div>
+
+                        <div> </div>
+                    </div>
+                </div>
+            </section> #}
+
+            <!-- Formulaire de Contact -->
+            <section id="contact-form">
+                <div class="container">
+                    <div class="contact-form">
+                        <h3>Garage V.P est la solution contactez-nous !</h3>
+                        <p>Nos horaires : du lundi au vendredi 8h - 20h, samedi de 9h à 19h</p>
+                        <form>
+                            <label for="name">Nom :</label>
+                            <input type="text" id="name" name="name" required>
+                            <label for="email">Email :</label>
+                            <input type="email" id="email" name="email" required>
+                            <label for="message">Message :</label>
+                            <textarea id="message" name="message" required></textarea>
+                            <button type="submit" class="btn">Envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Témoignages -->
+            <section id="testimonials">
+                <div class="container">
+                    <h2>Avis de nos clients</h2>
+                    <div class="carousel">
+                        <div class="testimonial">
+                            <p>"Excellent service, très professionnel!"</p>
+                            <p>- Client Satisfait</p>
+                        </div>
+                        <!-- Ajoute plus de témoignages ici -->
+                    </div>
+                    <a href="{{ path('app_a_propos') }}" class="btn">Qui sommes-nous ?</a> 
+                </div>
+            </section>
+
+            <section class="">
+                <div> 
+                    <h1>Venez nous voir !</h1>
+                    <h2>et reparter en toutes serenité</h2>
+
+                    <div class="div_email">
+                        <img src="">
+                        <p></p>
+                    </div>
+
+                    <div class="div_adresse">
+                        <img src="">
+                        <p></p>
+                    </div>
+
+                    <div class="div_tel">
+                        <img src="">
+                        <p></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        {% block footer %}
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <img src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                    </div>
+                    <div class="footer-info">
+                        <p>Adresse : 123 Rue de l'Aube, Paris</p>
+                        <p>Téléphone : 01 23 45 67 89</p>
+                        <p>Email : contact@garagevp.fr</p>
+                    </div>
+                    <div class="footer-social-media">
+                        <a href="#">Facebook</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                    <div class="footer-legal">
+                        <p>Mentions légales</p>
+                        <p>Politique de confidentialité</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-</body>
+        </footer>
+        {% endblock %}
+    </body>
 </html>
 
 
