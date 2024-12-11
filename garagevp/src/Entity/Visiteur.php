@@ -2,39 +2,88 @@
 
 namespace App\Entity;
 
+use App\Repository\VisiteurRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+/**
+ * @ORM\Entity(repositoryClass=VisiteurRepository::class)
+ */
+#[ORM\Entity(repositoryClass: VisiteurRepository::class)]
 class Visiteur
 {
     #[ORM\Id]
-    #[ORM\Column(type: 'string', length: 250)]
-    private $idVisiteur;
+    #[ORM\Column(type: "string", length: 250)]
+    private string $idVisiteur; // ID du visiteur
 
-    #[ORM\Column(type: 'string', length: 250)]
-    #[Assert\NotBlank]
-    private $nom;
+    #[ORM\Column(type: "string", length: 250)]
+    private string $nom; // Nom du visiteur
 
-    #[ORM\Column(type: 'string', length: 250)]
-    #[Assert\NotBlank]
-    private $prenom;
+    #[ORM\Column(type: "string", length: 250)]
+    private string $prenom; // Prénom du visiteur
 
-    #[ORM\Column(type: 'string', length: 250, unique: true)]
-    #[Assert\NotBlank]
-    #[Assert\Email]
-    private $email;
+    #[ORM\Column(type: "datetimetz")]
+    private \DateTimeInterface $dateConnexion; // Date de connexion du visiteur
 
-    #[ORM\Column(type: 'string', length: 100)]
-    #[Assert\NotBlank]
-    private $telephone;
+    #[ORM\ManyToOne(targetEntity: Avis::class)]
+    #[ORM\JoinColumn(name: "ID_Avis", referencedColumnName: "idAvis", nullable: false)]
+    private Avis $avis; // Lien vers l'avis donné par le visiteur
 
-    #[ORM\Column(type: 'text')]
-    #[Assert\NotBlank]
-    private $message;
+    // Getters et Setters
 
-    #[ORM\Column(type: 'datetime')]
-    private $dateConnexion;
+    public function getIdVisiteur(): string
+    {
+        return $this->idVisiteur;
+    }
 
-    // Getters et setters...
+    public function setIdVisiteur(string $idVisiteur): self
+    {
+        $this->idVisiteur = $idVisiteur;
+        return $this;
+    }
+
+    public function getNom(): string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+        return $this;
+    }
+
+    public function getPrenom(): string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+        return $this;
+    }
+
+    public function getDateConnexion(): \DateTimeInterface
+    {
+        return $this->dateConnexion;
+    }
+
+    public function setDateConnexion(\DateTimeInterface $dateConnexion): self
+    {
+        $this->dateConnexion = $dateConnexion;
+        return $this;
+    }
+
+    public function getAvis(): Avis
+    {
+        return $this->avis;
+    }
+
+    public function setAvis(Avis $avis): self
+    {
+        $this->avis = $avis;
+        return $this;
+    }
 }
+
+

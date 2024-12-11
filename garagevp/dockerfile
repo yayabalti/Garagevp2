@@ -1,37 +1,163 @@
-# Utilise une image PHP-FPM de base
-FROM php:8.2-fpm
+# # Utilise une image PHP-FPM de base
+# FROM php:8.2-fpm
 
-# Installe les dépendances système et les extensions PHP nécessaires
-RUN apt-get update && apt-get install -y \
-    libpq-dev \
-    libicu-dev \
+# # Installe les dépendances système et les extensions PHP nécessaires
+# RUN apt-get update && apt-get install -y \
+#     libpq-dev \
+#     libicu-dev \
+#     libxml2-dev \
+#     zlib1g-dev \
+#     git \
+#     unzip \
+#     && docker-php-ext-install intl pdo pdo_pgsql \
+#     && docker-php-ext-enable pdo_pgsql \
+#     && apt-get clean \
+#     && rm -rf /var/lib/apt/lists/*
+
+
+# # Installe Composer depuis l'image officielle
+# COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# # Crée et définit le répertoire de travail
+# WORKDIR /var/www/html
+
+# # Copie les fichiers du projet dans le conteneur
+# COPY . .
+
+# # Installe les dépendances PHP du projet
+# RUN composer install --optimize-autoloader
+
+# # Assure que les fichiers ont les bonnes permissions
+# RUN chown -R www-data:www-data /var/www/html
+
+# # Expose le port 9000 pour PHP-FPM
+# EXPOSE 9000
+
+# # Démarre le serveur PHP-FPM
+# CMD ["php-fpm"]
+
+
+
+
+
+
+
+# FROM php:8.2-fpm-alpine
+
+# # Installation des dépendances et extensions
+# RUN apk add --no-cache \
+#     postgresql-dev \
+#     icu-dev \
+#     libxml2-dev \
+#     $PHPIZE_DEPS \
+#     git \
+#     unzip \
+#     zip \
+#     npm
+
+# # Configuration PHP et installation des extensions
+# RUN docker-php-ext-configure pgsql \
+#     && docker-php-ext-install -j$(nproc) \
+#         intl \
+#         pdo \
+#         pdo_pgsql \
+#     && docker-php-ext-enable pdo_pgsql
+
+# # Installation de Composer
+# COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# # Configuration du répertoire de travail
+# WORKDIR /var/www/html
+
+# # Copie des fichiers avec les bonnes permissions
+# COPY --chown=www-data:www-data . .
+
+# # Installation des dépendances
+# RUN composer install --optimize-autoloader --no-dev
+
+# # Permissions
+# RUN chown -R www-data:www-data var
+
+# EXPOSE 9000
+
+# CMD ["php-fpm"]
+
+
+
+
+
+
+
+# FROM php:8.2-fpm-alpine
+
+# RUN apk add --no-cache \
+#     postgresql-dev \
+#     icu-dev \
+#     libxml2-dev \
+#     $PHPIZE_DEPS \
+#     git \
+#     unzip \
+#     zip \
+#     npm
+
+# RUN docker-php-ext-configure pgsql \
+#     && docker-php-ext-install -j$(nproc) \
+#         intl \
+#         pdo \
+#         pdo_pgsql \
+#     && docker-php-ext-enable pdo_pgsql
+
+# COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# WORKDIR /var/www/html
+
+# COPY . .
+
+# RUN git config --global --add safe.directory '*'
+
+# # Une seule installation de Composer
+# RUN composer install --optimize-autoloader --no-scripts
+
+# RUN chown -R www-data:www-data .
+
+# EXPOSE 9000
+
+# CMD ["php-fpm"]
+
+
+
+
+
+
+FROM php:8.2-fpm-alpine
+
+RUN apk update && apk add --no-cache \
+    postgresql-dev \
+    icu-dev \
     libxml2-dev \
-    zlib1g-dev \
+    $PHPIZE_DEPS \
     git \
     unzip \
-    && docker-php-ext-install intl pdo pdo_pgsql \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    zip \
+    npm
 
-# Installe Composer depuis l'image officielle
+RUN docker-php-ext-configure pgsql \
+    && docker-php-ext-install -j$(nproc) \
+    intl \
+    pdo \
+    pdo_pgsql \
+    && docker-php-ext-enable pdo_pgsql
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Crée et définit le répertoire de travail
 WORKDIR /var/www/html
 
-# Copie les fichiers du projet dans le conteneur
 COPY . .
 
-# Installe les dépendances PHP du projet
-RUN composer install --optimize-autoloader
+RUN git config --global --add safe.directory '*'
+RUN composer install --optimize-autoloader --no-scripts
+RUN chown -R www-data:www-data .
 
-# Assure que les fichiers ont les bonnes permissions
-RUN chown -R www-data:www-data /var/www/html
-
-# Expose le port 9000 pour PHP-FPM
 EXPOSE 9000
 
-# Démarre le serveur PHP-FPM
 CMD ["php-fpm"]
-
-

@@ -2,83 +2,96 @@
 
 namespace App\Entity;
 
+use App\Repository\ServiceventevoitureoccasionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\VoitureRepository")
+ * @ORM\Entity(repositoryClass=ServiceventevoitureoccasionRepository::class)
  */
-class Voiture
+class ServiceVenteVoitureOccasion
 {
     /**
      * @ORM\Id
      * @ORM\Column(type="string", length=200)
      */
-    private $id;
+    private string $idVoiture; // ID de la voiture
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $marque;
+    private string $marque; // Marque de la voiture
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $model;
+    private string $model; // Modèle de la voiture
 
     /**
      * @ORM\Column(type="date")
      */
-    private $anneeMiseEnCirculation;
+    private \DateTimeInterface $anneeMiseEnCirculation; // Année de mise en circulation
 
     /**
-     * @ORM\Column(type="decimal", scale=2)
+     * @ORM\Column(type="decimal", precision=25, scale=2)
      */
-    private $prix;
+    private float $prix; // Prix de la voiture
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $kilometrage;
+    private int $kilometrage; // Kilométrage de la voiture
 
     /**
      * @ORM\Column(type="text")
      */
-    private $description;
+    private string $description; // Description de la voiture
 
     /**
      * @ORM\Column(type="string", length=250)
      */
-    private $imagePrincipale;
+    private string $imagePrincipale; // Image principale de la voiture
 
     /**
      * @ORM\Column(type="text")
      */
-    private $galerieImages;
+    private string $galerieImages; // Galerie d'images
 
     /**
      * @ORM\Column(type="text")
      */
-    private $caracteristiques;
+    private string $caracteristiques; // Caractéristiques de la voiture
 
     /**
      * @ORM\Column(type="text")
      */
-    private $equipements;
+    private string $equipements; // Équipements de la voiture
 
-    // Getters and Setters
+    /**
+     * @ORM\ManyToOne(targetEntity="Visiteur")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private Visiteur $visiteur; // Lien vers l'entité Visiteur
 
-    public function getId(): ?string
+    /**
+     * @ORM\ManyToOne(targetEntity="Employe")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private Employe $employe; // Lien vers l'entité Employé
+
+    // Getters et setters
+
+    public function getIdVoiture(): string
     {
-        return $this->id;
+        return $this->idVoiture;
     }
 
-    public function setId(string $id): self
+    public function setIdVoiture(string $idVoiture): self
     {
-        $this->id = $id;
+        $this->idVoiture = $idVoiture;
         return $this;
     }
 
-    public function getMarque(): ?string
+    public function getMarque(): string
     {
         return $this->marque;
     }
@@ -89,7 +102,7 @@ class Voiture
         return $this;
     }
 
-    public function getModel(): ?string
+    public function getModel(): string
     {
         return $this->model;
     }
@@ -100,7 +113,7 @@ class Voiture
         return $this;
     }
 
-    public function getAnneeMiseEnCirculation(): ?\DateTimeInterface
+    public function getAnneeMiseEnCirculation(): \DateTimeInterface
     {
         return $this->anneeMiseEnCirculation;
     }
@@ -111,7 +124,7 @@ class Voiture
         return $this;
     }
 
-    public function getPrix(): ?float
+    public function getPrix(): float
     {
         return $this->prix;
     }
@@ -122,7 +135,7 @@ class Voiture
         return $this;
     }
 
-    public function getKilometrage(): ?int
+    public function getKilometrage(): int
     {
         return $this->kilometrage;
     }
@@ -133,7 +146,7 @@ class Voiture
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -144,7 +157,7 @@ class Voiture
         return $this;
     }
 
-    public function getImagePrincipale(): ?string
+    public function getImagePrincipale(): string
     {
         return $this->imagePrincipale;
     }
@@ -155,7 +168,7 @@ class Voiture
         return $this;
     }
 
-    public function getGalerieImages(): ?string
+    public function getGalerieImages(): string
     {
         return $this->galerieImages;
     }
@@ -166,7 +179,7 @@ class Voiture
         return $this;
     }
 
-    public function getCaracteristiques(): ?string
+    public function getCaracteristiques(): string
     {
         return $this->caracteristiques;
     }
@@ -177,7 +190,7 @@ class Voiture
         return $this;
     }
 
-    public function getEquipements(): ?string
+    public function getEquipements(): string
     {
         return $this->equipements;
     }
@@ -187,5 +200,29 @@ class Voiture
         $this->equipements = $equipements;
         return $this;
     }
+
+    public function getVisiteur(): Visiteur
+    {
+        return $this->visiteur;
+    }
+
+    public function setVisiteur(Visiteur $visiteur): self
+    {
+        $this->visiteur = $visiteur;
+        return $this;
+    }
+
+    public function getEmploye(): Employe
+    {
+        return $this->employe;
+    }
+
+    public function setEmploye(Employe $employe): self
+    {
+        $this->employe = $employe;
+        return $this;
+    }
 }
+
+
 

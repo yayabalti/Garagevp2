@@ -6,118 +6,160 @@ body {
     color: #333;
 }
 
-/* Header */
-img{
-    width: 100%;
+
+
+/*___________________ nav barr (gris)_______________________ */
+
+nav.navbar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar{
+    background-color: #404040;
+    padding: 1em;
+    position: relative;
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 5% 0%);
+    width: 1269px;
+    height: 6vh;
+    margin-left: 14%;
 }
 
 
-header {
-    background-color: #ffffff9d;
+
+/*______________________ tel_____________________________ */
+img.icone_tel {
+    width: 7vh;
+    height: 7vh;
+    padding-right: 3vh;
 }
 
-.header-container {
+.div_tel {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    max-width: 100%;
-    margin: 0 auto;
-    align-items: flex-end;
+    width: 50%;
 }
 
-.logo img {
-    padding-top: 8%;
-    width: 30%;
+.texte_tel{
+    color: white;
 }
 
 
 
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+/*____________________ email___________________ */
+
+img.icone_email {
+    width: 6vh;
+    height: 6vh;
+    padding-right: 3vh;
+}
+
+.div_email {
     display: flex;
-    gap: 36px;
-    width: 112%;
-    margin-left: -11%;
-    margin-bottom: 3%;
+    align-items: center;
+    width: 42%;
 }
 
-nav ul li {
-    margin: 0 15px;
-    margin-top: 1%;
+.texte_email{
+    color: white;
+    margin-right: 25vh;
 }
 
-nav ul li a {
-    color: #000000;
+
+
+
+
+
+/*_________________ logo_________________ */
+
+.logo{
+    width: 26vh;
+    position: absolute;
+    bottom: 79vh;
+    left: 1vh;
+    z-index: -1;
+}
+
+
+
+/*___________________ menu nav____________________ */
+
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #fff51a;
+    height: 6vh;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a {
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-    font-size: 3vh;
+    color: rgb(0, 0, 0);
+    font-size: x-large;
 }
 
-nav ul li a:hover {
-    color: #f7f700;
+.item {
+    transition: transform 0.3s ease;
+}
+
+.item:hover {
+    transform: scale(1.2);
 }
 
 p.separation {
-    font-weight: 700;
+    font-weight: 900;
+    color: rgb(0, 0, 0);
+    margin-right: 0px;
 }
 
 
-.hero-content{
-    position: absolute;
-    bottom: 16%;
-    left: 13%;
+/*__________________ Header__________________ */
+
+img.skyline_img{
+    width: 100%;
+}
+
+.titre_header{
     z-index: 2;
-}
-
-
-.hero-content h2 {
-    font-size: 281%;
-    color: #ffe900;
-    margin-bottom: 27%;
-    
-}
-
-.hero-content .btn {
-    background-color: #464646;
-    color: #ffffff;
-    padding: 17px 37px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 17px;
-    transition: background-color 0.3s ease;
-    font-size: x-large;
-    margin-left: 37%;
-}
-
-.hero-content .btn:hover {
-    background-color: #e0e000;
-}
-
-.hero-content .logo_main{
     position: absolute;
-    bottom: -78vh;
-    width: 78vh;
-    left: 43vh;
-}
-
-/* opacity */
-
-.hero .opacity{
-background-color: #000000b5;
-position: absolute;
-z-index: 1;
-width: 100%;
-height: 105%;
-bottom: -33%;
+    color: yellow;
+    font-size: 8vh;
+    bottom: 31vw;
+    left: 14vh;
 }
 
 .logo_main{
-    z-index: 0;
+    z-index: 2;
+    width: 30%;
+    position: absolute;
+    bottom: -35vh;
+    left: 72vh;
 }
-/* Services Section */
+
+
+/* page opacity */
+
+.hero .opacity{
+    background-color: #0000008c;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 706px;
+    bottom: -12%;
+}
+
+
+
+
+
+/*________________page nos Services___________________*/
+
+
+/* div services */
 #services {
     padding: 40px 20px;
     background-color: #f4f4f4;
@@ -147,6 +189,8 @@ bottom: -33%;
 #services .btn:hover {
     background-color: #e0e000;
 }
+
+
 
 /* Contact Form Section */
 #contact-form {
@@ -190,6 +234,12 @@ bottom: -33%;
     background-color: #e0e000;
 }
 
+
+
+
+
+
+
 /* Testimonials Section */
 #testimonials {
     padding: 40px 20px;
@@ -214,6 +264,14 @@ bottom: -33%;
 .testimonial p {
     margin: 10px 0;
 }
+
+
+
+
+
+
+
+
 
 /* Footer */
 footer {

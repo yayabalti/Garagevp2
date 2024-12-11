@@ -2,47 +2,129 @@
 
 namespace App\Entity;
 
+use App\Repository\EmployeRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity]
+/**
+ * @ORM\Entity(repositoryClass=EmployeRepository::class)
+ */
 class Employe
 {
-    #[ORM\Id]
-    #[ORM\Column(type: 'string', length: 250)]
-    private $idEmploye;
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="string", length=250)
+     */
+    private string $idEmploye; // ID de l'employé
 
-    #[ORM\Column(type: 'string', length: 250)]
-    #[Assert\NotBlank]
-    private $nom;
+    /**
+     * @ORM\Column(type="string", length=250)
+     */
+    private string $nom; // Nom de l'employé
 
-    #[ORM\Column(type: 'string', length: 250)]
-    #[Assert\NotBlank]
-    private $prenom;
+    /**
+     * @ORM\Column(type="string", length=250)
+     */
+    private string $prenom; // Prénom de l'employé
 
-    #[ORM\Column(type: 'string', length: 250, unique: true)]
-    #[Assert\NotBlank]
-    #[Assert\Email]
-    private $email;
+    /**
+     * @ORM\Column(type="string", length=250, unique=true)
+     */
+    private string $email; // Email unique de l'employé
 
-    #[ORM\Column(type: 'string')]
-    #[Assert\NotBlank]
-    private $motDePasse;
+    /**
+     * @ORM\Column(type="string", length=250)
+     */
+    private string $motDePasse; // Mot de passe de l'employé
 
-    #[ORM\Column(type: 'date')]
-    #[Assert\NotBlank]
-    private $dateNaissance;
+    /**
+     * @ORM\Column(type="datetimetz")
+     */
+    private \DateTimeInterface $dateConnexion; // Date de connexion
 
-    #[ORM\Column(type: 'string', length: 250)]
-    #[Assert\NotBlank]
-    private $adresse;
+    /**
+     * @ORM\ManyToOne(targetEntity="Avis")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private Avis $avis; // Avis associé à l'employé
 
-    #[ORM\Column(type: 'string', length: 450)]
-    #[Assert\NotBlank]
-    private $diplomeExperience;
+    // Getters et Setters
 
-    #[ORM\Column(type: 'datetime')]
-    private $dateConnexion;
+    public function getIdEmploye(): string
+    {
+        return $this->idEmploye;
+    }
 
-    // Getters et setters...
+    public function setIdEmploye(string $idEmploye): self
+    {
+        $this->idEmploye = $idEmploye;
+        return $this;
+    }
+
+    public function getNom(): string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+        return $this;
+    }
+
+    public function getPrenom(): string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+        return $this;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    public function getMotDePasse(): string
+    {
+        return $this->motDePasse;
+    }
+
+    public function setMotDePasse(string $motDePasse): self
+    {
+        $this->motDePasse = $motDePasse;
+        return $this;
+    }
+
+    public function getDateConnexion(): \DateTimeInterface
+    {
+        return $this->dateConnexion;
+    }
+
+    public function setDateConnexion(\DateTimeInterface $dateConnexion): self
+    {
+        $this->dateConnexion = $dateConnexion;
+        return $this;
+    }
+
+    public function getAvis(): Avis
+    {
+        return $this->avis;
+    }
+
+    public function setAvis(Avis $avis): self
+    {
+        $this->avis = $avis;
+        return $this;
+    }
 }
+
+

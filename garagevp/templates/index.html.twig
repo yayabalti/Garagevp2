@@ -16,23 +16,31 @@
             <div class="header-container">
             
                 <div class="logo">
-                    <img src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                    
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                        <p class="separation">|</p>
-                        <li><a href="{{ path('app_services') }}">Découvrez nos services</a></li>
-                        <p class="separation">|</p>
-                        <li><a href="{{ path('app_home') }}">Inscription</a></li>
-                        <p class="separation">|</p>
-                        <li><a href="{{ path('app_home') }}">Connexion</a></li>
-                        <p class="separation">|</p>
-                        <li><a href="{{ path('app_contact') }}">Contact</a></li>
-                        
-                         
-                    </ul>
+                <nav class="navbar">
+
+                    <div class="div_tel">
+                        <img class="icone_tel" src="{{ asset('images/icone_tel.png') }}" alt="Garage Auto">
+                        <p class="texte_tel">Tel : 01 - 40 - 56 - 89 - 78<p/>
+                    </div>
+
+                    <div class="div_email">
+                        <img class="icone_email" src="{{ asset('images/icone_email.png') }}" alt="Garage Auto">
+                        <p class="texte_email">e-mail : Contact-garagevp@gmail.com</p>
+                    </div>
                 </nav>
+
+                    <ul class="menu">
+                            <img class="logo" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                        <li class="item"><a href="{{ path('app_home') }}">Accueil</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_services') }}">Découvrez nos services</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_home') }}">Inscription</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_contact') }}">Contact</a></li>
+                    </ul>
             </div>
             
         </header>
@@ -41,12 +49,12 @@
         <main>
             
             <section class="hero">
-                <img class"skyline_img" src="{{ asset('images/imgheader.png') }}" alt="Garage Auto" >
+                <img class="skyline_img" src="{{ asset('images/imgheader.png') }}" alt="Garage Auto" >
                 <div class="opacity"></div>
                 <div class="hero-content">
                     <img class="logo_main" src="{{ asset('images/logo.png') }}" alt="Garage Auto" >
-                    <h2>Votre expert automobile, de la vente à l'entretien</h2>
-                    <li><a href="{{ path('app_home2') }}">index2</a></li>
+                    <h2 class="titre_header">Votre expert automobile, de la vente à l'entretien</h2>
+                    
                     
                 </div>
             </section>
@@ -61,20 +69,27 @@
                         <h3>Vente de Voitures d'Occasion</h3>
                         <img src="{{ asset('images/voiture.jpg') }}" alt="Voiture d'occasion">
                         <p>Découvrez notre sélection de voitures d'occasion.</p>
-                        <a href="{{ path('app_petites_annonces') }}" class="btn">Voir nos voitures</a>
+                        <a href="{{ path('app_services') }}" class="btn">Voir nos voitures</a>
                     </div>
 
                     <div class="service">
-                        <h3>Mécanique & Entretien</h3>
+                        <h3>Mécanique</h3>
                         <img src="{{ asset('images/mecanique.jpg') }}" alt="Mécanique">
                         <p>Des services de mécanique complets pour votre véhicule.</p>
+                        <a href="{{ path('app_services') }}" class="btn">En savoir plus</a>
+                    </div>
+
+                     <div class="service">
+                        <h3>Entretien</h3>
+                        <img src="{{ asset('images/mecanique.jpg') }}" alt="Mécanique">
+                        <p>Des services d'entretien complets pour votre véhicule.</p>
                         <a href="{{ path('app_services') }}" class="btn">En savoir plus</a>
                     </div>
 
                     <div class="service">
                         <h3>Carrosserie</h3>
                         <img src="{{ asset('images/carrosserie.jpg') }}" alt="Carrosserie">
-                        <p>Réparations et rénovations de qualité pour votre voiture.</p>
+                        <p>Réparations et rénovations de qualité pour votre carrosserie.</p>
                         <a href="{{ path('app_services') }}" class="btn">En savoir plus</a>
                     </div>
                 </div>
@@ -82,41 +97,38 @@
 
             <!-- choisir garage vp -->
 
-            {# <section>
+            <section>
                 <div class="full_div"> 
-                <h2>Choisir gagare v.p</h2>
-                    <div>
+                    <h2>Choisir gagare v.p</h2>
+                        
                         <div>
                             <img src="">
                             <p> </p>
                         </div>
-                            
+                                
                         <div>
                             <img src="">
                             <p> </p>
                         </div>
-                            
+                                
                         <div>
                             <img src="">
                             <p> </p>
                         </div>
-                            
+                                
                         <div>
                             <img src="">
                             <p> </p>
                         </div>
-
-                        <div> </div>
-                    </div>
                 </div>
-            </section> #}
+            </section>
 
             <!-- Formulaire de Contact -->
             <section id="contact-form">
                 <div class="container">
                     <div class="contact-form">
                         <h3>Garage V.P est la solution contactez-nous !</h3>
-                        <p>Nos horaires : du lundi au vendredi 8h - 20h, samedi de 9h à 19h</p>
+                        <p>Nos horaires : du lundi au vendredi 8h - 20h,<br> samedi de 9h à 19h</p>
                         <form>
                             <label for="name">Nom :</label>
                             <input type="text" id="name" name="name" required>
