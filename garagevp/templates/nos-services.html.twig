@@ -5,40 +5,61 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>{% block title %}Nos services{% endblock %}</title>
-            <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
+            <link rel="stylesheet" href="{{ asset('styles/nos_services.css') }}">
         </head>
 
     <body>
+        {% block header %}
         <header>
-                
+        
             <div class="header-container">
-                    
-                <div class="logo">
-                    <img src="{{ asset('images/logo.png') }}" alt="Garage Auto">
-                </div>
-                    <nav>
-                        <ul>
-                            <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                            <li><a href="{{ path('app_home') }}">Inscription</a></li>
-                            <li><a href="{{ path('app_home') }}">Connexion</a></li>
-                            <li><a href="{{ path('app_contact') }}">Contact</a></li> 
-                        </ul>
-                    </nav>
-                </div>   
-        </header>
             
+                <div class="logo">
+                    
+                </div>
+                <nav class="navbar">
+
+                    <div class="div_tel">
+                        <img class="icone_tel" src="{{ asset('images/icone_tel.png') }}" alt="Garage Auto">
+                        <p class="texte_tel">Tel : 01 - 40 - 56 - 89 - 78</p>
+                    </div>
+
+                    <div class="div_adresse">
+                        <img class="icone_adresse" src="{{ asset('images/icone_localisation.png') }}" alt="Garage Auto">
+                        <p class="texte_adresse">123 Rue de l'Aube 75012 Paris</p>
+                    </div>
+
+                    <div class="div_email">
+                        <img class="icone_email" src="{{ asset('images/icone_email.png') }}" alt="Garage Auto">
+                        <p class="texte_email">e-mail : Contact-garagevp@gmail.com</p>
+                    </div>
+                </nav>
+
+                    <ul class="menu">
+                            <img class="logo" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                        <li class="item"><a href="{{ path('app_home') }}">Accueil</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_services') }}">Découvrez nos services</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_home') }}">Inscription</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_contact') }}">Contact</a></li>
+                    </ul>
+            </div>
+            
+        </header>
+        {% endblock %}
         <main>
             <section class="hero">
-                <img class"skyline_img" src="{{ asset('images/imgheader.png') }}" alt="Garage Auto" >
+                <img class="skyline_img" src="{{ asset('images/imgheader.png') }}" alt="Garage Auto" >
                 <div class="opacity"></div>
                     <div class="hero-content">
-                    <h2>Votre expert automobile, de la vente à l'entretien</h2>
+                    <h2 class="titre">Nos Services</h2>
                 </div>
             </section
 
                 
             <div class="services-container">
-                <h1>Nos Services</h1>
 
                 <section class="service">
                     <h2>Vente de Voitures d'Occasion</h2>
@@ -71,25 +92,24 @@
             </main> 
 
             <!-- footer -->
+           
+            {% block footer %}
             <footer>
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-logo">
                         <img src="{{ asset('images/logo.png') }}" alt="Garage Auto">
                     </div>
-
                     <div class="footer-info">
-                        <p>Adresse : 123 Rue de l'Aube, Paris</p>
+                        <p>Adresse : 123 Rue de l'Aube, 7512 Paris</p>
                         <p>Téléphone : 01 23 45 67 89</p>
                         <p>Email : contact@garagevp.fr</p>
                     </div>
-
                     <div class="footer-social-media">
                         <a href="#">Facebook</a>
                         <a href="#">Twitter</a>
                         <a href="#">Instagram</a>
                     </div>
-
                     <div class="footer-legal">
                         <p>Mentions légales</p>
                         <p>Politique de confidentialité</p>
@@ -97,5 +117,6 @@
                 </div>
             </div>
         </footer>
+            {% endblock %}
     </body>
 </html>
