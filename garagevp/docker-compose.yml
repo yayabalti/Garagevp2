@@ -89,6 +89,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      COMPOSER_ALLOW_SUPERUSER: "1"
     container_name: symfony_app
     working_dir: /var/www/html
     volumes:
@@ -114,20 +116,6 @@ services:
     ports:
       - 5432:5432
     restart: unless-stopped
-
-  # nginx:
-  #   image: nginx:alpine
-  #   container_name: symfony_nginx
-  #   volumes:
-  #     - ./:/var/www/html
-  #     - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-  #   ports:
-  #     - "8081:80"
-  #   depends_on:
-  #     - db
-  #   networks:
-  #     - symfony
-  #   restart: unless-stopped
 
   nginx:
     image: nginx:alpine

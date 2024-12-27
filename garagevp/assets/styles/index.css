@@ -82,7 +82,7 @@ img.icone_adresse {
 
 .texte_adresse{
     color: white;
-    margin-right: 25vh;
+    margin-right: 14vh;
 }
 
 
@@ -119,7 +119,7 @@ img.icone_adresse {
 a {
     text-decoration: none;
     color: rgb(0, 0, 0);
-    font-size: x-large;
+    font-size: inherit;
 }
 
 .item {
