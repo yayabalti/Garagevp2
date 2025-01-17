@@ -2,14 +2,9 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\ServiceCarrosserie;
-use App\Entity\ServiceEntretien;
-use App\Entity\ServiceMecanique;
-use App\Entity\ServiceVenteVoitureOccasion;
-use App\Entity\HoraireGarage;
-use App\Entity\InfoGarage;
-use App\Entity\Avis;
-use App\Entity\Utilisateur;
+use App\Entity\Service;
+use App\Entity\User;
+use App\Entity\InformationGarage;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -27,31 +22,52 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Garage V.Parrot - Administration')
-            ->setFaviconPath('favicon.svg');
+            ->setTitle('Garage V.Parrot - Administration');
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        
-        // Services
         yield MenuItem::section('Services');
-        yield MenuItem::linkToCrud('Carrosserie', 'fas fa-car', ServiceCarrosserie::class);
-        yield MenuItem::linkToCrud('Entretien', 'fas fa-tools', ServiceEntretien::class);
-        yield MenuItem::linkToCrud('Mécanique', 'fas fa-wrench', ServiceMecanique::class);
-        yield MenuItem::linkToCrud('Vente Voitures', 'fas fa-car-side', ServiceVenteVoitureOccasion::class);
         
-        // Configuration
-        yield MenuItem::section('Configuration');
-        yield MenuItem::linkToCrud('Horaires', 'fas fa-clock', HoraireGarage::class);
-        yield MenuItem::linkToCrud('Informations', 'fas fa-info-circle', InfoGarage::class);
-        
-        // Gestion
-        yield MenuItem::section('Gestion');
-        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', Utilisateur::class);
-        yield MenuItem::linkToCrud('Avis Clients', 'fas fa-star', Avis::class);
-        
-        yield MenuItem::linkToRoute('Retour au site', 'fas fa-home', 'app_home');
+        yield MenuItem::subMenu('Mécanique', 'fas fa-wrench')->setSubItems([
+            MenuItem::linkToCrud('Moteur', 'fas fa-cog', Service::class)
+                ->setController(ServiceMecaniqueCrudController::class),
+            MenuItem::linkToCrud('Freinage', 'fas fa-brake', Service::class)
+                ->setController(ServiceMecaniqueCrudController::class),
+            MenuItem::linkToCrud('Échappement', 'fas fa-wind', Service::class)
+                ->setController(ServiceMecaniqueCrudController::class),
+            MenuItem::linkToCrud('Suspension', 'fas fa-car', Service::class)
+                ->setController(ServiceMecaniqueCrudController::class),
+            MenuItem::linkToCrud('Pneumatique', 'fas fa-circle', Service::class)
+                ->setController(ServiceMecaniqueCrudController::class),
+        ]);
+
+        yield MenuItem::subMenu('Entretien', 'fas fa-tools')->setSubItems([
+            MenuItem::linkToCrud('Vidange et filtres', 'fas fa-oil-can', Service::class)
+                ->setController(ServiceEntretienCrudController::class),
+            MenuItem::linkToCrud('Pneus et freins', 'fas fa-car-side', Service::class)
+                ->setController(ServiceEntretienCrudController::class),
+            MenuItem::linkToCrud('Diagnostic électrique', 'fas fa-bolt', Service::class)
+                ->setController(ServiceEntretienCrudController::class),
+            MenuItem::linkToCrud('Batterie', 'fas fa-car-battery', Service::class)
+                ->setController(ServiceEntretienCrudController::class),
+        ]);
+
+        yield MenuItem::subMenu('Carrosserie', 'fas fa-car')->setSubItems([
+            MenuItem::linkToCrud('Ponçage et peinture', 'fas fa-paint-roller', Service::class)
+                ->setController(ServiceCarrosserieCrudController::class),
+            MenuItem::linkToCrud('Réparation carrosserie', 'fas fa-hammer', Service::class)
+                ->setController(ServiceCarrosserieCrudController::class),
+            MenuItem::linkToCrud('Remplacement d\'éléments', 'fas fa-tools', Service::class)
+                ->setController(ServiceCarrosserieCrudController::class),
+        ]);
+
+        yield MenuItem::section('Administration');
+
+        yield MenuItem::linkToCrud('Employés', 'fas fa-users', User::class)
+            ->setController(UserCrudController::class);
+
+        yield MenuItem::linkToCrud('Informations Garage', 'fas fa-info-circle', InformationGarage::class)
+            ->setController(InformationGarageCrudController::class);
     }
 }

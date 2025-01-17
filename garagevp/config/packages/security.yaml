@@ -1,101 +1,32 @@
-# security:
-#     # Gestion des encoders pour le hachage des mots de passe
-#     password_hashers:
-#         App\Entity\Utilisateur:
-#             algorithm: bcrypt
-
-#     # Configuration des fournisseurs d'utilisateurs
-#     providers:
-#         user_provider:
-#             entity:
-#                 class: App\Entity\Utilisateur
-#                 property: email
-
-#     firewalls:
-#         dev:
-#             pattern: ^/(_(profiler|wdt)|css|images|js)/
-#             security: false
-
-#         main:
-#             lazy: true
-#             provider: utilisateur_provider
-#             anonymous: true
-#             form_login:
-#                 login_path: login
-#                 check_path: login_check
-#                 csrf_token_generator: security.csrf.token_manager
-#             logout:
-#                 path: logout
-#                 target: login
-
-#     # Contrôle d'accès pour les différentes routes
-#     access_control:
-#         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-#         - { path: ^/admin, roles: ROLE_ADMIN }                   
-#         - { path: ^/employe, roles: ROLE_EMPLOYE } 
-
-# when@test:
-#     security:
-#         password_hashers:
-#             Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
-#                 algorithm: auto
-#                 cost: 4 # Valeur la plus basse pour bcrypt
-#                 time_cost: 3 # Valeur la plus basse pour argon
-#                 memory_cost: 10 # Valeur la plus basse pour argon
-
-
-
-
-
-
-
-
-
-
 security:
-   password_hashers:
-       App\Entity\Utilisateur:
-           algorithm: bcrypt
+    password_hashers:
+        App\Entity\User:
+            algorithm: auto
+    
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+    
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            lazy: true
+            provider: app_user_provider
+            custom_authenticator: App\Security\LoginFormAuthenticator
+            logout:
+                path: app_logout
+                target: app_home
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                secure: true
+    
+    access_control:
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/, roles: PUBLIC_ACCESS }
 
-   providers:
-       user_provider:
-           entity:
-               class: App\Entity\Utilisateur
-               property: email
-
-   firewalls:
-       dev:
-           pattern: ^/(_(profiler|wdt)|css|images|js)/
-           security: false
-       main:
-           lazy: true
-           provider: user_provider
-           custom_authenticator: App\Security\LoginFormAuthenticator
-           entry_point: App\Security\LoginFormAuthenticator
-           form_login:
-               login_path: app_login
-               check_path: app_login
-               enable_csrf: true
-               csrf_token_id: 'authenticate'
-           logout:
-               path: app_logout
-               target: app_login
-           remember_me:
-               secret: '%kernel.secret%'
-               lifetime: 604800
-
-   access_control:
-       - { path: ^/login, roles: PUBLIC_ACCESS }
-       - { path: ^/register, roles: PUBLIC_ACCESS }
-       - { path: ^/admin, roles: ROLE_ADMIN }
-       - { path: ^/employe, roles: ROLE_EMPLOYE }
-       - { path: ^/, roles: PUBLIC_ACCESS }
-
-when@test:
-   security:
-       password_hashers:
-           Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
-               algorithm: auto
-               cost: 4
-               time_cost: 3
-               memory_cost: 10

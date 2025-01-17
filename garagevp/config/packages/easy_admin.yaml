@@ -1,0 +1,70 @@
+# config/packages/easy_admin.yaml
+
+easy_admin:
+    entities:
+        # Configuration pour les Services de type Entretien, Carrosserie et Mécanique
+        ServiceEntretien:
+            class: App\Entity\Service
+            controller: App\Controller\Admin\ServiceEntretienCrudController
+            label: 'Service Entretien'
+            list:
+                title: 'Services Entretien'
+            form:
+                fields:
+                    - { property: 'nom', label: 'Nom du Service' }
+                    - { property: 'categorie', label: 'Catégorie' }
+                    - { property: 'description', label: 'Description' }
+
+        ServiceCarrosserie:
+            class: App\Entity\Service
+            controller: App\Controller\Admin\ServiceCarrosserieCrudController
+            label: 'Service Carrosserie'
+            list:
+                title: 'Services Carrosserie'
+            form:
+                fields:
+                    - { property: 'nom', label: 'Nom du Service' }
+                    - { property: 'categorie', label: 'Catégorie' }
+                    - { property: 'description', label: 'Description' }
+
+        ServiceMecanique:
+            class: App\Entity\Service
+            controller: App\Controller\Admin\ServiceMecaniqueCrudController
+            label: 'Service Mécanique'
+            list:
+                title: 'Services Mécanique'
+            form:
+                fields:
+                    - { property: 'nom', label: 'Nom du Service' }
+                    - { property: 'categorie', label: 'Catégorie' }
+                    - { property: 'description', label: 'Description' }
+
+        # Configuration pour les informations du garage
+        InformationGarage:
+            class: App\Entity\InformationGarage
+            controller: App\Controller\Admin\InformationGarageCrudController
+            label: 'Informations du Garage'
+            list:
+                title: 'Informations du Garage'
+            form:
+                fields:
+                    - { property: 'adresse', label: 'Adresse' }
+                    - { property: 'email', label: 'Email' }
+                    - { property: 'telephone', label: 'Numéro de Téléphone' }
+                    - { property: 'horaires', label: 'Horaires' }
+
+        # Configuration pour les autres entités si vous en avez
+        # Exemple d'une entité utilisateur si elle est gérée dans l'admin
+        User:
+            class: App\Entity\User
+            controller: App\Controller\Admin\UserCrudController
+            label: 'Utilisateurs'
+            list:
+                title: 'Liste des Utilisateurs'
+            form:
+                fields:
+                    - { property: 'email', label: 'Email' }
+                    - { property: 'roles', label: 'Rôles' }
+                    - { property: 'password', label: 'Mot de passe' }
+
+

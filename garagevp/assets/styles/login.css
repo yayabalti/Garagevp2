@@ -1,4 +1,3 @@
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -20,7 +19,7 @@ nav.navbar {
     padding: 1em;
     position: relative;
     clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 5% 0%);
-    width: 1269px;
+    width: 1274px;
     height: 6vh;
     margin-left: 14%;
 }
@@ -77,7 +76,7 @@ img.icone_adresse {
 .div_adresse {
     display: flex;
     align-items: center;
-    width: 42%;
+    width: 58%;
 }
 
 .texte_adresse{
@@ -116,14 +115,15 @@ img.icone_adresse {
     margin-bottom: 0;
 }
 
-a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-size: inherit;
+.titre_menu_nav{
+color: black;
+text-decoration: none;
 }
+
 
 .item {
     transition: transform 0.3s ease;
+    
 }
 
 .item:hover {
@@ -136,169 +136,111 @@ p.separation {
     margin-right: 0px;
 }
 
-/*__________________ boutton acces easyadmin_________________ */
-
-a.btn.btn-primary {
-    color: #ffffff;
-    background-color: #007bff;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-a.btn.btn-primary:hover {
-    background-color: #0056b3;
-    text-decoration: none;
-}
 
 
-/*__________________ Header__________________ */
 
-img.skyline_img{
+
+
+/* Style du conteneur du formulaire */
+
+img.img_connexion {
     width: 100%;
+    height: 101vh;
 }
-
-.titre_header{
-    z-index: 2;
-    position: absolute;
-    color: yellow;
-    font-size: 8vh;
-    bottom: 31vw;
-    left: 14vh;
-}
-
-.logo_main{
-    z-index: 2;
-    width: 30%;
-    position: absolute;
-    bottom: -35vh;
-    left: 72vh;
-}
-
-
-/* page opacity */
-
-.hero .opacity{
+.opacity_connexion{
     background-color: #0000008c;
     position: absolute;
-    z-index: 1;
     width: 100%;
-    height: 712px;
-    bottom: -14%;
+    height: 101%;
+    bottom: -127px;
 }
 
-
-
-
-
-/*________________page nos Services___________________*/
-
-
-/* div services */
-#services {
-    padding: 40px 20px;
-    background-color: #f4f4f4;
+main {
+    height: 101vh;
 }
 
-#services .service {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-#services .service img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-#services .btn {
-    background-color: #f7f700;
-    color: #333;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-#services .btn:hover {
-    background-color: #e0e000;
-}
-
-
-
-/* Contact Form Section */
-#contact-form {
-    background-color: #333;
-    color: #fff;
-    padding: 40px 20px;
-}
-
-#contact-form .contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-#contact-form form {
-    display: flex;
-    flex-direction: column;
-}
-
-#contact-form label {
-    margin-bottom: 5px;
-}
-
-#contact-form input, #contact-form textarea {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-}
-
-#contact-form button {
-    background-color: #f7f700;
-    color: #333;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#contact-form button:hover {
-    background-color: #e0e000;
-}
-
-
-
-
-
-
-
-/* Testimonials Section */
-#testimonials {
-    padding: 40px 20px;
-    background-color: #f4f4f4;
-    text-align: center;
-}
-
-.carousel {
-    display: flex;
-    overflow: hidden;
-    position: relative;
-}
-
-.testimonial {
-    margin: 0 auto;
-    max-width: 600px;
-    background: #fff;
+.login-container {
+    width: 409px;
+    margin: 50px auto;
     padding: 20px;
-    border-radius: 5px;
+    background-color: #ffffff03;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    position: absolute;
+    bottom: 12%;
+    left: 36%;
 }
 
-.testimonial p {
-    margin: 10px 0;
+/* Style du titre du formulaire */
+.login-container h2 {
+    text-align: center;
+    color: #fafafa;
+    margin-bottom: 30px;
+    font-size: xx-large;
+    margin-top: -3%;
 }
+
+/* Style des groupes de champs (conteneur label + input) */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Style des labels des champs */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+/* Style des champs de saisie */
+.form-control {
+    width: 94%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Style du bouton de connexion */
+.btn-login {
+    width: 53%;
+    padding: 12px;
+    background-color: #afb800;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-left: 13vh;
+}
+
+/* Animation au survol du bouton */
+.btn-login:hover {
+    background-color: #f2ff00;
+}
+
+/* Style général des messages d'alerte */
+.alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Style spécifique pour les messages d'erreur */
+.alert-danger {
+    background-color: #ffffff;
+    color: #ff0019;
+    border: 1px solid #ffffff;
+}
+
+
+
+
+
+
+
 
 
 
@@ -310,7 +252,7 @@ img.skyline_img{
 
 /* Footer */
 footer {
-    background-color: #333;
+    background-color: #282828;
     color: #fff;
     padding: 20px 0;
 }
@@ -324,7 +266,7 @@ footer {
     padding: 0 20px;
 }
 
-.footer-logo img {
+.footer_logo{
     height: 50px;
 }
 
@@ -366,11 +308,3 @@ body::before {
     color: black;
     z-index: -1;
 }
-
-
-
-
-
-
-
-

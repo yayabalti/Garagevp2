@@ -1,126 +1,120 @@
-<?php  
+<?php
 
 namespace App\Entity;
 
-use App\Repository\UtilisateurRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
-class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Table(name: '`users`')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    // Vos constantes existantes...
-
     #[ORM\Id]
-    #[ORM\Column(type: "string", length: 100)]
-    private string $idUser;
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    #[ORM\Column(type: "string", length: 50, unique: true)]
-    private string $email;
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $email = null;
 
-    #[ORM\Column(type: "string", length: 150)]
-    private string $motDePasse;
+    #[ORM\Column]
+    private array $roles = [];
 
-    #[ORM\Column(type: "string", length: 50)]
-    private string $roleUtilisateur;
+    #[ORM\Column]
+    private ?string $password = null;
 
-    #[ORM\Column(type: "datetimetz")]
-    private \DateTimeInterface $dateEtHeuresDeConnexion;
+    #[ORM\Column(type: 'integer', options: ['default' => 0])]
+    private int $loginAttempts = 0;
 
-    #[ORM\ManyToOne(targetEntity: Administrateur::class)]
-    #[ORM\JoinColumn(name: "idAdministrateur", referencedColumnName: "idAdministrateur", nullable: true)]
-    private ?Administrateur $administrateur = null;
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    private ?\DateTimeImmutable $lockedUntil = null;
 
-    #[ORM\ManyToOne(targetEntity: Employe::class)]
-    #[ORM\JoinColumn(name: "idEmploye", referencedColumnName: "idEmploye", nullable: true)]
-    private ?Employe $employe = null;
-
-    // Getters and Setters
-    public function getIdUser(): string
+    public function getId(): ?int
     {
-        return $this->idUser;
+        return $this->id;
     }
 
-    public function setIdUser(string $idUser): self
-    {
-        $this->idUser = $idUser;
-        return $this;
-    }
-
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(string $email): static
     {
         $this->email = $email;
         return $this;
     }
 
-    public function getMotDePasse(): string
+    public function getUserIdentifier(): string
     {
-        return $this->motDePasse;
+        return (string) $this->email;
     }
 
-    public function setMotDePasse(string $motDePasse): self
-    {
-        $this->motDePasse = $motDePasse;
-        return $this;
-    }
-
-    public function getRoleUtilisateur(): string
-    {
-        return $this->roleUtilisateur;
-    }
-
-    public function setRoleUtilisateur(string $roleUtilisateur): self
-    {
-        $this->roleUtilisateur = $roleUtilisateur;
-        return $this;
-    }
-
-    public function getDateEtHeuresDeConnexion(): \DateTimeInterface
-    {
-        return $this->dateEtHeuresDeConnexion;
-    }
-
-    public function setDateEtHeuresDeConnexion(\DateTimeInterface $dateEtHeuresDeConnexion): self
-    {
-        $this->dateEtHeuresDeConnexion = $dateEtHeuresDeConnexion;
-        return $this;
-    }
-
-    // Méthodes de l'interface UserInterface
     public function getRoles(): array
     {
-        return [$this->roleUtilisateur];
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
+        return $this;
     }
 
     public function getPassword(): string
     {
-        return $this->motDePasse;
+        return $this->password;
     }
 
-    public function getSalt(): ?string
+    public function setPassword(string $password): static
     {
-        return null;
-    }
-
-    public function getUserIdentifier(): string
-    {
-        return $this->email;
+        $this->password = $password;
+        return $this;
     }
 
     public function eraseCredentials(): void
     {
-        // $this->motDePasse = null;
+    }
+
+    public function getLoginAttempts(): int
+    {
+        return $this->loginAttempts;
+    }
+
+    public function incrementLoginAttempts(): void
+    {
+        $this->loginAttempts++;
+        if ($this->loginAttempts >= 3) {
+            $this->lockedUntil = new \DateTimeImmutable('+15 minutes');
+        }
+    }
+
+    public function resetLoginAttempts(): void
+    {
+        $this->loginAttempts = 0;
+        $this->lockedUntil = null;
+    }
+
+    public function isLocked(): bool
+    {
+        if ($this->lockedUntil === null) {
+            return false;
+        }
+        return $this->lockedUntil > new \DateTimeImmutable();
+    }
+
+    public function getLockedUntil(): ?\DateTimeImmutable
+    {
+        return $this->lockedUntil;
+    }
+
+    public function setLockedUntil(?\DateTimeImmutable $lockedUntil): static
+    {
+        $this->lockedUntil = $lockedUntil;
+        return $this;
     }
 }
-
-
-
-
-
-

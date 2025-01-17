@@ -1,54 +1,121 @@
-{# templates/security/login.html.twig #}
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>{% block title %}inscription{% endblock %}</title>
+            <link rel="stylesheet" href="{{ asset('styles/login.css') }}">
+        </head>
 
-{% block title %}formulaire_Connexion{% endblock %}
+    <body>
+        {% block header %}
+        <header>
 
-{% block body %}
-<div class="container mt-5">
-   <div class="row justify-content-center">
-       <div class="col-md-6">
-           <div class="card">
-               <div class="card-header">
-                   <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-               </div>
-               <div class="card-body">
-                   <form method="post">
-                       {% if error %}
-                           <div class="alert alert-danger">
-                               {{ error.messageKey|trans(error.messageData, 'security') }}
-                           </div>
-                       {% endif %}
+            <div class="header-container">
 
-                       <div class="form-group">
-                           <label for="inputEmail">Email</label>
-                           <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-                       </div>
+                <div class="logo">
 
-                       <div class="form-group mt-3">
-                           <label for="inputPassword">Mot de passe</label>
-                           <div class="input-group">
-                               <input type="password" name="password" id="inputPassword" class="form-control" required>
-                           </div>
-                           {% if error %}
-                               <small class="text-danger">
-                                   Le mot de passe doit contenir au moins 12 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial
-                               </small>
-                           {% endif %}
-                       </div>
+                </div>
+                <nav class="navbar">
 
-                       <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <div class="div_tel">
+                        <img class="icone_tel" src="{{ asset('images/icone_tel.png') }}" alt="Garage Auto">
+                        <p class="texte_tel">01 - 40 - 56 - 89 - 78<p/>
+                    </div>
 
-                       <button class="btn btn-lg btn-primary mt-3" type="submit">
-                           Se connecter
-                       </button>
-                   </form>
+                    <div class="div_adresse">
+                        <img class="icone_adresse" src="{{ asset('images/icone_localisation.png') }}" alt="Garage Auto">
+                        <p class="texte_adresse">123 Rue de l'Aube 75012 Paris</p>
+                    </div>
 
-                   <div class="text-center mt-3">
-                       <p>Pas encore inscrit ? <a href="{{ path('app_register') }}" class="text-primary">Inscrivez-vous ici !</a></p>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
-</div>
-{% endblock %}
+                    <div class="div_email">
+                        <img class="icone_email" src="{{ asset('images/icone_email.png') }}" alt="Garage Auto">
+                        <p class="texte_email"> Contact-garagevp@gmail.com</p>
+                    </div>
+                </nav>
+
+                    <ul class="menu">
+                            <img class="logo" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                        <li class="item"><a class="titre_menu_nav" href="{{ path('app_home') }}">Accueil</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a class="titre_menu_nav" href="{{ path('app_home') }}">Découvrez nos services</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a class="titre_menu_nav" href="{{ path('app_login') }}">connexion</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a class="titre_menu_nav" href="{{ path('app_home') }}">Contact</a></li>
+                        
+            </div>
+
+        </header>
+        {% endblock %}
+
+        
+        <main>
+            <img class="img_connexion" src="{{ asset('images/img_connexion.jpg') }}" alt="Garage Auto">
+            <div class="opacity_connexion"></div>
+            <div class="login-container">
+            
+                <h2>Connexion</h2>
+
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <form method="post" class="login-form">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" 
+                            id="email" 
+                            name="email" 
+                            value="{{ last_username }}" 
+                            required 
+                            autofocus 
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Mot de passe:</label>
+                        <input type="password" 
+                            id="password" 
+                            name="password" 
+                            required 
+                            class="form-control">
+                    </div>
+                    <button type="submit" class="btn-login">Se connecter</button>
+                </form>
+            </div>
+        </main>
+        
+           <!-- footer -->
+
+            {% block footer %}
+            <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <img src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                    </div>
+                    <div class="footer-info">
+                        <p>Adresse : 123 Rue de l'Aube, Paris</p>
+                        <p>Téléphone : 01 23 45 67 89</p>
+                        <p>Email : contact@garagevp.fr</p>
+                    </div>
+                    <div class="footer-social-media">
+                        <a href="#">Facebook</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                    <div class="footer-legal">
+                        <p>Mentions légales</p>
+                        <p>Politique de confidentialité</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+            {% endblock %}
+
+    </body>
+</html>

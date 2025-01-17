@@ -27,7 +27,7 @@
 
                     <div class="div_adresse">
                         <img class="icone_adresse" src="{{ asset('images/icone_localisation.png') }}" alt="Garage Auto">
-                        <p class="texte_adresse">123 Rue de l'Aube 75012 Paris</p>
+                        <p class="texte_adresse">123 Rue de l'Aube 31400 Toulouse</p>
                     </div>
 
                     <div class="div_email">
@@ -40,18 +40,22 @@
                             <img class="logo" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
                         <li class="item"><a href="{{ path('app_home') }}">Accueil</a></li>
                             <p class="separation">|</p>
-                        <li class="item"><a href="{{ path('app_services') }}">Découvrez nos services</a></li>
+                        <li class="item"><a href="{{ path('app_home') }}">Découvrez nos services</a></li>
                             <p class="separation">|</p>
-                        <li class="item"><a href="{{ path('app_home') }}">Inscription</a></li>
+                        <li class="item"><a href="{{ path('app_login') }}">connexion</a></li>
                             <p class="separation">|</p>
-                        <li class="item"><a href="{{ path('app_register') }}">connexion</a></li>
-                            <p class="separation">|</p>
-                        <li class="item"><a href="{{ path('app_contact') }}">Contact</a></li>
+                        <li class="item"><a href="{{ path('app_home') }}">Contact</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <div class="mt-4">
+                          <a href="{{ path('admin') }}" class="btn btn-primary"><i class="fas fa-cogs me-2"></i>Acces easyadmin</a>
+                        </div>
+                        {% endif %}
+
                     </ul>
             </div>
             
         </header>
-        {% endblock %}
+       {% endblock %}
 
         <main>
             
@@ -76,28 +80,28 @@
                         <h3>Vente de Voitures d'Occasion</h3>
                         <img src="{{ asset('images/voiture.jpg') }}" alt="Voiture d'occasion">
                         <p>Découvrez notre sélection de voitures d'occasion.</p>
-                        <a href="{{ path('app_services') }}" class="btn">Voir nos voitures</a>
+                        <a href="{{ path('app_home') }}" class="btn">Voir nos voitures</a>
                     </div>
 
                     <div class="service">
                         <h3>Mécanique</h3>
                         <img src="{{ asset('images/mecanique.jpg') }}" alt="Mécanique">
                         <p>Des services de mécanique complets pour votre véhicule.</p>
-                        <a href="{{ path('app_services') }}" class="btn">En savoir plus</a>
+                        <a href="{{ path('app_home') }}" class="btn">En savoir plus</a>
                     </div>
 
                      <div class="service">
                         <h3>Entretien</h3>
                         <img src="{{ asset('images/mecanique.jpg') }}" alt="Mécanique">
                         <p>Des services d'entretien complets pour votre véhicule.</p>
-                        <a href="{{ path('app_services') }}" class="btn">En savoir plus</a>
+                        <a href="{{ path('app_home') }}" class="btn">En savoir plus</a>
                     </div>
 
                     <div class="service">
                         <h3>Carrosserie</h3>
                         <img src="{{ asset('images/carrosserie.jpg') }}" alt="Carrosserie">
                         <p>Réparations et rénovations de qualité pour votre carrosserie.</p>
-                        <a href="{{ path('app_services') }}" class="btn">En savoir plus</a>
+                        <a href="{{ path('app_home') }}" class="btn">En savoir plus</a>
                     </div>
                 </div>
             </section>
@@ -160,7 +164,7 @@
                         </div>
                         <!-- Ajoute plus de témoignages ici -->
                     </div>
-                    <a href="{{ path('app_a_propos') }}" class="btn">Qui sommes-nous ?</a> 
+                    <a href="{{ path('app_home') }}" class="btn">Qui sommes-nous ?</a> 
                 </div>
             </section>
 

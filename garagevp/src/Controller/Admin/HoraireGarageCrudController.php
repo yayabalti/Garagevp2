@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\HoraireGarage;
+use App\Entity\Horaire;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -14,7 +14,7 @@ class HoraireGarageCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return HoraireGarage::class;
+        return Horaire::class;
     }
 
     public function configureFields(string $pageName): iterable

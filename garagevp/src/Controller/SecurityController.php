@@ -9,13 +9,14 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    #[Route('/login', name: 'login')]
+    #[Route('/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
 
-        // last username entered by the user
+        $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', [
@@ -24,17 +25,8 @@ class SecurityController extends AbstractController
         ]);
     }
 
-    #[Route('/login_check', name: 'login_check')]
-    public function loginCheck()
+    #[Route('/logout', name: 'app_logout', methods: ['GET'])]
+    public function logout(): void
     {
-        // Cette méthode sera interceptée par le système de sécurité
-        throw new \LogicException('This method can be blank - it will be intercepted by the security system.');
-    }
-
-    #[Route('/logout', name: 'logout')]
-    public function logout()
-    {
-        // Cette méthode sera interceptée par le système de sécurité
-        throw new \LogicException('This method can be blank - it will be intercepted by the security system.');
     }
 }
