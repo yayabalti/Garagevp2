@@ -21,24 +21,17 @@
                     <ul>
                         <li><a href="{{ path('app_home') }}">Accueil</a></li>
                         <p class="separation">|</p>
-                        <li><a href="{{ path('app_home') }}">Découvrez nos services</a></li>
+                        <li><a href="{{ path('app_nos_services') }}">Découvrez nos services</a></li>
                         <p class="separation">|</p>
                         <li><a href="{{ path('app_login') }}">Connexion</a></li>
                         <p class="separation">|</p>
                         <li><a href="{{ path('app_home') }}">Contact</a></li>
-                        
-                                   
-                    
-                
-                                                  
-                         
                     </ul>
                 </nav>
             </div>
             
         </header>
-        {% endblock %}
-    <!-- Main Content -->
+{% endblock %}
     <main>
         {% block content %}
         <!-- Le contenu spécifique aux pages sera inséré ici -->
@@ -57,7 +50,7 @@
                     
                     <div class="footer-info">
                         <h2>A propos : </h2>
-                        <p>123 Rue de l'Aube Toulouse 31400</p>
+                        <p>123 Rue de l'Aube - 31400 TOULOUSE</p>
                         <p>01 23 45 67 89</p>
                         <p>contact@garagevp.fr</p>
                     </div>
@@ -73,15 +66,17 @@
                     <img class="footer-logo" src="{{ asset('images/icone_facebook.png') }}" alt="icone fb">
                     <img class="footer-logo" src="{{ asset('images/icone_youtube.png') }}" alt="icone youtube">
                 </div>
+                
                 <div class="footer-legal">
-                    <div class="footer-legal">
-                        <p><a href="/mention-légale.html.twig">Mentions légales</a></p>
-                        <p><a href="/politique_de.html.twig">Politique de confidentialité</a></p>
-                    </div>
+                    <p><a href="{{ path('app_mention_legale') }}">Mentions légales</a></p>
+                    <p><a href="{{ path('app_politique_de_confidentialite') }}">Politique de confidentialité</a></p>
                 </div>
+                
             </div>
         </div>
     </footer>
+     {% endblock %}
+            <script src="{{ asset('js/carousel.js') }}"></script>
 {% endblock %}
 </body>
 </html>

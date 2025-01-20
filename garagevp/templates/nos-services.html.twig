@@ -21,12 +21,12 @@
 
                     <div class="div_tel">
                         <img class="icone_tel" src="{{ asset('images/icone_tel.png') }}" alt="Garage Auto">
-                        <p class="texte_tel">Tel : 01 - 40 - 56 - 89 - 78</p>
+                        <p class="texte_tel">Tel : 01 - 40 - 56 - 89 - 78<p/>
                     </div>
 
                     <div class="div_adresse">
                         <img class="icone_adresse" src="{{ asset('images/icone_localisation.png') }}" alt="Garage Auto">
-                        <p class="texte_adresse">123 Rue de l'Aube 75012 Paris</p>
+                        <p class="texte_adresse">123 Rue de l'Aube - 31400 TOULOUSE</p>
                     </div>
 
                     <div class="div_email">
@@ -39,11 +39,11 @@
                             <img class="logo" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
                         <li class="item"><a href="{{ path('app_home') }}">Accueil</a></li>
                             <p class="separation">|</p>
-                        <li class="item"><a href="{{ path('app_home') }}">Découvrez nos services</a></li>
+                        <li class="item"><a href="{{ path('app_nos_services') }}">Découvrez nos services</a></li>
                             <p class="separation">|</p>
-                        <li class="item"><a href="{{ path('app_login') }}">Connexion</a></li>
+                        <li class="item"><a href="{{ path('app_login') }}">connexion</a></li>
                             <p class="separation">|</p>
-                        <li class="item"><a href="{{ path('app_contact') }}">Contact</a></li>
+                        <li class="item"><a href="{{ path('app_home') }}">Contact</a></li>
                     </ul>
             </div>
             
@@ -51,12 +51,24 @@
         {% endblock %}
         <main>
             <section class="hero">
-                <img class="skyline_img" src="{{ asset('images/imgheader.png') }}" alt="Garage Auto" >
-                <div class="opacity"></div>
-                    <div class="hero-content">
-                    <h2 class="titre">Nos Services</h2>
+                <div class="carousel-wrapper">
+                    <div class="carousel-slides">
+                        <img src="{{ asset('images/atelier_outils.jpg') }}" alt="atelier_outils" class="carousel-slide">
+                        <img src="{{ asset('images/mecanique.webp') }}" alt="mecanicien" class="carousel-slide">
+                        <img src="{{ asset('images/diag.jpg') }}" alt="diag" class="carousel-slide">
+                        <img src="{{ asset('images/mecanique_moteur.jpg') }}" alt="mecanique moteur " class="carousel-slide">
+                        <img src="{{ asset('images/pneu.jpg') }}" alt="regonflage de pneu" class="carousel-slide">
+                        <img src="{{ asset('images/boite_de_vitesse.jpg') }}" alt="boite_de_vitesse" class="carousel-slide">
+                        <img src="{{ asset('images/disque.jpg') }}" alt="reparation des disque frein" class="carousel-slide">
+                        <img src="{{ asset('images/moteur.jpg') }}" alt="moteur_voiture" class="carousel-slide">
+                        
+                    </div>
                 </div>
-            </section
+                    <div class="opacity"></div>
+                        <div class="hero-content">
+                            <h2 class="titre">Nos Services</h2>
+                        </div>
+            </section>
 
                 
             <div class="services-container">
@@ -65,28 +77,28 @@
                     <h2>Vente de Voitures d'Occasion</h2>
                     <img src="{{ asset('images/car.jpg') }}" alt="Voiture en vente" class="service-image">
                     <p>Nous proposons une large sélection de voitures d'occasion vérifiées.</p>
-                    <a href="{{ path('app_petites_annonces') }}" class="button">Voir nos voitures</a>
+                    <a href="{{ path('app_home') }}" class="button">Voir nos voitures</a>
                 </section>
 
                 <section class="service">
                     <h2>Mécanique</h2>
                     <img src="{{ asset('images/mechanic.jpg') }}" alt="Mécanicien au travail" class="service-image">
                     <p>Réparations et entretiens par des professionnels.</p>
-                    <a href="{{ path('app_contact') }}" class="button">En savoir plus</a>
+                    <a href="{{ path('app_home') }}" class="button">En savoir plus</a>
                 </section>
 
                 <section class="service">
                     <h2>Entretien</h2>
                     <img src="{{ asset('images/maintenance.jpg') }}" alt="Entretien de voiture" class="service-image">
                     <p>Services d'entretien pour votre véhicule.</p>
-                    <a href="{{ path('app_contact') }}" class="button">En savoir plus</a>
+                    <a href="{{ path('app_home') }}" class="button">En savoir plus</a>
                 </section>
 
                 <section class="service">
                     <h2>Carrosserie</h2>
                     <img src="{{ asset('images/bodywork.jpg') }}" alt="Carrossier en service" class="service-image">
                     <p>Réparations de carrosserie de haute qualité.</p>
-                    <a href="{{ path('app_contact') }}" class="button">En savoir plus</a>
+                    <a href="{{ path('app_home') }}" class="button">En savoir plus</a>
                 </section>
                 </div>
             </main> 
@@ -101,7 +113,7 @@
                         <img src="{{ asset('images/logo.png') }}" alt="Garage Auto">
                     </div>
                     <div class="footer-info">
-                        <p>Adresse : 123 Rue de l'Aube, 7512 Paris</p>
+                        <p>Adresse : 123 Rue de l'Aube - 31400 TOULOUSE</p>
                         <p>Téléphone : 01 23 45 67 89</p>
                         <p>Email : contact@garagevp.fr</p>
                     </div>
@@ -111,12 +123,13 @@
                         <a href="#">Instagram</a>
                     </div>
                     <div class="footer-legal">
-                        <p>Mentions légales</p>
-                        <p>Politique de confidentialité</p>
+                        <p><a href="{{ path('app_mention_legale') }}">Mentions légales</a></p>
+                        <p><a href="{{ path('app_politique_de_confidentialite') }}">Politique de confidentialité</a></p>
                     </div>
                 </div>
             </div>
         </footer>
             {% endblock %}
+            <script src="{{ asset('js/carouselservices.js') }}"></script>
     </body>
 </html>

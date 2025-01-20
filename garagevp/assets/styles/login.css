@@ -76,12 +76,12 @@ img.icone_adresse {
 .div_adresse {
     display: flex;
     align-items: center;
-    width: 58%;
+    width: 50%;
 }
 
 .texte_adresse{
     color: white;
-    margin-right: 14vh;
+    margin-right: 0vh;
 }
 
 
@@ -308,3 +308,4 @@ body::before {
     color: black;
     z-index: -1;
 }
+

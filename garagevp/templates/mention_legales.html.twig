@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mention légale{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('styles/mention_legale.css') }}">
+</head>
+<body>
+    <div class="mentions-container">
+        <h1 class="mentions-title">Mentions Légales</h1>
+
+        <section class="mentions-section">
+            <h2>1. Présentation du site</h2>
+            <p>En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site Garage V.Parrot l'identité des différents intervenants :</p>
+            <ul class="mentions-list">
+                <li>Propriétaire : Garage V.Parrot</li>
+                <li>Adresse : 123 Rue de l'Aube, 31400 Toulouse</li>
+                <li>Téléphone : 01 23 45 67 89</li>
+                <li>Email : contact@garagevparrot.fr</li>
+                <li>SIRET : XX XXX XXX XXX XXX</li>
+            </ul>
+        </section>
+
+        <section class="mentions-section">
+            <h2>2. Directeur de la publication</h2>
+            <p>Le Directeur de la publication est Monsieur Vincent Parrot.</p>
+        </section>
+
+        <section class="mentions-section">
+            <h2>3. RGPD et données personnelles</h2>
+            <p>Les informations recueillies sur ce site sont traitées selon les principes suivants :</p>
+            <ul class="mentions-list">
+                <li>Les données personnelles sont traitées de manière licite, loyale et transparente</li>
+                <li>Elles sont collectées pour des finalités déterminées, explicites et légitimes</li>
+                <li>Elles sont conservées pendant une durée qui n'excède pas la durée nécessaire aux finalités</li>
+            </ul>
+        </section>
+
+        <section class="mentions-section">
+            <h2>4. Cookies</h2>
+            <p>Le site utilise des cookies techniques pour son bon fonctionnement. Un cookie est un petit fichier texte déposé sur votre ordinateur lors de la visite d'un site.</p>
+        </section>
+
+        <section class="mentions-section">
+            <h2>5. Propriété intellectuelle</h2>
+            <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés.</p>
+        </section>
+
+        <footer class="mentions-footer">
+            <p>© {{ "now"|date("Y") }} Garage V.Parrot - Dernière mise à jour : {{ "now"|date("d/m/Y") }}</p>
+        </footer>
+    </div>
+</body>
+</html>

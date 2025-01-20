@@ -1,0 +1,2 @@
+172.18.0.1 - - [19/Jan/2025:01:39:31 +0000] "GET / HTTP/1.1" 400 657 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Avast/131.0.0.0"
+172.18.0.1 - - [19/Jan/2025:01:39:31 +0000] "GET /favicon.ico HTTP/1.1" 400 657 "http://localhost:8443/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Avast/131.0.0.0"

@@ -24,5 +24,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Changer de slide toutes les 5 secondes
-    setInterval(nextSlide, 5000);
+    setInterval(nextSlide, 4000);
 });

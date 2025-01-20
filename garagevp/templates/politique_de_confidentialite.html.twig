@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Politique de confidentialité{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('styles/politique.css') }}">
+</head>
+<body>
+    <div class="politique-container">
+        <h1 class="politique-title">Politique de Confidentialité</h1>
+
+        <section class="politique-section">
+            <h2>1. Collecte des informations personnelles</h2>
+            <p>Nous collectons les informations suivantes :</p>
+            <ul class="politique-list">
+                <li>Nom et prénom</li>
+                <li>Adresse email</li>
+                <li>Numéro de téléphone</li>
+                <li>Informations concernant votre véhicule</li>
+            </ul>
+        </section>
+
+        <section class="politique-section">
+            <h2>2. Utilisation des informations</h2>
+            <p>Les informations collectées sont utilisées pour :</p>
+            <ul class="politique-list">
+                <li>Gérer vos rendez-vous d'entretien et réparations</li>
+                <li>Vous contacter concernant vos services</li>
+                <li>Améliorer nos services</li>
+                <li>Personnaliser votre expérience client</li>
+            </ul>
+        </section>
+
+        <section class="politique-section">
+            <h2>3. Protection des informations</h2>
+            <p>Nous mettons en place des mesures de sécurité pour protéger vos informations :</p>
+            <ul class="politique-list">
+                <li>Stockage sécurisé des données</li>
+                <li>Accès limité aux informations personnelles</li>
+                <li>Protection contre les accès non autorisés</li>
+            </ul>
+        </section>
+
+        <section class="politique-section">
+            <h2>4. Vos droits</h2>
+            <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+            <ul class="politique-list">
+                <li>Droit d'accès à vos données</li>
+                <li>Droit de rectification des informations</li>
+                <li>Droit à l'effacement de vos données</li>
+                <li>Droit à la portabilité de vos données</li>
+            </ul>
+        </section>
+
+        <section class="politique-section">
+            <h2>5. Cookies</h2>
+            <p>Notre site utilise des cookies pour améliorer votre expérience. Vous pouvez à tout moment désactiver ces cookies dans les paramètres de votre navigateur.</p>
+        </section>
+
+        <section class="politique-section">
+            <h2>6. Contact</h2>
+            <p>Pour toute question concernant notre politique de confidentialité, contactez-nous :</p>
+            <ul class="politique-list">
+                <li>Email : contact@garagevparrot.fr</li>
+                <li>Téléphone : 01 23 45 67 89</li>
+                <li>Adresse : 123 Rue de l'Aube, 31400 Toulouse</li>
+            </ul>
+        </section>
+
+        <footer class="politique-footer">
+            <p>© {{ "now"|date("Y") }} Garage V.Parrot - Dernière mise à jour : {{ "now"|date("d/m/Y") }}</p>
+        </footer>
+    </div>
+</body>
+</html>
