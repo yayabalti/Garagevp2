@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Security;
 
 use App\Entity\User;
@@ -8,9 +7,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Http\Authenticator\AbstractLoginFormAuthenticator;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\CsrfTokenBadge;
@@ -22,81 +23,97 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
 class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 {
-   use TargetPathTrait;
+    use TargetPathTrait;
 
-   public const LOGIN_ROUTE = 'app_login';
+    public const LOGIN_ROUTE = 'app_login';
 
-   public function __construct(
-       private UrlGeneratorInterface $urlGenerator,
-       private EntityManagerInterface $entityManager,
-       private UserRepository $userRepository
-   ) {
-   }
+    public function __construct(
+        private UrlGeneratorInterface $urlGenerator,
+        private EntityManagerInterface $entityManager,
+        private UserRepository $userRepository,
+        private UserPasswordHasherInterface $passwordHasher
+    ) {
+    }
 
-   public function supports(Request $request): bool
-   {
-       return self::LOGIN_ROUTE === $request->attributes->get('_route')
-           && $request->isMethod('POST');
-   }
+    public function supports(Request $request): bool
+    {
+        return self::LOGIN_ROUTE === $request->attributes->get('_route')
+            && $request->isMethod('POST');
+    }
 
-   public function authenticate(Request $request): Passport
-   {
-       $email = $request->request->get('email', '');
-       $password = $request->request->get('password', '');
+    public function authenticate(Request $request): Passport
+    {
+        $email = $request->request->get('email', '');
+        $password = $request->request->get('password', '');
 
-       // Validation de l'email
-       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-           throw new CustomUserMessageAuthenticationException('Format d\'email invalide.');
-       }
+        // Validation de base
+        if (empty($email) || empty($password)) {
+            throw new CustomUserMessageAuthenticationException('Email et mot de passe requis.');
+        }
 
-       // Vérification du verrouillage
-       $user = $this->userRepository->findOneBy(['email' => $email]);
-       if ($user && $user->isLocked()) {
-           throw new CustomUserMessageAuthenticationException('Compte temporairement bloqué. Veuillez réessayer dans quelques minutes.');
-       }
+        // Validation du format email
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new CustomUserMessageAuthenticationException('Format d\'email invalide.');
+        }
 
-       $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $email);
+        $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $email);
 
-       return new Passport(
-           new UserBadge($email),
-           new PasswordCredentials($password),
-           [
-               new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
-           ]
-       );
-   }
+        return new Passport(
+            new UserBadge($email, function($email) {
+                $user = $this->userRepository->findOneBy(['email' => $email]);
+                
+                if (!$user) {
+                    throw new BadCredentialsException('Utilisateur non trouvé.');
+                }
 
-   public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
-   {
-       $user = $token->getUser();
-       if ($user instanceof User) {
-           $user->setLastLoginAt(new \DateTimeImmutable());
-           $user->resetLoginAttempts();
-           $this->entityManager->flush();
-       }
+                // Vérification du compte verrouillé
+                if ($user->isLocked()) {
+                    throw new CustomUserMessageAuthenticationException('Compte temporairement bloqué. Veuillez réessayer plus tard.');
+                }
 
-       if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-           return new RedirectResponse($targetPath);
-       }
+                return $user;
+            }),
+            new PasswordCredentials($password),
+            [
+                new CsrfTokenBadge('authenticate', $request->request->get('_csrf_token')),
+            ]
+        );
+    }
 
-       return new RedirectResponse($this->urlGenerator->generate('app_home'));
-   }
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
+    {
+        $user = $token->getUser();
+        if ($user instanceof User) {
+            // Réinitialisation des tentatives de connexion
+            $user->resetLoginAttempts();
+            $user->setLastLoginAt(new \DateTimeImmutable());
+            $this->entityManager->flush();
+        }
 
-   public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
-   {
-       $email = $request->request->get('email');
-       $user = $this->userRepository->findOneBy(['email' => $email]);
-       
-       if ($user) {
-           $user->incrementLoginAttempts();
-           $this->entityManager->flush();
-       }
+        // Redirection vers la page précédente ou page d'accueil
+        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
+            return new RedirectResponse($targetPath);
+        }
 
-       return parent::onAuthenticationFailure($request, $exception);
-   }
+        return new RedirectResponse($this->urlGenerator->generate('app_home'));
+    }
 
-   protected function getLoginUrl(Request $request): string
-   {
-       return $this->urlGenerator->generate(self::LOGIN_ROUTE);
-   }
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
+    {
+        $email = $request->request->get('email');
+        $user = $this->userRepository->findOneBy(['email' => $email]);
+        
+        if ($user) {
+            // Incrémentation des tentatives de connexion
+            $user->incrementLoginAttempts();
+            $this->entityManager->flush();
+        }
+
+        return parent::onAuthenticationFailure($request, $exception);
+    }
+
+    protected function getLoginUrl(Request $request): string
+    {
+        return $this->urlGenerator->generate(self::LOGIN_ROUTE);
+    }
 }

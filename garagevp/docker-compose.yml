@@ -74,6 +74,7 @@ services:
     expose:
      - "9000"
     environment:
+      DATABASE_URL: "postgresql://postgres:armanie@symfony_db:5432/garagevp?serverVersion=13&charset=utf8"
       COMPOSER_ALLOW_SUPERUSER: "1"
       PHP_OPCACHE_ENABLE: 1
       PHP_OPCACHE_REVALIDATE_FREQ: 0
