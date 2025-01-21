@@ -67,9 +67,26 @@ security:
             login_throttling:
                 max_attempts: 3
                 interval: '15 minutes'
-    
+
+        # Pour l'admin (EasyAdmin pour l'admin)
+        easyadmin_admin:
+            pattern: ^/admin  # Cette règle concerne toutes les pages qui commencent par '/admin'
+            security: true     # Assure que cette route est protégée
+            # Pas besoin de "roles" ici, ils sont gérés dans access_control
+
+        # Pour l'employé (tableau de bord personnalisé pour l'employé)
+        easyadmin_employe:
+            pattern: ^/easyemploye/dashboard  # Cette règle concerne l'interface spécifique à l'employé
+            security: true      # Protection de la route
+            # Pas besoin de "roles" ici, ils sont gérés dans access_control
+
     access_control:
-        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/login, roles: PUBLIC_ACCESS }  # La page de connexion est accessible à tous
+        - { path: ^/easyemploye/dashboard, roles: ROLE_EMPLOYE }  # Seul un utilisateur avec le rôle ROLE_EMPLOYE peut accéder à /easyemploye/dashboard
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/, roles: PUBLIC_ACCESS }
+        - { path: ^/, roles: PUBLIC_ACCESS } # Le reste des pages est accessible à tous
+        
+
+    
+    
 

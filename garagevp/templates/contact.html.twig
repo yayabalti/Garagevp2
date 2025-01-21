@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Contact{% endblock %}</title>
-        <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
+        <link rel="stylesheet" href="{{ asset('styles/contact.css') }}">
     </head>
 
     <body>
@@ -41,9 +41,9 @@
                             <img class="logo" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
                         <li class="item"><a href="{{ path('app_home') }}">Accueil</a></li>
                             <p class="separation">|</p>
-                        <li class="item"><a href="{{ path('app_services') }}">Découvrez nos services</a></li>
+                        <li class="item"><a href="{{ path('app_nos_services') }}">Découvrez nos services</a></li>
                             <p class="separation">|</p>
-                        <li class="item"><a href="{{ path('app_home') }}">Inscription</a></li>
+                        <li class="item"><a href="{{ path('app_login') }}">Connexion</a></li>
                             <p class="separation">|</p>
                         <li class="item"><a href="{{ path('app_contact') }}">Contact</a></li>
                     </ul>
@@ -62,21 +62,48 @@
                 </div>
             </section
 
-            <div class="contact-container">
+            <!-- Formulaire de contact -->
+            <div class="contact-form-container">
                 
+                    <form id="contact-form">
+                    <h2>Contactez-nous</h2>
+                        <label for="nom">Nom:</label>
+                        <input type="text" id="nom" name="nom" required><br>
 
-                <form action="{{ path('app_contact') }}" method="post">
-                    <input type="text" name="nom" placeholder="Votre Nom" required>
-                    <input type="email" name="email" placeholder="Votre Email" required>
-                    <textarea name="message" placeholder="Votre Message" required></textarea>
-                    <button type="submit">Envoyer</button>
-                </form>
+                        <label for="prenom">Prénom:</label>
+                        <input type="text" id="prenom" name="prenom" required><br>
 
-                <h2>Horaires du Garage</h2>
-                <p>Lundi - Vendredi: 8h00 - 20h00<br>samedi:9h00 - 19h </p>
-                <h2>Coordonnées</h2>
-                <p>Téléphone: 01 23 45 67 89</p>
-                <p>Email:Contact-garagevp@gmail.com</p>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required><br>
+
+                        <label for="objet">Objet:</label>
+                        <input type="text" id="objet" name="objet" required><br>
+
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea><br>
+
+                        <!-- Messages flash -->
+                        {# {% for flash_message in app.flashes('success') %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ flash_message }}
+                    
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+
+                        {% for flash_message in app.flashes('error') %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ flash_message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %} #}
+
+                            <button type="submit">Envoyer</button>
+                    </form>
+
+
+                        <!-- Section pour afficher le message de confirmation ou d'erreur -->
+                      <div id="message-status" class="message-status"></div>
             </div>
         </main>
 
@@ -107,6 +134,73 @@
         </footer>
         {% endblock %}
 
+        <script src="path/to/firebaseconfig.js"></script>
+        <script>
+          
+import { initializeApp } from "firebase/app";
+
+
+// Configuration de votre application Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyDQTUEQrcfGrrmScFOKrDEjcKnnqLuTLa4",
+  authDomain: "garagevp-a5ae3.firebaseapp.com",
+  projectId: "garagevp-a5ae3",
+  storageBucket: "garagevp-a5ae3.firebasestorage.app",
+  messagingSenderId: "533150300008",
+  appId: "1:533150300008:web:18ef9a3665738d0ebb48dd"
+};
+
+
+// Initialisation de Firebase
+const app = initializeApp(firebaseConfig);
+
+// Initialisation de Firestore
+const db = getFirestore(app);
+
+// Fonction pour envoyer le message à Firestore
+const sendMessage = async (formData) => {
+  try {
+    // Envoi des données à Firestore dans la collection "messages"
+    await addDoc(collection(db, "messages"), formData);
+    console.log("Message envoyé avec succès !");
+    
+    // Affichage du message de succès
+    const messageStatus = document.getElementById('message-status');
+    messageStatus.textContent = "Votre message a été envoyé avec succès !";
+    messageStatus.className = 'message-status success';  // Ajout de la classe success
+    
+    // Réinitialiser le formulaire après envoi
+    document.getElementById("contact-form").reset();
+
+  } catch (error) {
+    console.error("Erreur lors de l'envoi du message :", error);
+    
+    // Affichage du message d'erreur
+    const messageStatus = document.getElementById('message-status');
+    messageStatus.textContent = "Erreur lors de l'envoi du message. Veuillez réessayer.";
+    messageStatus.className = 'message-status error';  // Ajout de la classe error
+  }
+};
+
+// Récupérer le formulaire et ajouter l'événement pour la soumission
+const form = document.getElementById("contact-form");
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  // Collecte des données du formulaire
+  const formData = {
+    nom: form.querySelector("[name='nom']").value,
+    prenom: form.querySelector("[name='prenom']").value,
+    email: form.querySelector("[name='email']").value,
+    objet: form.querySelector("[name='objet']").value,
+    message: form.querySelector("[name='message']").value,
+    createdAt: new Date().toISOString(),  // Ajouter la date du message
+  };
+
+  // Envoyer les données du formulaire à Firestore
+  sendMessage(formData);
+});
+        </script>
     </body>
 </html>
 

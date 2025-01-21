@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class GarageServicesController extends AbstractController
+class NosServicesController extends AbstractController
 {
     #[Route('/nos-services', name: 'app_nos_services')]
     public function index(): Response

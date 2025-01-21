@@ -44,14 +44,23 @@
                             <p class="separation">|</p>
                         <li class="item"><a href="{{ path('app_login') }}">connexion</a></li>
                             <p class="separation">|</p>
-                        <li class="item"><a href="{{ path('app_home') }}">Contact</a></li>
+                        <li class="item"><a href="{{ path('app_contact') }}">Contact</a></li>
+                        {# boutton pour acceder a easy admin  #}
                         {% if is_granted('ROLE_ADMIN') %}
                         <div class="mt-4">
-                          <a href="{{ path('admin') }}" class="btn btn-primary"><i class="fas fa-cogs me-2"></i>Acces easyadmin</a>
+                         <a href="{{ path('admin_dashboard') }}" class="btn btn-primary"><i class="fas fa-cogs me-2"></i>Accès Admin</a>
                         </div>
                         {% endif %}
-
+                             
+                        {% if is_granted('ROLE_EMPLOYE') %}
+                        <div class="mt-4">
+                        <a href="{{ path('employee_dashboard')}}" class="btn btn-primary"><i class="fas fa-user-cog me-2"></i>Accès Employé</a>
+                        </div>                   
+                        {% endif %} 
                     </ul>
+    
+                        
+                
             </div>
             
         </header>

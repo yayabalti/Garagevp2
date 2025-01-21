@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\SecurityBundle\Security;
 
-class DashboardController extends AbstractDashboardController
+class AdminDashboardController extends AbstractDashboardController
 {
     private $security;
     private $entityManager;
@@ -24,11 +24,14 @@ class DashboardController extends AbstractDashboardController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/admin', name: 'admin')]
+    #[Route('/admin', name: 'admin_dashboard')]
     public function index(): Response
     {
         // On récupère l'utilisateur connecté via le service Security
         $user = $this->security->getUser();
+
+        // Vous pouvez récupérer des données pour l'admin si nécessaire
+        // Par exemple, afficher des statistiques ou des notifications
 
         return $this->render('admin/dashboard.html.twig', [
             'user' => $user

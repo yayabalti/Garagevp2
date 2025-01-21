@@ -1,0 +1,29 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+    <h1>Tableau de bord des Avis</h1>
+
+    {% if avisNonApprouves is not empty %}
+        <h2>Avis en attente de modération :</h2>
+        <div class="list-group">
+            {% for avis in avisNonApprouves %}
+                <div class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <strong>{{ avis.nom }} {{ avis.prenom }}</strong>
+                        <span class="badge bg-primary">Note : {{ avis.note }}/5</span>
+                    </div>
+                    <p class="mt-2 mb-1"><em>"{{ avis.commentaire }}"</em></p>
+                    <div class="mt-2">
+                        <a href="{{ path('app_avis_edit', {'id': avis.id}) }}" class="btn btn-primary btn-sm">
+                            <i class="fas fa-edit"></i> Modérer
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i> Aucun avis en attente de modération.
+        </div>
+    {% endif %}
+{% endblock %}

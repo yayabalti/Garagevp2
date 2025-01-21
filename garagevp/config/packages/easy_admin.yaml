@@ -67,4 +67,16 @@ easy_admin:
                     - { property: 'roles', label: 'Rôles' }
                     - { property: 'password', label: 'Mot de passe' }
 
-
+        Avis:
+            class: App\Entity\Avis
+            controller: App\Controller\Admin\AvisCrudController
+            label: 'Avis Clients'
+            list:
+                title: 'Gestion des Avis'
+            form:
+                fields:
+                    - { property: 'nom', label: 'Nom' }
+                    - { property: 'prenom', label: 'Prénom' }
+                    - { property: 'commentaire', label: 'Commentaire' }
+                    - { property: 'note', label: 'Note' }
+                    - { property: 'approuve', label: 'Approuvé' }
