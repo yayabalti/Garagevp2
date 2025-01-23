@@ -1,5 +1,4 @@
 <?php
-
 namespace App\DataFixtures;
 
 use App\Entity\User;
@@ -15,12 +14,15 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
+        // Création de l'admin principal
         $admin = new User();
-        $admin->setEmail('Vincent-parrot@gmail.com');
-        $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setPassword(
-            $this->passwordHasher->hashPassword($admin, 'armanie77')
-        );
+        $admin->setEmail('vincent-parrot@gmail.com')
+              ->setRoles(['ROLE_ADMIN'])
+              ->setFirstName('Vincent')
+              ->setLastName('Parrot')
+              ->setPassword(
+                  $this->passwordHasher->hashPassword($admin, 'armanie77')
+              );
 
         $manager->persist($admin);
         $manager->flush();

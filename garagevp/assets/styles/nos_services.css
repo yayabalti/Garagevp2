@@ -1,15 +1,18 @@
-body {
+
+/* _________________________________version de base_____________________________________ */
+
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     color: #333;
-}
+} */
 
 
 
 /*___________________ nav barr (gris)_______________________ */
 
-nav.navbar {
+/* nav.navbar {
     display: flex;
     justify-content: flex-end;
 }
@@ -22,12 +25,13 @@ nav.navbar {
     width: 1269px;
     height: 6vh;
     margin-left: 14%;
-}
+} */
 
 
 
 /*______________________ tel_____________________________ */
-img.icone_tel {
+
+/* img.icone_tel {
     width: 7vh;
     height: 7vh;
     padding-right: 3vh;
@@ -42,13 +46,13 @@ img.icone_tel {
 
 .texte_tel{
     color: white;
-}
+}  */
 
 
 
 /*____________________ email___________________ */
 
-img.icone_email {
+/* img.icone_email {
     width: 6vh;
     height: 6vh;
     padding-right: 3vh;
@@ -62,12 +66,12 @@ img.icone_email {
 
 .texte_email{
     color: white;
-}
+} */
 
 
 /*____________________adresse___________________ */
 
-img.icone_adresse {
+ /* img.icone_adresse {
     width: 6vh;
     height: 6vh;
     padding-right: 3vh;
@@ -82,27 +86,27 @@ img.icone_adresse {
 .texte_adresse{
     color: white;
     margin-right: 0vh;
-}
+} */
 
 
 
 
 /*_________________ logo_________________ */
-
+/* 
 .logo{
     width: 26vh;
     position: absolute;
     bottom: 79vh;
     left: 1vh;
     z-index: -1;
-}
+} */
 
 
 
 /*___________________ menu nav____________________ */
 
 
-.menu {
+/* .menu {
     list-style-type: none;
     display: flex;
     justify-content: space-evenly;
@@ -131,19 +135,22 @@ p.separation {
     font-weight: 900;
     color: rgb(0, 0, 0);
     margin-right: 0px;
-}
+} */
 
 
 /*____________________________ Carousel d'image _____________________________*/
 
 
-.opacity {
+/* .opacity {
     background-color: rgb(0 0 0 / 64%);
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0vh;
 }
+
+
+
 
 
 .titre {
@@ -187,12 +194,12 @@ p.separation {
 .carousel-slide.active {
     opacity: 1;
     display: block;
-}
+}  */
 
 /*____________________________ Footer _____________________________*/
 
 
-footer {
+/* footer {
     background-color: #333;
     color: #fff;
     padding: 20px 0;
@@ -240,12 +247,734 @@ footer {
 
 .footer-legal a:hover {
     color: #e0e000;
-}
+}  */
 
 /* Background Patterns */
-body::before {
+ /* body::before {
     content: '';
     position: absolute;
     color: black;
     z-index: -1;
+}  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ____________________version ramsterisé abec la parite nos service _____________________________ */
+
+
+/* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+} */
+
+/*___________________ nav barr (gris)_______________________ */
+
+/* nav.navbar {
+    display: flex;
+    justify-content: flex-end;
 }
+
+.navbar{
+    background-color: #404040;
+    padding: 1em;
+    position: relative;
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 5% 0%);
+    width: 1269px;
+    height: 6vh;
+    margin-left: 14%;
+} */
+
+/*______________________ tel_____________________________ */
+
+/* img.icone_tel {
+    width: 7vh;
+    height: 7vh;
+    padding-right: 3vh;
+}
+
+.div_tel {
+    display: flex;
+    align-items: center;
+    width: 45%;
+    margin-left: 4%;
+}
+
+.texte_tel{
+    color: white;
+} */
+
+/*____________________ email___________________ */
+
+/* img.icone_email {
+    width: 6vh;
+    height: 6vh;
+    padding-right: 3vh;
+}
+
+.div_email {
+    display: flex;
+    align-items: center;
+    width: 42%;
+}
+
+.texte_email{
+    color: white;
+} */
+
+/*____________________adresse___________________ */
+
+/* img.icone_adresse {
+    width: 6vh;
+    height: 6vh;
+    padding-right: 3vh;
+}
+
+.div_adresse {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.texte_adresse{
+    color: white;
+    margin-right: 0vh;
+} */
+
+/*_________________ logo_________________ */
+
+/* .logo{
+    width: 26vh;
+    position: absolute;
+    bottom: 79vh;
+    left: 1vh;
+    z-index: -1;
+} */
+
+/*___________________ menu nav____________________ */
+
+/* .menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #fff51a;
+    height: 6vh;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: inherit;
+}
+
+.item {
+    transition: transform 0.3s ease;
+}
+
+.item:hover {
+    transform: scale(1.2);
+}
+
+p.separation {
+    font-weight: 900;
+    color: rgb(0, 0, 0);
+    margin-right: 0px;
+} */
+
+/*____________________________ Carousel d'image _____________________________*/
+
+/* .opacity {
+    background-color: rgb(0 0 0 / 64%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0vh;
+}
+
+.titre {
+    color: #FFD700;
+    font-size: 8vh;
+    position: absolute;
+    top: 18vh;
+    left: 77vh;
+}
+
+.hero {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.carousel-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slides {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    object-fit: cover;
+    display: none;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    display: block;
+} */
+
+
+
+
+
+
+/* ______________________ page services ___________________________________ */
+
+/* .services-container {
+    padding: 2rem;
+}
+
+.category-section {
+    margin-bottom: 3rem;
+}
+
+.category-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-card h3 {
+    padding: 1rem;
+    margin: 0;
+}
+
+.service-card p {
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+
+.service-card .btn {
+    display: block;
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+} */
+
+
+
+
+
+/*____________________________ Footer _____________________________*/
+
+/* footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo img {
+    height: 50px;
+}
+
+.footer-info, .footer-schedule {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.footer-info h3, .footer-schedule h3 {
+    color: #f7f700;
+    margin-bottom: 10px;
+}
+
+.footer-info p, .footer-schedule p {
+    margin: 5px 0;
+}
+
+.footer-schedule {
+    margin-top: 20px;
+}
+
+.footer-social-media {
+    flex-basis: 100%;
+    margin-top: 20px;
+}
+
+.footer-social-media a {
+    color: #f7f700;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-social-media a:hover {
+    color: #e0e000;
+}
+
+.footer-legal {
+    flex-basis: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-legal a {
+    color: #f7f700;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+.footer-legal a:hover {
+    color: #e0e000;
+} */
+
+
+
+
+
+
+/* _________________________________version statique remasterisé______________________________________  */
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/*___________________ nav barr (gris)_______________________ */
+nav.navbar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar{
+    background-color: #404040;
+    padding: 1em;
+    position: relative;
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 5% 0%);
+    width: 1269px;
+    height: 6vh;
+    margin-left: 14%;
+}
+
+/*______________________ tel_____________________________ */
+img.icone_tel {
+    width: 7vh;
+    height: 7vh;
+    padding-right: 3vh;
+}
+
+.div_tel {
+    display: flex;
+    align-items: center;
+    width: 45%;
+    margin-left: 4%;
+}
+
+.texte_tel{
+    color: white;
+}
+
+/*____________________ email___________________ */
+img.icone_email {
+    width: 6vh;
+    height: 6vh;
+    padding-right: 3vh;
+}
+
+.div_email {
+    display: flex;
+    align-items: center;
+    width: 42%;
+}
+
+.texte_email{
+    color: white;
+}
+
+/*____________________adresse___________________ */
+img.icone_adresse {
+    width: 6vh;
+    height: 6vh;
+    padding-right: 3vh;
+}
+
+.div_adresse {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.texte_adresse{
+    color: white;
+    margin-right: 0vh;
+}
+
+/*_________________ logo_________________ */
+.logo{
+    width: 26vh;
+    position: absolute;
+    bottom: 79vh;
+    left: 1vh;
+    z-index: -1;
+}
+
+/*___________________ menu nav____________________ */
+.menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #fff51a;
+    height: 6vh;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: inherit;
+}
+
+.item {
+    transition: transform 0.3s ease;
+}
+
+.item:hover {
+    transform: scale(1.2);
+}
+
+p.separation {
+    font-weight: 900;
+    color: rgb(0, 0, 0);
+    margin-right: 0px;
+}
+
+/*____________________________ Carousel d'image _____________________________*/
+.opacity {
+    background-color: rgb(0 0 0 / 64%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0vh;
+}
+
+.titre {
+    color: #FFD700;
+    font-size: 8vh;
+    position: absolute;
+    top: 18vh;
+    left: 77vh;
+}
+
+.hero {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.carousel-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-slides {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    object-fit: cover;
+    display: none;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    display: block;
+}
+
+
+
+/* ______________________ page services ___________________________________ */
+
+.full_service{
+    background-color: #ffffff;
+}
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* .category-section {
+    margin-bottom: 4rem;
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: yellow;
+} */
+
+.category-section > img {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: block;
+}
+
+.category-section h2 {
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.category-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: #fff51a; /* Votre jaune du menu */
+}
+
+.category-section h3 {
+    color: #404040; /* Votre gris de navbar */
+    font-size: 1.8rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+}
+
+.service-card h3 {
+    padding: 1.5rem;
+    margin: 0;
+    color: #3c3c3c;
+    font-size: 1.4rem;
+    text-align: left;
+    border-bottom: 2px solid #fff51a;
+}
+
+.service-card p {
+    padding: 1.5rem;
+    margin: 0;
+    color: #666;
+    flex-grow: 1;
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.service-card .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    margin: 1.5rem;
+    background-color: #404040;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.service-card .btn:hover {
+    background-color: #fff51a;
+    color: #404040;
+}
+
+/*____________________________ Footer _____________________________*/
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo img {
+    height: 50px;
+}
+
+.footer-info, .footer-schedule {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.footer-info h3, .footer-schedule h3 {
+    color: #f7f700;
+    margin-bottom: 10px;
+}
+
+.footer-info p, .footer-schedule p {
+    margin: 5px 0;
+}
+
+.footer-schedule {
+    margin-top: 20px;
+}
+
+.footer-social-media {
+    flex-basis: 100%;
+    margin-top: 20px;
+}
+
+.footer-social-media a {
+    color: #f7f700;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-social-media a:hover {
+    color: #e0e000;
+}
+
+.footer-legal {
+    flex-basis: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-legal a {
+    color: #f7f700;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+.footer-legal a:hover {
+    color: #e0e000;
+}
+

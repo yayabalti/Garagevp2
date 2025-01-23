@@ -1,5 +1,5 @@
 {# templates/nos-services.html.twig #}
-<!DOCTYPE html>
+{# <!DOCTYPE html>
 <html lang="fr">
         <head>
             <meta charset="UTF-8">
@@ -101,11 +101,11 @@
                     <a href="{{ path('app_home') }}" class="button">En savoir plus</a>
                 </section>
                 </div>
-        </main> 
+        </main>  #}
 
             <!-- footer -->
            
-            {% block footer %}
+            {# {% block footer %}
         <footer>
             <div class="container">
                 <div class="footer-content">
@@ -132,4 +132,197 @@
             {% endblock %}
             <script src="{{ asset('js/carouselservices.js') }}"></script>
     </body>
-</html>
+</html> #}
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>{% block title %}Nos services{% endblock %}</title>
+            <link rel="stylesheet" href="{{ asset('styles/nos_services.css') }}">
+        </head>
+
+    <body>
+    {% block header %}
+        <header>
+        
+            <div class="header-container">
+            
+                <div class="logo">
+                    
+                </div>
+                <nav class="navbar">
+
+                    <div class="div_tel">
+                        <img class="icone_tel" src="{{ asset('images/icone_tel.png') }}" alt="Garage Auto">
+                        <p class="texte_tel">01 - 40 - 56 - 89 - 78<p/>
+                    </div>
+
+                    <div class="div_adresse">
+                        <img class="icone_adresse" src="{{ asset('images/icone_localisation.png') }}" alt="Garage Auto">
+                        <p class="texte_adresse">123 Rue de l'Aube - 31400 TOULOUSE</p>
+                    </div>
+
+                    <div class="div_email">
+                        <img class="icone_email" src="{{ asset('images/icone_email.png') }}" alt="Garage Auto">
+                        <p class="texte_email">Contact-garagevp@gmail.com</p>
+                    </div>
+                </nav>
+
+                    <ul class="menu">
+                            <img class="logo" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                        <li class="item"><a href="{{ path('app_home') }}">Accueil</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_nos_services') }}">Découvrez nos services</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_login') }}">connexion</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_home') }}">Contact</a></li>
+                    </ul>
+            </div>
+            
+        </header>
+    {% endblock %}
+        <main>
+                <section class="hero">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-slides">
+                            <img src="{{ asset('images/atelier_outils.jpg') }}" alt="atelier_outils" class="carousel-slide">
+                            <img src="{{ asset('images/mecanique.webp') }}" alt="mecanicien" class="carousel-slide">
+                            <img src="{{ asset('images/diag.jpg') }}" alt="diag" class="carousel-slide">
+                            <img src="{{ asset('images/mecanique_moteur.jpg') }}" alt="mecanique moteur" class="carousel-slide">
+                            <img src="{{ asset('images/pneu.jpg') }}" alt="regonflage de pneu" class="carousel-slide">
+                            <img src="{{ asset('images/boite_de_vitesse.jpg') }}" alt="boite_de_vitesse" class="carousel-slide">
+                            <img src="{{ asset('images/disque.jpg') }}" alt="reparation des disque frein" class="carousel-slide">
+                            <img src="{{ asset('images/moteur.jpg') }}" alt="moteur_voiture" class="carousel-slide">
+                        </div>
+                    </div>
+                    <div class="opacity"></div>
+                    <div class="hero-content">
+                        <h2 class="titre">Nos Services</h2>
+                    </div>
+                </section>
+            <div class="full_service">
+                    <div class="services-container">
+
+                    {# Section Mécanique/Entretien #}
+                        <img src="{{ asset('images/icone_mecaniqueentretien.png') }}" alt="icone_mecanique">
+                        <h2>Mécaniques|Entretien</h2>
+                        
+                        <h3>Mécaniques</h3>
+                        <section class="services-grid">
+                            <div class="service-card">
+                                <h3>Moteur</h3>
+                                <p>Réparation complète moteur, distribution, joint de culasse</p>
+                                <img src="{{ asset('images/moteur.jpg') }}" alt="moteur">
+                                <a href="{{ path('app_contact') }}" class="btn">contactez-nous</a>
+                            </div>
+
+                            <div class="service-card">
+                                <h3>Système de freinage</h3>
+                                <p>Entretien et réparation des systèmes de freinage</p>
+                                <img src="{{ asset('images/frein.jpg') }}" alt="freinage">
+                                <a href="{{ path('app_contact') }}" class="btn">contactez-nous</a>
+                            </div>
+
+                            <div class="service-card">
+                                <h3>Système d'échappement</h3>
+                                <p>Réparation et remplacement ligne d'échappement</p>
+                                <img src="{{ asset('images/echappement.jpg') }}" alt="echappement">
+                                <a href="{{ path('app_contact') }}" class="btn">contactez-nous</a>
+                            </div>
+                        </section>
+
+                        <h3>Entretien</h3>
+                        <section class="services-grid">
+                            <div class="service-card">
+                                <h3>Vidange et filtres</h3>
+                                <p>Service complet de vidange et remplacement des filtres</p>
+                                <img src="{{ asset('images/vidange.jpg') }}" alt="vidange">
+                                <a href="{{ path('app_contact') }}" class="btn">contactez-nous</a>
+                            </div>
+
+                            <div class="service-card">
+                                <h3>Pneumatiques</h3>
+                                <p>Changement et équilibrage des pneumatiques</p>
+                                <img src="{{ asset('images/pneu.jpg') }}" alt="pneu">
+                                <a href="{{ path('app_contact') }}" class="btn">contactez-nous</a>
+                            </div>
+                        </section>
+                    </div>
+
+
+                    {# Section Carrosserie #}
+                    <section class="category-section">
+                        <img src="{{ asset('images/.png') }}" alt="icone_carrosserie">
+                        <h2>Carrosserie</h2>
+                        <div class="services-grid">
+                            <div class="service-card">
+                                <h3>Ponçage et peinture</h3>
+                                <p>Service professionnel de peinture automobile</p>
+                                <img src="{{ asset('images/peinture.jpg') }}" alt="peinture">
+                                <a href="{{ path('app_contact') }}" class="btn">contactez-nous</a>
+                            </div>
+
+                            <div class="service-card">
+                                <h3>Réparation carrosserie</h3>
+                                <p>Réparation des impacts et déformations</p>
+                                <img src="{{ asset('images/carrosserie.jpg') }}" alt="carrosserie">
+                                <a href="{{ path('app_contact') }}" class="btn">contactez-nous</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    {# Section vente voiture #}
+                    <h3>Vente de voiture</h3>
+                    <div class="services-car">
+                        <div class="service-card">
+                            <h3>Voiture d'occasion</h3>
+                            <p>Nous proposons une sélection de voitures d'occasion de qualité, rigoureusement inspectées et garanties. Chaque véhicule est soigneusement vérifié pour assurer sa fiabilité et sa sécurité. Que vous soyez à la recherche d'une citadine, d'un SUV ou d'une berline, notre équipe vous guide pour trouver le modèle qui correspond à vos attentes et à votre budget. Profitez également d'options de financement flexibles et d'un service après-vente dédié</p>
+                            <img src="{{ asset('images/vente_voiture.jpg') }}" alt="vidange">
+                            <a href="{{ path('app_contact') }}" class="bouton_vente_voiture">Consulter nos voitures</a>
+                        </div> 
+                    </div>
+            </div>
+        </main>
+                {% block footer %}
+                <footer>
+                    <div class="container">
+                        <div class="footer-content">
+                            <div class="footer-info">
+                                <h3>Informations du Garage</h3>
+                                <p>Adresse : 123 Rue de l'Aube - 31400 TOULOUSE</p>
+                                <p>Téléphone : 01 40 56 89 78</p>
+                                <p>Email : Contact-garagevp@gmail.com</p>
+                            </div>
+                            <div class="footer-schedule">
+                                <h3>Horaires garage</h3>
+                                <p>Lundi - Samedi : 8h à 21h</p>
+                                <p>Dimanche : Fermé</p>
+                            </div>
+                            <div class="footer-social-media">
+                                <a href="#">Facebook</a>
+                                <a href="#">Twitter</a>
+                                <a href="#">Instagram</a>
+                            </div>
+                            <div class="footer-legal">
+                                <p><a href="{{ path('app_mention_legale') }}">Mentions légales</a></p>
+                                <p><a href="{{ path('app_politique_de_confidentialite') }}">Politique de confidentialité</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                {% endblock %}
+                <script src="{{ asset('js/carouselservices.js') }}"></script>
+            
+            
+
+
+
+

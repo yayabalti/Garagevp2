@@ -12,6 +12,7 @@ body {
 nav.navbar {
     display: flex;
     justify-content: flex-end;
+    width: 1269px;
 }
 
 .navbar{
@@ -115,6 +116,8 @@ img.icone_adresse {
     margin-bottom: 0;
 }
 
+
+
 .titre_menu_nav{
 color: black;
 text-decoration: none;
@@ -137,7 +140,10 @@ p.separation {
 }
 
 
-
+.bouton_nav{
+    text-decoration: none;
+    color: black;
+}
 
 
 

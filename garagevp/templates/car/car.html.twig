@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}voiture{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('styles/contact.css') }}">
+    </head>
+
+    <body>
+        <!-- Header -->
+    {% block header %}
+        <header>
+        
+            <div class="header-container">
+            
+                <div class="logo">
+                    
+                </div>
+                <nav class="navbar">
+
+                    <div class="div_tel">
+                        <img class="icone_tel" src="{{ asset('images/icone_tel.png') }}" alt="Garage Auto">
+                        <p class="texte_tel">Tel : 01 - 40 - 56 - 89 - 78<p/>
+                    </div>
+
+                    <div class="div_adresse">
+                        <img class="icone_adresse" src="{{ asset('images/icone_localisation.png') }}" alt="Garage Auto">
+                        <p class="texte_adresse">123 Rue de l'Aube 75012 Paris</p>
+                    </div>
+
+                    <div class="div_email">
+                        <img class="icone_email" src="{{ asset('images/icone_email.png') }}" alt="Garage Auto">
+                        <p class="texte_email">e-mail : Contact-garagevp@gmail.com</p>
+                    </div>
+                </nav>
+
+                    <ul class="menu">
+                            <img class="logo" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                        <li class="item"><a href="{{ path('app_home') }}">Accueil</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_nos_services') }}">Découvrez nos services</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_login') }}">Connexion</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_contact') }}">Contact</a></li>
+                    </ul>
+            </div>  
+        </header>
+    {% endblock %}
+        <main>
+    {% block car %}
+            <h1>Car Listings</h1>
+
+            {# Formulaire de filtrage #}
+            <div>
+                {{ form_start(form, { 'attr': {'id': 'car-filter-form'} }) }}
+                {{ form_row(form.brand) }}
+                {{ form_row(form.engineType) }}
+                {{ form_row(form.year) }}
+                {{ form_row(form.mileage) }}
+                {{ form_row(form.price) }}
+                {{ form_row(form.submit) }}
+                {{ form_end(form) }}
+            </div>
+
+                <div>
+                    {% for car in cars %}
+                        <div>
+                            <img src="{{ car.image }}" alt="{{ car.model }}" width="200">
+                            <h3>{{ car.model }} ({{ car.year }})</h3>
+                            <p>{{ car.description }}</p>
+                            <p>Brand: {{ car.brand }}</p>
+                            <p>Engine Type: {{ car.engineType }}</p>
+                            <p>Mileage: {{ car.mileage }} km</p>
+                            <p>Price: {{ car.price }} €</p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                {# Ajout du script JS pour soumettre automatiquement le formulaire #}
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // On sélectionne le formulaire
+                        var form = document.getElementById('car-filter-form');
+                        
+                        // On écoute les changements sur les champs du formulaire
+                        form.querySelectorAll('select, input').forEach(function(input) {
+                            input.addEventListener('change', function() {
+                                // On soumet le formulaire automatiquement
+                                form.submit();
+                            });
+                        });
+                    });
+                </script>
+    {% endblock %}
+            </main>
+
+            {% block footer %}
+                <footer>
+                    <div class="container">
+                        <div class="footer-content">
+                            <div class="footer-info">
+                                <h3>Informations du Garage</h3>
+                                <p>Adresse : 123 Rue de l'Aube - 31400 TOULOUSE</p>
+                                <p>Téléphone : 01 40 56 89 78</p>
+                                <p>Email : Contact-garagevp@gmail.com</p>
+                            </div>
+                            <div class="footer-schedule">
+                                <h3>Horaires garage</h3>
+                                <p>Lundi - Samedi : 8h à 21h</p>
+                                <p>Dimanche : Fermé</p>
+                            </div>
+                            <div class="footer-social-media">
+                                <a href="#">Facebook</a>
+                                <a href="#">Twitter</a>
+                                <a href="#">Instagram</a>
+                            </div>
+                            <div class="footer-legal">
+                                <p><a href="{{ path('app_mention_legale') }}">Mentions légales</a></p>
+                                <p><a href="{{ path('app_politique_de_confidentialite') }}">Politique de confidentialité</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            {% endblock %}
+

@@ -1,6 +1,6 @@
 // Importez les fonctions nécessaires depuis le SDK Firebase
 import { initializeApp } from "firebase/app";
-
+import { getFirestore, collection, addDoc } from "firebase/firestore"; // Ajout des importations manquantes
 
 // Configuration de votre application Firebase
 const firebaseConfig = {
@@ -12,7 +12,6 @@ const firebaseConfig = {
   appId: "1:533150300008:web:18ef9a3665738d0ebb48dd"
 };
 
-
 // Initialisation de Firebase
 const app = initializeApp(firebaseConfig);
 
@@ -23,8 +22,8 @@ const db = getFirestore(app);
 const sendMessage = async (formData) => {
   try {
     // Envoi des données à Firestore dans la collection "messages"
-    await addDoc(collection(db, "messages"), formData);
-    console.log("Message envoyé avec succès !");
+    const docRef = await addDoc(collection(db, "messages"), formData);
+    console.log("Message envoyé avec succès ! ID du document :", docRef.id);
     
     // Affichage du message de succès
     const messageStatus = document.getElementById('message-status');
@@ -62,5 +61,4 @@ form.addEventListener("submit", (event) => {
   // Envoyer les données du formulaire à Firestore
   sendMessage(formData);
 });
-
 

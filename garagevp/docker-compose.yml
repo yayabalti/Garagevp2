@@ -96,8 +96,10 @@
         PHP_MEMORY_LIMIT: "512M"
       container_name: symfony_app
       working_dir: /var/www/html
+      user: www-data:www-data
       volumes:
         - ./:/var/www/html
+        - symfony_cache:/var/www/html/var/cache
         - symfony_log:/var/www/html/var/log
         - /docker/php/symfony.ini:/usr/local/etc/php/conf.d/symfony.ini
       networks:
@@ -113,6 +115,10 @@
         POSTGRES_DB: garagevp
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: armanie
+        LANG: en_US.UTF-8
+        LANGUAGE: en_US.UTF-8
+        LC_ALL: en_US.UTF-8
+        POSTGRES_HOST_AUTH_METHOD: md5
       volumes:
         - postgres_data:/var/lib/postgresql/data
       networks:
@@ -130,7 +136,7 @@
       container_name: symfony_nginx
       volumes:
         - ./:/var/www/html
-        - ./docker/nginx/conf.d:/etc/nginx/conf.d:ro  
+        - ./docker/nginx/conf.d:/etc/nginx/conf.d:rwc 
         - ./docker/ssl/localhost.crt:/etc/ssl/private/localhost.crt:ro   
         - ./docker/ssl/localhost.key:/etc/ssl/private/localhost.key:ro   
         - ./docker/ssl/rootCA.crt:/etc/ssl/private/rootCA.crt:ro  
@@ -150,6 +156,7 @@
       driver: bridge
 
   volumes:
+    symfony_cache:
     postgres_data:
     symfony_log:
 

@@ -74,26 +74,43 @@ RUN docker-php-ext-configure pgsql \
     pdo_pgsql \
     && docker-php-ext-enable pdo_pgsql
 
-    
-
 # Installation de Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Création du dossier de travail et définition des permissions
+# Création du dossier de travail
 WORKDIR /var/www/html
 
-# Copie des fichiers du projet avec les bonnes permissions
+# Création des dossiers var avec les bonnes permissions
+RUN mkdir -p /var/www/html/var/cache /var/www/html/var/log \
+    && chown -R www-data:www-data /var/www/html
+
+# Copie des fichiers du projet
 COPY --chown=www-data:www-data . .
 
 # Configuration de git
 RUN git config --global --add safe.directory '*'
 
+# Passer à l'utilisateur www-data pour l'installation de Composer
+USER www-data
+
 # Installation des dépendances avec Composer
 RUN composer install --optimize-autoloader --no-scripts
 
-# Fix final des permissions
-RUN chown -R www-data:www-data /var/www/html
+# S'assurer que les permissions sont correctes pour var
+RUN chmod -R 777 var
 
 EXPOSE 9000
 
+# Copier et configurer le script d'entrée
+COPY docker-entrypoint.sh /usr/local/bin/
+USER root
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+USER www-data
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["php-fpm"]
+
+
+
+
+

@@ -1,5 +1,3 @@
-# config/packages/easy_admin.yaml
-
 easy_admin:
     entities:
         # Configuration pour les Services de type Entretien, Carrosserie et Mécanique
@@ -39,19 +37,38 @@ easy_admin:
                     - { property: 'categorie', label: 'Catégorie' }
                     - { property: 'description', label: 'Description' }
 
-        # Configuration pour les informations du garage
-        InformationGarage:
-            class: App\Entity\InformationGarage
-            controller: App\Controller\Admin\InformationGarageCrudController
-            label: 'Informations du Garage'
+        # Configuration pour l'entité Car
+        Car:
+            class: App\Entity\Car
+            controller: App\Controller\Admin\CarCrudController
+            label: 'Voitures'
             list:
-                title: 'Informations du Garage'
+                title: 'Liste des Voitures'
+
+               
+                # Ajout des filtres dans la vue list
+                filters:
+                    - { property: 'brand', label: 'Marque', type: 'choice', choices: 
+                        {'Peugeot': 'Peugeot', 'Renault': 'Renault', 'Audi': 'Audi', 'BMW': 'BMW', 'Mercedes': 'Mercedes'} }
+                    - { property: 'engineType', label: 'Type de carburant', type: 'choice', choices: 
+                        {'Diesel': 'diesel', 'Essence': 'essence'} }
+                    - { property: 'year', label: 'Année de mise en circulation' }
+                    - { property: 'mileage', label: 'Kilométrage' }
+                    - { property: 'price', label: 'Prix' }
             form:
                 fields:
-                    - { property: 'adresse', label: 'Adresse' }
-                    - { property: 'email', label: 'Email' }
-                    - { property: 'telephone', label: 'Numéro de Téléphone' }
-                    - { property: 'horaires', label: 'Horaires' }
+                    - { property: 'model', label: 'Modèle' }
+                    - { property: 'brand', label: 'Marque' }
+                    - { property: 'year', label: 'Année' }
+                    - { property: 'engineType', label: 'Type de carburant' }
+                    - { property: 'mileage', label: 'Kilométrage' }
+                    - { property: 'price', label: 'Prix' }
+                    - { property: 'image', label: 'Image' }
+                    - { property: 'description', label: 'Description' }
+                    
+            security:
+                roles:
+                    - ROLE_EMPLOYE 
 
         # Configuration pour les autres entités si vous en avez
         # Exemple d'une entité utilisateur si elle est gérée dans l'admin

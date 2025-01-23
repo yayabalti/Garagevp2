@@ -1,19 +1,19 @@
-
+/* 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     color: #333;
-}
+} */
 
 
 
 /*___________________ nav barr (gris)_______________________ */
 
-nav.navbar {
+/* nav.navbar {
     display: flex;
     justify-content: flex-end;
-    width: 1274px;
+    width: 1269px;
 }
 
 .navbar{
@@ -21,15 +21,26 @@ nav.navbar {
     padding: 1em;
     position: relative;
     clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 5% 0%);
-    width: 1269px;
+    width: 1274px;
     height: 6vh;
     margin-left: 14%;
-}
+} */
+
+
+/*_________________ logo_________________ */
+
+/* .logo{
+    width: 26vh;
+    position: absolute;
+    bottom: 79vh;
+    left: 1vh;
+    z-index: -1;
+} */
 
 
 
 /*______________________ tel_____________________________ */
-img.icone_tel {
+/* img.icone_tel {
     width: 7vh;
     height: 7vh;
     padding-right: 3vh;
@@ -44,13 +55,13 @@ img.icone_tel {
 
 .texte_tel{
     color: white;
-}
+} */
 
 
 
 /*____________________ email___________________ */
 
-img.icone_email {
+/* img.icone_email {
     width: 6vh;
     height: 6vh;
     padding-right: 3vh;
@@ -64,12 +75,12 @@ img.icone_email {
 
 .texte_email{
     color: white;
-}
+} */
 
 
 /*____________________adresse___________________ */
 
-img.icone_adresse {
+/* img.icone_adresse {
     width: 6vh;
     height: 6vh;
     padding-right: 3vh;
@@ -84,28 +95,16 @@ img.icone_adresse {
 .texte_adresse{
     color: white;
     margin-right: 0vh;
-}
+} */
 
 
 
-
-
-
-/*_________________ logo_________________ */
-
-.logo{
-    width: 26vh;
-    position: absolute;
-    bottom: 79vh;
-    left: 1vh;
-    z-index: -1;
-}
 
 
 
 /*___________________ menu nav____________________ */
 
-
+/* 
 .menu {
     list-style-type: none;
     display: flex;
@@ -117,14 +116,15 @@ img.icone_adresse {
     margin-bottom: 0;
 }
 
-a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-size: inherit;
+.titre_menu_nav{
+color: black;
+text-decoration: none;
 }
+
 
 .item {
     transition: transform 0.3s ease;
+    
 }
 
 .item:hover {
@@ -137,9 +137,14 @@ p.separation {
     margin-right: 0px;
 }
 
+.bouton_nav{
+    text-decoration: none;
+    color: black;
+} */
+
 /*__________________ boutton acces easyadmin_________________ */
 
-a.btn.btn-primary {
+/* a.btn.btn-primary {
     color: #ffffff;
     background-color: #007bff;
     padding: 8px 15px;
@@ -150,14 +155,14 @@ a.btn.btn-primary {
 a.btn.btn-primary:hover {
     background-color: #0056b3;
     text-decoration: none;
-}
+} */
 
 
 /*__________________ Header__________________ */
 
 
 
-section.hero {
+/* section.hero {
     height: 82vh;
 }
 
@@ -181,19 +186,19 @@ img.skyline_img{
     position: absolute;
     bottom: -23vh;
     left: 72vh;
-}
+} */
 
 
 /* page opacity */
 
-.hero .opacity{
+/* .hero .opacity {
     background-color: #0000008c;
     position: absolute;
     z-index: 1;
     width: 100%;
     height: 606px;
-    bottom: -3px;
-}
+    bottom: 12px;
+} */
 
 
 
@@ -201,7 +206,7 @@ img.skyline_img{
 
 
 /* div services */
-#services {
+/* #services {
     padding: 40px 20px;
     background-color: #f4f4f4;
 }
@@ -229,12 +234,12 @@ img.skyline_img{
 
 #services .btn:hover {
     background-color: #e0e000;
-}
+} */
 
 
 
 /* Contact Form Section */
-#contact-form {
+/* #contact-form {
     background-color: #333;
     color: #fff;
     padding: 40px 20px;
@@ -273,7 +278,7 @@ img.skyline_img{
 
 #contact-form button:hover {
     background-color: #e0e000;
-}
+} */
 
 
 
@@ -282,7 +287,7 @@ img.skyline_img{
 
 
 /* Testimonials Section */
-#testimonials {
+/* #testimonials {
     padding: 40px 20px;
     background-color: #f4f4f4;
     text-align: center;
@@ -304,7 +309,7 @@ img.skyline_img{
 
 .testimonial p {
     margin: 10px 0;
-}
+} */
 
 
 
@@ -315,7 +320,7 @@ img.skyline_img{
 
 
 /* Footer */
-footer {
+/* footer {
     background-color: #333;
     color: #fff;
     padding: 20px 0;
@@ -363,6 +368,504 @@ footer {
 
 .footer-legal a:hover {
     color: #e0e000;
+} */
+
+/* Background Patterns */
+/* body::before {
+    content: '';
+    position: absolute;
+    color: black;
+    z-index: -1;
+} */
+
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/*___________________ nav barr (gris)_______________________ */
+
+nav.navbar {
+    display: flex;
+    justify-content: flex-end;
+    width: 1269px;
+}
+
+.navbar{
+    background-color: #404040;
+    padding: 1em;
+    position: relative;
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 5% 0%);
+    width: 1274px;
+    height: 6vh;
+    margin-left: 14%;
+}
+
+/*_________________ logo_________________ */
+
+.logo{
+    width: 26vh;
+    position: absolute;
+    bottom: 79vh;
+    left: 1vh;
+    z-index: -1;
+}
+
+/*______________________ tel_____________________________ */
+img.icone_tel {
+    width: 7vh;
+    height: 7vh;
+    padding-right: 3vh;
+}
+
+.div_tel {
+    display: flex;
+    align-items: center;
+    width: 45%;
+    margin-left: 4%;
+}
+
+.texte_tel{
+    color: white;
+}
+
+/*____________________ email___________________ */
+
+img.icone_email {
+    width: 6vh;
+    height: 6vh;
+    padding-right: 3vh;
+}
+
+.div_email {
+    display: flex;
+    align-items: center;
+    width: 42%;
+}
+
+.texte_email{
+    color: white;
+}
+
+/*____________________adresse___________________ */
+
+img.icone_adresse {
+    width: 6vh;
+    height: 6vh;
+    padding-right: 3vh;
+}
+
+.div_adresse {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.texte_adresse{
+    color: white;
+    margin-right: 0vh;
+}
+
+/*___________________ menu nav____________________ */
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff51a;
+    height: 6vh;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.titre_menu_nav{
+    color: black;
+    text-decoration: none;
+}
+
+.item {
+    transition: transform 0.3s ease;
+}
+
+.item:hover {
+    transform: scale(1.2);
+}
+
+p.separation {
+    font-weight: 900;
+    color: rgb(0, 0, 0);
+    margin-right: 0px;
+}
+
+.bouton_nav{
+    text-decoration: none;
+    color: black;
+}
+
+
+/*__________________ boutton acces easyadmin_________________ */
+
+
+
+.boutton_admin {
+    transition: none;
+}
+
+.boutton_admin:hover {
+    transform: none;
+}
+
+ .menu .boutton_admin .btn.btn-primary {
+    display: inline-block;
+    margin: 0 10px;
+    color: #ffffff;
+    background-color: #007bff;
+    padding: 6px 3vh 1vh 1vh;
+    border-radius: 5px;
+    text-decoration: none;
+    transform: none;
+    width: 90%;
+}
+
+.menu .boutton_employé .btn.btn-primary {
+    display: inline-block;
+    margin: 0 10px;
+    color: #ffffff;
+    background-color: #007bff;
+    padding: 6px 3vh 1vh 1vh;
+    border-radius: 5px;
+    text-decoration: none;
+    transform: none;
+    width: 77%;
+}
+
+.menu .boutton_admin .btn.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.menu .boutton_admin .fas {
+    margin-right: 5px;
+} 
+
+
+
+/*__________________ croix deconnexion __________________ */
+
+
+/* ADMIN */
+
+
+
+ a.boutton_deconex_admin {
+    background-color: #ff0018;
+    padding: 2px 9px;
+    border-radius: 12px;
+    transform: none;
+    margin-left: -43px;
+}
+
+.boutton_deconex_admin:hover {
+    background-color: #c82333;
+} 
+
+/* employe */
+.boutton_deconex_employe {
+    margin-left: -35px;
+    background-color: #ff0018;
+    padding: 2px 9px;
+    border-radius: 12px;
+    transform: none;
+    margin-left: -36px;
+}
+
+.boutton_deconex_employe:hover {
+    background-color: #c82333;
+} 
+
+
+/*__________________ Header__________________ */
+
+section.hero {
+    height: 82vh;
+}
+
+img.skyline_img{
+    width: 100%;
+    height: 100%;
+}
+
+.titre_header{
+    z-index: 2;
+    position: absolute;
+    color: yellow;
+    font-size: 8vh;
+    bottom: 31vw;
+    left: 14vh;
+}
+
+.logo_main{
+    z-index: 2;
+    width: 30%;
+    position: absolute;
+    bottom: -23vh;
+    left: 72vh;
+}
+
+/* page opacity */
+
+.hero .opacity {
+    background-color: #0000008c;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 606px;
+    bottom: 12px;
+}
+
+/*________________page nos Services___________________*/
+
+/* Nouvelle section services */
+#services {
+    background-color: #FFD700;
+    padding: 40px 0;
+    text-align: center;
+}
+
+#services h2 {
+    color: #000;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.services-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service {
+    background-color: #FFD700;
+    width: 30%;
+    margin-bottom: 30px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.service h3 {
+    color: #000;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.service p {
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.service .btn {
+    display: inline-block;
+    background-color: #808080;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.service .btn:hover {
+    background-color: #666666;
+}
+
+/* Contact Form Section */
+#contact-form {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+}
+
+#contact-form .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact-form label {
+    margin-bottom: 5px;
+}
+
+#contact-form input, #contact-form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#contact-form button {
+    background-color: #f7f700;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+    background-color: #e0e000;
+}
+
+/* Testimonials Section */
+#testimonials {
+    padding: 40px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.testimonial {
+    margin: 0 auto;
+    max-width: 600px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.testimonial p {
+    margin: 10px 0;
+}
+
+/* Venez nous voir Section */
+.venez-nous-voir {
+    background-color: #FFD700;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.venez-nous-voir h1 {
+    color: #000;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.venez-nous-voir h2 {
+    color: #000;
+    font-size: 1.8em;
+    margin-bottom: 30px;
+}
+
+.venez-nous-voir .div_email,
+.venez-nous-voir .div_adresse,
+.venez-nous-voir .div_tel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.venez-nous-voir img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.venez-nous-voir p {
+    color: #000;
+    font-size: 1.2em;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo img {
+    height: 50px;
+}
+
+.footer-info, .footer-schedule {
+    flex: 1;
+    margin-right: 20px;
+    text-align: left;
+}
+
+.footer-info h3, .footer-schedule h3 {
+    color: #f7f700;
+    margin-bottom: 10px;
+}
+
+.footer-info p, .footer-schedule p {
+    margin: 5px 0;
+}
+
+.footer-social-media {
+    flex-basis: 100%;
+    margin-top: 20px;
+}
+
+.footer-social-media a {
+    color: #f7f700;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-social-media a:hover {
+    color: #e0e000;
+}
+
+.footer-legal {
+    flex-basis: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-legal a {
+    color: #f7f700;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+.footer-legal a:hover {
+    color: #e0e000;
 }
 
 /* Background Patterns */
@@ -372,11 +875,6 @@ body::before {
     color: black;
     z-index: -1;
 }
-
-
-
-
-
 
 
 
