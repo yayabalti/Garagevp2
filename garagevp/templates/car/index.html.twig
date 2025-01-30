@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}voiture{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('styles/car.css') }}">
+    </head>
+
+    <body>
+        <!-- Header -->
+    {% block header %}
+        <header>
+        
+            <div class="header-container">
+            
+                <div class="logo">
+                    
+                </div>
+                <nav class="navbar">
+
+                    <div class="div_tel">
+                        <img class="icone_tel" src="{{ asset('images/icone_tel.png') }}" alt="Garage Auto">
+                        <p class="texte_tel">Tel : 01 - 40 - 56 - 89 - 78<p/>
+                    </div>
+
+                    <div class="div_adresse">
+                        <img class="icone_adresse" src="{{ asset('images/icone_localisation.png') }}" alt="Garage Auto">
+                        <p class="texte_adresse">123 Rue de l'Aube 75012 Paris</p>
+                    </div>
+
+                    <div class="div_email">
+                        <img class="icone_email" src="{{ asset('images/icone_email.png') }}" alt="Garage Auto">
+                        <p class="texte_email">e-mail : Contact-garagevp@gmail.com</p>
+                    </div>
+                </nav>
+
+                    <ul class="menu">
+                            <img class="logo" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                        <li class="item"><a href="{{ path('app_home') }}">Accueil</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_nos_services') }}">Découvrez nos services</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_login') }}">Connexion</a></li>
+                            <p class="separation">|</p>
+                        <li class="item"><a href="{{ path('app_contact') }}">Contact</a></li>
+                    </ul>
+            </div>  
+        </header>
+    {% endblock %}
+        <main>
+     {% block car %}
+    <h1 class="titre_filtre">Car Listings</h1>
+
+    {# Formulaire de filtrage #}
+    <div>
+        {{ form_start(form, { 'attr': {'id': 'car-filter-form'} }) }}
+        {{ form_row(form.brand) }}
+        {{ form_row(form.engineType) }}
+        {{ form_row(form.year) }}
+        {{ form_row(form.mileage) }}
+        {{ form_row(form.price) }}
+        {{ form_row(form.submit) }}
+        {{ form_end(form) }}
+    </div>
+
+    {# Liste des voitures #}
+    {% if cars is defined and cars|length > 0 %}
+        {% for car in cars %}
+            <div class="car-card">
+                {% if car.image %}
+                    <img src="{{ asset(car.image) }}" alt="{{ car.model }}">
+                {% else %}
+                    <img src="{{ asset('images/default-car.jpg') }}" alt="Image par défaut">
+                {% endif %}
+                <div class="car-card-content">
+                    <h3>{{ car.model }} ({{ car.year }})</h3>
+                    <p>{{ car.description }}</p>
+                    <p>Marque: {{ car.brand }}</p>
+                    <p>Type de moteur: {{ car.engineType }}</p>
+                    <p>Kilométrage: {{ car.mileage }} km</p>
+                    <p class="price">{{ car.price }} €</p>
+                    <a href="{{ path('app_contact') }}" class="reserve-button">Réserver</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Aucune voiture disponible pour le moment.</p>
+    {% endif %}
+{% endblock %}
+        </main>
+            {% block footer %}
+                <footer>
+                
+                    <div class="full-footer">
+                        <div class="footer-info-garage">
+                            <img class="logo_footer" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                            <div class="footer-a_propos">
+                                <h2>A propos</h2>
+                                <div class="icone_adresse">
+                                    <img class="icone_adresse_footer" src="{{ asset('images/icone_localisation.png') }}" alt="Garage Auto"><p>123 Rue de l'Aube - 31400 TOULOUSE</p>
+                                </div>
+                                <div class="icone_telephone">
+                                    <img class="icone_telephone_footer" src="{{ asset('images/icone_tel.png') }}" alt="Garage Auto"><p class="num_tel">01 23 45 67 89</p>
+                                </div>
+                                <div class="icone-email">
+                                    <img class="icone_email_footer" src="{{ asset('images/icone_email.png') }}" alt="Garage Auto"><p class="email">contact@garagevp.fr</p>
+                                </div>
+                            </div>
+                            <div class="footer-horaires">
+                                <h2>Horaires</h2>
+                                <p>Lundi au vendredi</p>
+                                <p>de 8h a 21h</p>
+                                <p>samedi de 9h a 19h</p>
+                            </div>
+                        </div>    
+                            <div class="footer-media">
+                                <img class="icone_fb" src="{{ asset('images/icone_fb.png') }}" alt="Garage Auto">
+                                <img class="icone_twitter" src="{{ asset('images/icone_twitter.png') }}" alt="Garage Auto">
+                                <img class="icone_insta" class src="{{ asset('images/icone_insta.png') }}" alt="Garage Auto">
+                            </div>
+                            <hr class="trait-footer">
+                        <div class="footer-legal">
+                            <p class="mention"><a href="{{ path('app_mention_legale') }}">Mentions légales</a></p>
+                            <p class="politique"><a href="{{ path('app_politique_de_confidentialite') }}">Politique de confidentialité</a></p>
+                            <p class="condition"><a href="{{ path('app_conditions_utilisation') }}">Condition d'utilisation</a></p>
+                        </div>
+                    </div>
+            </footer>
+        {% endblock %}
+                <script type="module" src="{{ asset('js/car-filter.js') }}"></script>
+          </body>
+</html>  
+

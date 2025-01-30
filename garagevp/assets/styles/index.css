@@ -508,6 +508,7 @@ p.separation {
 .bouton_nav{
     text-decoration: none;
     color: black;
+    margin-right: 0vh;
 }
 
 
@@ -535,7 +536,7 @@ p.separation {
     width: 90%;
 }
 
-.menu .boutton_employé .btn.btn-primary {
+.menu .boutton_employe .btn.btn-primary {
     display: inline-block;
     margin: 0 10px;
     color: #ffffff;
@@ -544,7 +545,7 @@ p.separation {
     border-radius: 5px;
     text-decoration: none;
     transform: none;
-    width: 77%;
+    width: 86%;
 }
 
 .menu .boutton_admin .btn.btn-primary:hover {
@@ -605,7 +606,7 @@ img.skyline_img{
 .titre_header{
     z-index: 2;
     position: absolute;
-    color: yellow;
+    color: white;
     font-size: 8vh;
     bottom: 31vw;
     left: 14vh;
@@ -630,110 +631,404 @@ img.skyline_img{
     bottom: 12px;
 }
 
-/*________________page nos Services___________________*/
+/*__________________________________page nos Services___________________________*/
 
-/* Nouvelle section services */
-#services {
-    background-color: #FFD700;
-    padding: 40px 0;
+
+
+.full_services{
+    background-color:#fff51a ;
+    display: flex;
+}
+
+h3.titre_services {
+    background-color: #fff51a;
+    padding-top: 56px;
+    font-size: 7vh;
+    padding-bottom: 7vh;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 82vh;
+    color: black;
+}
+
+/* ________________________mecanique entretien ____________________________ */
+.div_meca {
+    padding: 46px;
+    height: 45vh;
+}
+
+
+
+img.icone_meca{
+    width: 12vh;
+    padding-left: 23vh;
+}
+
+h1.sous_titre_m {
+    margin-left: 6vh;
+    color: black;
+    font-family: initial;
+    font-size: 5vh;
+}
+
+
+p.texte_meca {
+    font-size: 2vh;
+    width: 42vh;
     text-align: center;
+    color: black;
+    margin-left: 10vh;
 }
 
-#services h2 {
-    color: #000;
-    font-size: 2.5em;
-    margin-bottom: 30px;
+h1.sous_titre_m {
+    margin-left: 13vh;
+    color: black;
+    font-family: initial;
+    font-size: 4vh;
 }
 
-.services-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.service {
-    background-color: #FFD700;
-    width: 30%;
-    margin-bottom: 30px;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.service-icon {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 15px;
-}
-
-.service h3 {
-    color: #000;
-    font-size: 1.5em;
-    margin-bottom: 15px;
-}
-
-.service p {
-    color: #000;
-    margin-bottom: 20px;
-}
-
-.service .btn {
-    display: inline-block;
-    background-color: #808080;
-    color: #000;
-    padding: 10px 20px;
+a.button_meca {
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    background-color: cornsilk;
+    border-radius: 2vh;
+    padding: 1vh;
+    margin-left: 21vh;
+    font-size: 11px;
+    color:black;
 }
 
-.service .btn:hover {
-    background-color: #666666;
+/*_____________________________carrosserie______________________________________ */
+
+.div_carrosserie {
+    padding: 46px;
+    height: 45vh;
 }
 
-/* Contact Form Section */
-#contact-form {
-    background-color: #333;
-    color: #fff;
-    padding: 40px 20px;
+
+
+img.icone_carrosserie {
+    width: 18vh;
+    padding-left: 28vh;
 }
 
-#contact-form .contact-form {
-    max-width: 600px;
-    margin: 0 auto;
+
+
+p.texte_carrosserie {
+    font-size: 2vh;
+    width: 39vh;
+    text-align: center;
+    color: black;
+    margin-top: -6%;
+    margin-left: 14vh;
 }
 
-#contact-form form {
+h1.sous_titre_c {
+    margin-left: 25vh;
+    color: black;
+    font-family: initial;
+    font-size: 4vh;
+    margin-top: 1vh;
+    margin-bottom: 6vh;
+}
+
+a.button_carrosserie {
+    text-decoration: none;
+    background-color: cornsilk;
+    border-radius: 2vh;
+    padding: 1vh;
+    margin-left: 28vh;
+    font-size: 11px;
+    color: black;
+}
+
+/* ___________________________vente voiture____________________________________ */
+
+.div_vente_voiture {
+    padding: 46px;
+    height: 45vh;
+}
+
+
+
+img.icone_vente_voiture {
+    width: 17vh;
+    padding-left: 25vh;
+    height: 16vh;
+}
+
+
+
+p.texte_vente_voiture {
+    font-size: 2vh;
+    width: 39vh;
+    text-align: center;
+    color: black;
+    margin-top: -4%;
+    margin-left: 13vh;
+}
+
+h1.sous_titre_v {
+    margin-left: 19vh;
+    color: black;
+    font-family: initial;
+    font-size: 4vh;
+    margin-top: -3%;
+    margin-bottom: 5vh;
+}
+
+a.button_vente_voiture {
+    text-decoration: none;
+    background-color: cornsilk;
+    border-radius: 2vh;
+    padding: 1vh;
+    margin-left: 27vh;
+    font-size: 11px;
+    color: black;
+}
+
+
+/* ________________________page venez nous voir_______________________________  */
+
+.full_choisir{
+    background:#404040;
     display: flex;
-    flex-direction: column;
+    }
+
+
+    .venez{
+        background:#404040; 
+        margin: 0;
+        font-size: 8vh;
+        color: black;
+        padding-left: 68vh;
+        padding-top: 3vh;
+    }
+
+    .serenite{
+        background:#404040;
+        margin: 0;
+        font-size: 4vh;
+        color: black;
+        padding-left: 73vh;
+        padding-top: 2vh;
+        padding-bottom: 4vh;
+    }
+
+    .trait_titre{
+        margin: 0;
+        background-color: #fff51a;
+        height: 1vh;
+        border: none;
+    }
+
+/*_____________________________ icone moteur____________________________________  */
+
+    img.icone_moteur {
+        width: 13vh;
+        padding-left: 18vh;
+        padding-top: 10vh; 
+    }
+
+    p.texte_moteur {
+        color: #ffffff;
+        padding-left: 12vh;
+        width: 26vh;
+        font-family: math;
+    }
+
+    /*________________________________ icone clef_________________________________ */
+
+    .div_diag {
+        padding-left: 8vh;
+    }
+
+
+    img.icone_clef {
+        width: 11vh;
+    padding-top: 59px;
+    padding-left: 28vh;
+    }
+
+
+    p.texte_essaie {
+        color: white;
+        padding-left: 29vh;
+        font-family: math;
+        padding-top: 3px;
+    }
+    
+    /* _________________________________icone diag_________________________________ */
+
+    .div_diag {
+        padding-left: 39vh;
+    }
+
+    img.icone_diag {
+        width: 12vh;
+        padding-top: 93px;
+    }
+
+    p.texte_diag {
+        color: white;
+        font-family: math;
+        margin-left: -6vh;
+    }
+
+
+    /* __________________________________icone reparation garentie____________________________  */
+
+    .div_reparation {
+        padding-left: 7vh;
+        padding-top: 29px;
+        
+    }
+
+    img.icone_reparation {
+        padding-left: 35vh;
+        padding-top: 53px;
+        width: 10vh;
+    }
+
+    p.texte_garentie {
+        color: white;
+        padding-left: 30vh;
+        font-family: math;
+    }
+
+
+
+
+
+
+/* ___________________________page contact_____________________________________ */
+
+img.img_lambo_contact {
+    width: 58%;
+    height: 104vh;
+    padding-left: 4vh;
+    padding-top: 4vh;
 }
 
-#contact-form label {
+
+.texte_contact{
+    font-size: 5vh;
+    color: #ffd700;
+    margin-left: 5vh;
+}
+
+.texte_contact2{
+    font-size: 4vh;
+    color: #ffd700;
+    margin-left: 25vh;
+}
+
+
+.contact-section {
+    height: 114vh;
+    display: flex;
+    background-color: black;
+    flex-wrap: wrap;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .contact-form {
+    background: #4040404a;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    top: 23vh;
+    width: 67vh;
+    height: 75vh;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
     margin-bottom: 5px;
-}
-
-#contact-form input, #contact-form textarea {
-    margin-bottom: 15px;
-    padding: 10px;
+    font-weight: 500;
+    color: #ffd700;
+  }
+  
+  .form-control {
+    width: 94%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+  }
+  
+  .form-control:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1);
+  }
+  
+  textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .btn-submit {
+    background: #0066cc;
+    color: white;
+    padding: 12px 30px;
     border: none;
-    border-radius: 5px;
-}
-
-#contact-form button {
-    background-color: #f7f700;
-    color: #333;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+    transition: background-color 0.3s;
+    width: 51%;
+    margin-left: 13vh;
+  }
+  
+  .btn-submit:hover {
+    background: #0052a3;
+  }
+  
+  .btn-submit:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  .error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+  }
 
-#contact-form button:hover {
-    background-color: #e0e000;
-}
+  .success-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    z-index: 1000;
+  }
 
+  .success-message h3 {
+    color: #28a745;
+    margin-bottom: 10px;
+  }
+
+  .success-content {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .hidden {
+    display: none;
+  }
 /* Testimonials Section */
 #testimonials {
     padding: 40px 20px;
@@ -759,7 +1054,8 @@ img.skyline_img{
     margin: 10px 0;
 }
 
-/* Venez nous voir Section */
+/*____________________ Venez nous voir Section________________________________ */
+
 .venez-nous-voir {
     background-color: #FFD700;
     padding: 40px 0;
@@ -770,6 +1066,7 @@ img.skyline_img{
     color: #000;
     font-size: 2.5em;
     margin-bottom: 10px;
+    
 }
 
 .venez-nous-voir h2 {
@@ -798,63 +1095,61 @@ img.skyline_img{
     font-size: 1.2em;
 }
 
-/* Footer */
-footer {
-    background-color: #333;
+.venez {
+    background: #404040;
+    margin: 0;
+    font-size: 5vh;
+    color: black;
+    padding-left: 83vh;
+    padding-top: 3vh;
+}
+
+
+.serenite {
+    background: #404040;
+    margin: 0;
+    font-size: 3vh;
+    color: black;
+    padding-left: 84vh;
+    padding-top: 2vh;
+    padding-bottom: 4vh;
+}
+
+
+
+
+
+
+
+/* ________________________________Footer_______________________________________________ */
+.full-footer {
+    background-color: #1d1d1d;
     color: #fff;
-    padding: 20px 0;
+    
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+img.logo_footer {
+    width: 27vh;
+    position: relative;
+    margin-left: -37vh;
+    bottom: -6vh;
 }
 
-.footer-logo img {
-    height: 50px;
+
+
+/*__________ mention legale/politique de confidentialité/politique dutilisation _____________________*/
+
+/*trait de separation*/
+
+hr.trait-footer {
+    margin: 0;
 }
 
-.footer-info, .footer-schedule {
-    flex: 1;
-    margin-right: 20px;
-    text-align: left;
-}
-
-.footer-info h3, .footer-schedule h3 {
-    color: #f7f700;
-    margin-bottom: 10px;
-}
-
-.footer-info p, .footer-schedule p {
-    margin: 5px 0;
-}
-
-.footer-social-media {
-    flex-basis: 100%;
-    margin-top: 20px;
-}
-
-.footer-social-media a {
-    color: #f7f700;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.footer-social-media a:hover {
+/* mention legale */
+.footer-legal a:hover {
     color: #e0e000;
 }
 
-.footer-legal {
-    flex-basis: 100%;
-    text-align: center;
-    margin-top: 20px;
-}
 
 .footer-legal a {
     color: #f7f700;
@@ -864,17 +1159,101 @@ footer {
     margin: 5px 10px;
 }
 
-.footer-legal a:hover {
-    color: #e0e000;
+
+.footer-legal {
+    flex-basis: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -2vh;
+    margin-top: 6px;
 }
 
-/* Background Patterns */
-body::before {
-    content: '';
-    position: absolute;
-    color: black;
-    z-index: -1;
+p.politique {
+    font-size: 61%;
+}
+
+p.condition {
+    font-size: 61%;
+}
+
+p.mention {
+    font-size: 61%;
 }
 
 
+/*________________________________ resaux sociaux __________________________________*/
 
+img.icone_fb {
+    width: 6vh;
+    height: 6vh;
+    margin-top: 3px;
+}
+
+img.icone_twitter {
+    width: 11vh;
+    height: 7vh;
+}
+
+img.icone_insta {
+    width: 8vh;
+    height: 7vh;
+    margin-bottom: 2vh;
+}
+
+.footer-media {
+    display: flex;
+    margin-left: 89vh;
+}
+
+/*_________________________________ info garage_____________________________________*/
+
+img.icone_email_footer {
+    width: 4vh;
+    height: 4vh;
+}
+
+
+img.icone_telephone_footer {
+    width: 5vh;
+    height: 5vh;
+    margin-left: -1%;
+}
+
+
+img.icone_adresse_footer {
+    width: 4vh;
+    height: 4vh;
+    margin-top: 1vh;
+    padding-right: 1vh;
+}
+
+
+.footer-info-garage {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.icone_adresse {
+    display: flex;
+}
+
+
+.icone_telephone {
+    display: flex;
+}
+
+
+.icone-email {
+    display: flex;
+}
+
+.num_tel {
+    margin-top: 3%;
+    margin-left: 1vh;
+}
+
+p.email {
+    margin-top: 1vh;
+    margin-left: 2vh;
+}

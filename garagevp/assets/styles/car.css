@@ -1,0 +1,565 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/*___________________ nav barr (gris)_______________________ */
+
+nav.navbar {
+    display: flex;
+    justify-content: flex-end;
+    width: 1269px;
+}
+
+.navbar{
+    background-color: #404040;
+    padding: 1em;
+    position: relative;
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 5% 0%);
+    width: 1274px;
+    height: 6vh;
+    margin-left: 14%;
+}
+
+/*_________________ logo_________________ */
+
+.logo{
+    width: 26vh;
+    position: absolute;
+    bottom: 79vh;
+    left: 1vh;
+    z-index: -1;
+}
+
+/*______________________ tel_____________________________ */
+img.icone_tel {
+    width: 7vh;
+    height: 7vh;
+    padding-right: 3vh;
+}
+
+.div_tel {
+    display: flex;
+    align-items: center;
+    width: 45%;
+    margin-left: 4%;
+}
+
+.texte_tel{
+    color: white;
+}
+
+/*____________________ email___________________ */
+
+img.icone_email {
+    width: 6vh;
+    height: 6vh;
+    padding-right: 3vh;
+}
+
+.div_email {
+    display: flex;
+    align-items: center;
+    width: 42%;
+}
+
+.texte_email{
+    color: white;
+}
+
+/*____________________adresse___________________ */
+
+img.icone_adresse {
+    width: 6vh;
+    height: 6vh;
+    padding-right: 3vh;
+}
+
+.div_adresse {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.texte_adresse{
+    color: white;
+    margin-right: 0vh;
+}
+
+/*___________________ menu nav____________________ */
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff51a;
+    margin-top: 0;
+    margin-bottom: 0;
+    
+}
+
+.titre_menu_nav{
+    color: black;
+    text-decoration: none;
+}
+
+.item {
+    transition: transform 0.3s ease;
+}
+
+.item:hover {
+    transform: scale(1.2);
+}
+
+p.separation {
+    font-weight: 900;
+    color: rgb(0, 0, 0);
+    margin-right: 0px;
+}
+
+.bouton_nav{
+    text-decoration: none;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* ___________________page vente voiture ___________________________ */
+  
+/* Variables pour les couleurs */
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #fff51a;
+    --background-color: #2c2c2c;
+    --text-color: #ffffff;
+    --border-color: #404040;
+    --card-bg: #333333;
+    --hover-yellow: #fff51a;
+}
+
+/* Style général */
+main {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    height: 1288vh;
+}
+
+h1.titre_filtre {
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding-top: 15vh;
+    padding-bottom: 3vh;
+    margin: 0;
+}
+
+/* Style du formulaire de filtrage */
+#car-filter-form {
+    background-color: var(--primary-color);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+#car-filter-form div {
+    margin-bottom: 0;
+    flex: 1;
+    min-width: 200px;
+}
+
+#car-filter-form label {
+    font-weight: bold;
+    color: var(--secondary-color);
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+#car-filter-form select,
+#car-filter-form input {
+    width: 94%;
+    padding: 0.5rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    margin-top: 0.15rem;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+#car-filter-form select:focus,
+#car-filter-form input:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+#car-filter-form button[type="submit"] {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+    min-width: 120px;
+    margin-left: 9vh;
+}
+
+#car-filter-form button[type="submit"]:hover {
+    background-color: var(--hover-yellow);
+    transform: translateY(-2px);
+}
+
+/* Style des cartes de voitures */
+.car-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 4rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--border-color);
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.car-card img {
+    width: 100%;
+    height: 61vh;
+    object-fit: contain;
+    background-color: var(--primary-color);
+}
+
+.car-card-content {
+    padding: 2rem;
+}
+
+.car-card h3 {
+    color: var(--secondary-color);
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+}
+
+.car-card p {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+}
+
+.car-card .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin: 1.5rem 0;
+}
+
+.reserve-button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.reserve-button:hover {
+    background-color: var(--hover-yellow);
+    transform: translateY(-2px);
+}
+
+
+
+
+
+
+/*__________ mention legale/politique de confidentialité/politique dutilisation _____________________*/
+
+/*trait de separation*/
+
+hr.trait-footer {
+    margin: 0;
+}
+
+/* mention legale */
+.footer-legal a:hover {
+    color: #e0e000;
+}
+
+
+.footer-legal a {
+    color: #f7f700;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+
+.footer-legal {
+    flex-basis: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -2vh;
+    margin-top: 6px;
+}
+
+p.politique {
+    font-size: 61%;
+}
+
+p.condition {
+    font-size: 61%;
+}
+
+p.mention {
+    font-size: 61%;
+}
+
+
+/*________________________________ resaux sociaux __________________________________*/
+
+img.icone_fb {
+    width: 6vh;
+    height: 6vh;
+    margin-top: 3px;
+}
+
+img.icone_twitter {
+    width: 11vh;
+    height: 7vh;
+}
+
+img.icone_insta {
+    width: 8vh;
+    height: 7vh;
+    margin-bottom: 2vh;
+}
+
+.footer-media {
+    display: flex;
+    margin-left: 89vh;
+}
+
+/*_________________________________ info garage_____________________________________*/
+
+img.icone_email_footer {
+    width: 4vh;
+    height: 4vh;
+}
+
+
+img.icone_telephone_footer {
+    width: 5vh;
+    height: 5vh;
+    margin-left: -1%;
+}
+
+
+img.icone_adresse_footer {
+    width: 4vh;
+    height: 4vh;
+    margin-top: 1vh;
+    padding-right: 1vh;
+}
+
+
+.footer-info-garage {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.icone_adresse {
+    display: flex;
+}
+
+
+.icone_telephone {
+    display: flex;
+}
+
+
+.icone-email {
+    display: flex;
+}
+
+.num_tel {
+    margin-top: 3%;
+    margin-left: 1vh;
+}
+
+p.email {
+    margin-top: 1vh;
+    margin-left: 2vh;
+}
+
+
+
+/*_____________________________ Footer_________________________________________ */
+
+
+.full-footer {
+    background-color: #1d1d1d;
+    color: #fff;
+    
+}
+
+img.logo_footer {
+    width: 27vh;
+    position: relative;
+    margin-left: -37vh;
+    bottom: -6vh;
+}
+
+
+
+/*__________ mention legale/politique de confidentialité/politique dutilisation _____________________*/
+
+/*trait de separation*/
+
+hr.trait-footer {
+    margin: 0;
+}
+
+/* mention legale */
+.footer-legal a:hover {
+    color: #e0e000;
+}
+
+
+.footer-legal a {
+    color: #f7f700;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+
+.footer-legal {
+    flex-basis: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -2vh;
+    margin-top: 6px;
+}
+
+p.politique {
+    font-size: 61%;
+}
+
+p.condition {
+    font-size: 61%;
+}
+
+p.mention {
+    font-size: 61%;
+}
+
+
+/*________________________________ resaux sociaux __________________________________*/
+
+img.icone_fb {
+    width: 6vh;
+    height: 6vh;
+    margin-top: 3px;
+}
+
+img.icone_twitter {
+    width: 11vh;
+    height: 7vh;
+}
+
+img.icone_insta {
+    width: 8vh;
+    height: 7vh;
+    margin-bottom: 2vh;
+}
+
+.footer-media {
+    display: flex;
+    margin-left: 89vh;
+}
+
+/*_________________________________ info garage_____________________________________*/
+
+img.icone_email_footer {
+    width: 4vh;
+    height: 4vh;
+}
+
+
+img.icone_telephone_footer {
+    width: 5vh;
+    height: 5vh;
+    margin-left: -1%;
+}
+
+
+img.icone_adresse_footer {
+    width: 4vh;
+    height: 4vh;
+    margin-top: 1vh;
+    padding-right: 1vh;
+}
+
+
+.footer-info-garage {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.icone_adresse {
+    display: flex;
+}
+
+
+.icone_telephone {
+    display: flex;
+}
+
+
+.icone-email {
+    display: flex;
+}
+
+.num_tel {
+    margin-top: 3%;
+    margin-left: 1vh;
+}
+
+p.email {
+    margin-top: 1vh;
+    margin-left: 2vh;
+}

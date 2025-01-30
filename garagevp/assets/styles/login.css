@@ -256,62 +256,140 @@ main {
 
 
 
-/* Footer */
-footer {
-    background-color: #282828;
+/* ___________________________________Footer__________________________________ */
+
+.full-footer {
+    background-color: #1d1d1d;
     color: #fff;
-    padding: 20px 0;
+    
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+img.logo_footer {
+    width: 27vh;
+    position: relative;
+    margin-left: -37vh;
+    bottom: -6vh;
 }
 
-.footer_logo{
-    height: 50px;
+
+
+/*__________ mention legale/politique de confidentialité/politique dutilisation _____________________*/
+
+/*trait de separation*/
+
+hr.trait-footer {
+    margin: 0;
 }
 
-.footer-info p {
-    margin: 5px 0;
-}
-
-.footer-social-media a {
-    color: #f7f700;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.footer-social-media a:hover {
+/* mention legale */
+.footer-legal a:hover {
     color: #e0e000;
 }
 
-.footer-legal {
-    text-align: right;
-}
 
 .footer-legal a {
     color: #f7f700;
     text-decoration: none;
     font-weight: bold;
-    display: block;
-    margin: 5px 0;
+    display: inline-block;
+    margin: 5px 10px;
 }
 
-.footer-legal a:hover {
-    color: #e0e000;
+
+.footer-legal {
+    flex-basis: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -2vh;
+    margin-top: 6px;
 }
 
-/* Background Patterns */
-body::before {
-    content: '';
-    position: absolute;
-    color: black;
-    z-index: -1;
+p.politique {
+    font-size: 61%;
 }
 
+p.condition {
+    font-size: 61%;
+}
+
+p.mention {
+    font-size: 61%;
+}
+
+
+/*________________________________ resaux sociaux __________________________________*/
+
+img.icone_fb {
+    width: 6vh;
+    height: 6vh;
+    margin-top: 3px;
+}
+
+img.icone_twitter {
+    width: 11vh;
+    height: 7vh;
+}
+
+img.icone_insta {
+    width: 8vh;
+    height: 7vh;
+    margin-bottom: 2vh;
+}
+
+.footer-media {
+    display: flex;
+    margin-left: 89vh;
+}
+
+/*_________________________________ info garage_____________________________________*/
+
+img.icone_email_footer {
+    width: 4vh;
+    height: 4vh;
+}
+
+
+img.icone_telephone_footer {
+    width: 5vh;
+    height: 5vh;
+    margin-left: -1%;
+}
+
+
+img.icone_adresse_footer {
+    width: 4vh;
+    height: 4vh;
+    margin-top: 1vh;
+    padding-right: 1vh;
+}
+
+
+.footer-info-garage {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.icone_adresse {
+    display: flex;
+}
+
+
+.icone_telephone {
+    display: flex;
+}
+
+
+.icone-email {
+    display: flex;
+}
+
+.num_tel {
+    margin-top: 3%;
+    margin-left: 1vh;
+}
+
+p.email {
+    margin-top: 1vh;
+    margin-left: 2vh;
+}

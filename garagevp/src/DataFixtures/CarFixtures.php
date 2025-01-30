@@ -5,36 +5,45 @@ namespace App\DataFixtures;
 use App\Entity\Car;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Faker\Factory;
 
 class CarFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // Création d'une instance de Faker
-        $faker = Factory::create();
+        // Liste des voitures avec leur modèle, marque et image associée
+        $carsData = [
+            ['model' => '208', 'brand' => 'Peugeot', 'image' => 'uploads/peugeot_208.jpg'],
+            ['model' => 'Clio', 'brand' => 'Renault', 'image' => 'uploads/renault_clio.jpg'],
+            ['model' => 'C3', 'brand' => 'Citroën', 'image' => 'uploads/citroen_c3.jpg'],
+            ['model' => 'Golf', 'brand' => 'Volkswagen', 'image' => 'uploads/vw_golf.jpg'],
+            ['model' => 'Serie 3', 'brand' => 'BMW', 'image' => 'uploads/bmw_serie3.jpg'],
+            ['model' => 'A3', 'brand' => 'Audi', 'image' => 'uploads/audi_a3.jpg'],
+            ['model' => 'Megane', 'brand' => 'Renault', 'image' => 'uploads/renault_megane.jpg'],
+            ['model' => '3008', 'brand' => 'Peugeot', 'image' => 'uploads/peugeot_3008.jpg'],
+            ['model' => 'Tiguan', 'brand' => 'Volkswagen', 'image' => 'uploads/vw_tiguan.jpg'],
+            ['model' => 'Q5', 'brand' => 'Audi', 'image' => 'uploads/audi_q5.jpg'],
+        ];
 
-        // Liste de marques et types de carburant
-        $brands = ['Peugeot', 'Renault', 'Citroën', 'Volkswagen', 'BMW', 'Audi'];
+        // Types de carburant disponibles
         $engineTypes = ['diesel', 'essence'];
 
-        // Génération de 10 voitures avec des données aléatoires
-        for ($i = 0; $i < 10; $i++) {
+        // Génération des données pour chaque voiture
+        foreach ($carsData as $data) {
             $car = new Car();
-            $car->setModel($faker->word) // Génère un modèle de voiture aléatoire
-                ->setBrand($brands[array_rand($brands)]) // Choisit une marque de voiture aléatoire
-                ->setYear($faker->year) // Génère une année aléatoire
-                ->setEngineType($engineTypes[array_rand($engineTypes)]) // Choisit un type de carburant (diesel ou essence)
-                ->setMileage($faker->numberBetween(10000, 200000)) // Génère un kilométrage entre 10 000 et 200 000
-                ->setPrice($faker->randomFloat(2, 2000, 50000)) // Génère un prix entre 5 000 € et 50 000 €
-                ->setDescription($faker->sentence) // Génère une description courte
-                ->setImage($faker->imageUrl(400, 300)); // Génère une URL d'image aléatoire
+            $car->setModel($data['model'])
+                ->setbrand($data['brand'])
+                ->setYear(rand(1900, 2025)) // Génère une année entre 2005 et 2023
+                ->setEngineType($engineTypes[array_rand($engineTypes)]) // Associe un type de carburant aléatoire
+                ->setMileage(rand(5000, 300000)) // Génère un kilométrage entre 5 000 et 200 000
+                ->setPrice(rand(5000, 50000)) // Génère un prix entre 5 000 € et 50 000 €
+                ->setDescription('Une superbe ' . $data['brand'] . ' ' . $data['model'] . ' en excellent état.')
+                ->setImage($data['image']); // Associe l'image au modèle
 
             // Persiste l'entité Car dans la base de données
             $manager->persist($car);
         }
 
-        // Enregistre les voitures dans la base de données
+        // Enregistre toutes les voitures dans la base de données
         $manager->flush();
     }
 }

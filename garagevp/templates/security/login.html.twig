@@ -40,10 +40,8 @@
                             <p class="separation">|</p>
                         <li class="item"><a class="titre_menu_nav" href="{{ path('app_nos_services') }}">Découvrez nos services</a></li>
                             <p class="separation">|</p>
-                        <li class="item"><a class="titre_menu_nav" href="{{ path('app_login') }}">connexion</a></li>
-                            <p class="separation">|</p>
-                        <li class="item"><a class="titre_menu_nav" href="{{ path('app_home') }}">Contact</a></li>
-                        
+                        <li class="item"><a class="titre_menu_nav" href="{{ path('app_contact') }}">Contact</a></li>
+                    </ul> 
             </div>
 
         </header>
@@ -57,65 +55,88 @@
             
                 <h2>Connexion</h2>
 
-                {% if error %}
-                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
+                {# Affichage des messages flash d'erreur génériques #}
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
 
-                <form method="post" class="login-form">
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        {# Affichage de l'erreur spécifique de la connexion #}
+        {% if error %}
+            <div class="alert alert-danger">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
 
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" 
-                            id="email" 
-                            name="email" 
-                            value="{{ last_username }}" 
-                            required 
-                            autofocus 
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                            class="form-control">
-                    </div>
+        <form method="post" class="login-form">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-                    <div class="form-group">
-                        <label for="password">Mot de passe:</label>
-                        <input type="password" 
-                            id="password" 
-                            name="password" 
-                            required 
-                            class="form-control">
-                    </div>
-                    <button type="submit" class="btn-login">Se connecter</button>
-                </form>
+            <div class="form-group">
+                <label for="_username">Email:</label>
+                <input type="email" 
+                    id="email" 
+                    name="email" 
+                    value="{{ last_username }}" 
+                    required 
+                    autofocus 
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="_password">Mot de passe:</label>
+                <input type="password" 
+                    id="password" 
+                    name="password" 
+                    required 
+                    class="form-control">
+            </div>
+            
+            <button type="submit" class="btn-login">Se connecter</button>
+        </form>
             </div>
         </main>
         
            <!-- footer -->
-
-            {% block footer %}
-            <footer>
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-logo">
-                        <img src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+           {% block footer %}
+                <footer>
+                
+                    <div class="full-footer">
+                        <div class="footer-info-garage">
+                            <img class="logo_footer" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                            <div class="footer-a_propos">
+                                <h2>A propos</h2>
+                                <div class="icone_adresse">
+                                    <img class="icone_adresse_footer" src="{{ asset('images/icone_localisation.png') }}" alt="Garage Auto"><p>123 Rue de l'Aube - 31400 TOULOUSE</p>
+                                </div>
+                                <div class="icone_telephone">
+                                    <img class="icone_telephone_footer" src="{{ asset('images/icone_tel.png') }}" alt="Garage Auto"><p class="num_tel">01 23 45 67 89</p>
+                                </div>
+                                <div class="icone-email">
+                                    <img class="icone_email_footer" src="{{ asset('images/icone_email.png') }}" alt="Garage Auto"><p class="email">contact@garagevp.fr</p>
+                                </div>
+                            </div>
+                            <div class="footer-horaires">
+                                <h2>Horaires</h2>
+                                <p>Lundi au vendredi</p>
+                                <p>de 8h a 21h</p>
+                                <p>samedi de 9h a 19h</p>
+                            </div>
+                        </div>    
+                            <div class="footer-media">
+                                <img class="icone_fb" src="{{ asset('images/icone_fb.png') }}" alt="Garage Auto">
+                                <img class="icone_twitter" src="{{ asset('images/icone_twitter.png') }}" alt="Garage Auto">
+                                <img class="icone_insta" class src="{{ asset('images/icone_insta.png') }}" alt="Garage Auto">
+                            </div>
+                            <hr class="trait-footer">
+                        <div class="footer-legal">
+                            <p class="mention"><a href="{{ path('app_mention_legale') }}">Mentions légales</a></p>
+                            <p class="politique"><a href="{{ path('app_politique_de_confidentialite') }}">Politique de confidentialité</a></p>
+                            <p class="condition"><a href="{{ path('app_conditions_utilisation') }}">Condition d'utilisation</a></p>
+                        </div>
                     </div>
-                    <div class="footer-info">
-                        <p>123 Rue de l'Aube - 31400 TOULOUSE</p>
-                        <p>01 23 45 67 89</p>
-                        <p>contact@garagevp.fr</p>
-                    </div>
-                    <div class="footer-social-media">
-                        <a href="#">Facebook</a>
-                        <a href="#">Twitter</a>
-                        <a href="#">Instagram</a>
-                    </div>
-                    <div class="footer-legal">
-                        <p>Mentions légales</p>
-                        <p>Politique de confidentialité</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-            {% endblock %}
-
+            </footer>
+        {% endblock %}  
     </body>
 </html>

@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Car;
-use App\Form\CarFilterType;
+
+use App\Form\CarFilterType; 
 use App\Repository\CarRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,4 +31,47 @@ class CarController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    #[Route('/cars/{id}/edit', name: 'car_edit')]
+    public function edit(int $id, Request $request, CarRepository $carRepository)
+    {
+        $car = $carRepository->find($id);
+
+        if (!$car) {
+            throw $this->createNotFoundException('La voiture demandée n\'existe pas.');
+        }
+
+        // Créer et gérer le formulaire d'édition
+        $form = $this->createForm(CarFilterType::class, $car);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Enregistrer les modifications
+            $carRepository->save($car, true);
+            // Rediriger vers la liste des voitures
+            return $this->redirectToRoute('car_index');
+        }
+
+        return $this->render('car/edit.html.twig', [
+            'form' => $form->createView(),
+            'car' => $car,
+        ]);
+    }
+
+    #[Route('/cars/{id}/delete', name: 'car_delete', methods: ['POST'])]
+    public function delete(int $id, CarRepository $carRepository)
+    {
+        $car = $carRepository->find($id);
+
+        if (!$car) {
+            throw $this->createNotFoundException('La voiture demandée n\'existe pas.');
+        }
+
+        // Supprimer la voiture
+        $carRepository->remove($car, true);
+
+        // Rediriger vers la liste des voitures après suppression
+        return $this->redirectToRoute('car_index');
+    }
 }
+

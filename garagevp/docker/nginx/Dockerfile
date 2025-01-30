@@ -1,17 +1,5 @@
 FROM nginx:alpine
 
-# # Cr?ation du dossier SSL avec les bonnes permissions
-# RUN mkdir -p /etc/ssl/private && \
-#     chmod 750 /etc/ssl/private
-
-# # Script d'entr?e personnalis?
-# COPY docker-entrypoint.sh /usr/local/bin/
-# RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
-# RUN apk add --no-cache openssl
-
-# ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-# CMD ["nginx", "-g", "daemon off;"]
 
 # Installer les outils nécessaires
 RUN apk add --no-cache openssl

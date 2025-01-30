@@ -1,52 +1,169 @@
 # security:
+#    # Hash passwords
+#    password_hashers:
+#        App\Entity\User:
+#            algorithm: bcrypt
+#            cost: 12
+
+#    # User provider
+#    providers:
+#        app_user_provider:
+#            entity:
+#                class: App\Entity\User
+#                property: email
+
+#    firewalls:
+       
+#        dev:
+#            pattern: ^/(_(profiler|wdt)|css|images|js)/
+#            security: false
+#        # Main security config
+#        main:
+#            lazy: true
+#            provider: app_user_provider
+#            custom_authenticator: App\Security\LoginFormAuthenticator
+#            form_login:
+#                login_path: app_login
+#                check_path: app_login
+#                enable_csrf: true
+#            entry_point: form_login
+#            logout:
+#                path: app_logout
+#                target: app_home
+#            remember_me:
+#                secret: '%kernel.secret%'
+#                lifetime: 604800 # 1 week
+#                secure: true
+#                always_remember_me: true
+#            login_throttling:
+#                max_attempts: 3
+#                interval: '15 minutes'
+
+#        # Admin interface
+#        easyadmin_admin:
+#            pattern: ^/admin
+#            security: true
+
+#        # Employee interface
+#        easyadmin_employe:
+#            pattern: ^/easyemploye/dashboard
+#            provider: app_user_provider
+#            custom_authenticator: App\Security\LoginFormAuthenticator
+
+#    # Route access control
+#    access_control:
+#        - { path: ^/easyemploye/dashboard, roles: ROLE_EMPLOYE }
+#        - { path: ^/admin, roles: ROLE_ADMIN }
+#        - { path: ^/, roles: PUBLIC_ACCESS }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+# security:
+#     # Encoders (les algorithmes de hachage des mots de passe)
 #     password_hashers:
 #         App\Entity\User:
-#             algorithm: auto
-    
+#             algorithm: bcrypt
+#             cost: 12
+
+#     # Providers (Définir comment obtenir les utilisateurs)
 #     providers:
 #         app_user_provider:
 #             entity:
 #                 class: App\Entity\User
 #                 property: email
-    
+
+#     # Firewalls (Régles de sécurité par URL)
 #     firewalls:
-#         dev:
-#             pattern: ^/(_(profiler|wdt)|css|images|js)/
-#             security: false
+#         # Sécuriser les routes liées à l'API avec JWT
+#         api:
+#             pattern: ^/api
+#             stateless: true
+#             provider: app_user_provider
+
+#             # Authentification par JWT via LexikJWTAuthenticationBundle
+#             jwt: ~  # Active le mécanisme JWT, pas besoin de plus de configuration ici
+
+#         # Firewall principal pour l'authentification via formulaire (web)
 #         main:
 #             lazy: true
 #             provider: app_user_provider
 #             custom_authenticator: App\Security\LoginFormAuthenticator
+#             form_login:
+#                 login_path: app_login
+#                 check_path: app_login
+#                 enable_csrf: true
+#             entry_point: form_login
 #             logout:
 #                 path: app_logout
 #                 target: app_home
 #             remember_me:
 #                 secret: '%kernel.secret%'
-#                 lifetime: 604800
+#                 lifetime: 604800 # 1 semaine
 #                 secure: true
-    
+#                 always_remember_me: true
+#             login_throttling:
+#                 max_attempts: 3
+#                 interval: '15 minutes'
+
+#     # Route access control (Contrôler les accès par rôle)
 #     access_control:
-#         - { path: ^/login, roles: PUBLIC_ACCESS }
+#         # Autoriser l'accès aux routes API sans authentification pour certaines
+#         - { path: ^/api/login, roles: PUBLIC_ACCESS }
+#         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+
+#         # Contrôler l'accès à d'autres routes (admin, etc.)
+#         - { path: ^/easyemploye/dashboard, roles: ROLE_EMPLOYE }
 #         - { path: ^/admin, roles: ROLE_ADMIN }
-#         - { path: ^/, roles: PUBLIC_ACCESS }
+
+
+
+
+
+
 
 
 security:
-    
+    # Encoders
     password_hashers:
         App\Entity\User:
-            algorithm: 'auto'  
-    
+            algorithm: auto
+
+    # Providers
     providers:
         app_user_provider:
             entity:
                 class: App\Entity\User
                 property: email
-    
+
+    # Firewalls
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+            
+        login:
+            pattern: ^/api/login
+            stateless: true
+            json_login:
+                check_path: /api/login
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+        api:
+            pattern: ^/api
+            stateless: true
+            jwt: ~
+
         main:
             lazy: true
             provider: app_user_provider
@@ -54,7 +171,7 @@ security:
             form_login:
                 login_path: app_login
                 check_path: app_login
-                enable_csrf: true  # Protection CSRF
+                enable_csrf: true
             entry_point: form_login
             logout:
                 path: app_logout
@@ -68,25 +185,13 @@ security:
                 max_attempts: 3
                 interval: '15 minutes'
 
-        # Pour l'admin (EasyAdmin pour l'admin)
-        easyadmin_admin:
-            pattern: ^/admin  # Cette règle concerne toutes les pages qui commencent par '/admin'
-            security: true     # Assure que cette route est protégée
-            # Pas besoin de "roles" ici, ils sont gérés dans access_control
-
-        # Pour l'employé (tableau de bord personnalisé pour l'employé)
-        easyadmin_employe:
-            pattern: ^/easyemploye/dashboard  # Cette règle concerne l'interface spécifique à l'employé
-            security: true      # Protection de la route
-            # Pas besoin de "roles" ici, ils sont gérés dans access_control
-
+    # Access Control
     access_control:
-        - { path: ^/login, roles: PUBLIC_ACCESS }  # La page de connexion est accessible à tous
-        - { path: ^/easyemploye/dashboard, roles: ROLE_EMPLOYE }  # Seul un utilisateur avec le rôle ROLE_EMPLOYE peut accéder à /easyemploye/dashboard
+        - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/easyemploye/dashboard, roles: ROLE_EMPLOYE }
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/, roles: PUBLIC_ACCESS } # Le reste des pages est accessible à tous
-        
 
-    
-    
+
+
 

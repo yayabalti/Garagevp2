@@ -1,0 +1,28 @@
+
+
+# Pour les erreurs de validation de votre entité Car
+NotBlank:
+  - 'Ce champ est obligatoire.'
+Length:
+  min: 'Ce champ doit contenir au moins {{ limit }} caractères.'
+  max: 'Ce champ ne peut pas dépasser {{ limit }} caractères.'
+Choice:
+  - 'Veuillez choisir une option valide.'
+Range:
+  min: 'La valeur doit être supérieure ou égale à {{ limit }}.'
+  max: 'La valeur doit être inférieure ou égale à {{ limit }}.'
+Positive: 'La valeur doit être un nombre positif.'
+Image:
+  maxSize: 'Le fichier est trop volumineux ({{ size }} {{ suffix }}). Taille maximale : {{ limit }} {{ suffix }}.'
+  mimeTypes: 'Veuillez télécharger un fichier image valide (JPEG, PNG ou GIF).'
+
+# formumaire de connexion
+Invalid credentials: "Identifiants invalides"
+Account is locked: "Compte verrouillé."
+Email and password required: "Email et mot de passe requis."
+Invalid email format: "Format d'email invalide."
+User not found: "Utilisateur non trouvé."
+
+# Validation du mot de passe
+Password must be at least {{ limit }} characters long: "Le mot de passe doit contenir au moins {{ limit }} caractères "
+Password must contain at least one uppercase letter, one lowercase letter, one number and one special character: "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial"

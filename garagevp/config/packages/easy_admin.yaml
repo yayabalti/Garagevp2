@@ -1,52 +1,11 @@
 easy_admin:
     entities:
-        # Configuration pour les Services de type Entretien, Carrosserie et Mécanique
-        ServiceEntretien:
-            class: App\Entity\Service
-            controller: App\Controller\Admin\ServiceEntretienCrudController
-            label: 'Service Entretien'
-            list:
-                title: 'Services Entretien'
-            form:
-                fields:
-                    - { property: 'nom', label: 'Nom du Service' }
-                    - { property: 'categorie', label: 'Catégorie' }
-                    - { property: 'description', label: 'Description' }
-
-        ServiceCarrosserie:
-            class: App\Entity\Service
-            controller: App\Controller\Admin\ServiceCarrosserieCrudController
-            label: 'Service Carrosserie'
-            list:
-                title: 'Services Carrosserie'
-            form:
-                fields:
-                    - { property: 'nom', label: 'Nom du Service' }
-                    - { property: 'categorie', label: 'Catégorie' }
-                    - { property: 'description', label: 'Description' }
-
-        ServiceMecanique:
-            class: App\Entity\Service
-            controller: App\Controller\Admin\ServiceMecaniqueCrudController
-            label: 'Service Mécanique'
-            list:
-                title: 'Services Mécanique'
-            form:
-                fields:
-                    - { property: 'nom', label: 'Nom du Service' }
-                    - { property: 'categorie', label: 'Catégorie' }
-                    - { property: 'description', label: 'Description' }
-
-        # Configuration pour l'entité Car
         Car:
             class: App\Entity\Car
             controller: App\Controller\Admin\CarCrudController
             label: 'Voitures'
             list:
                 title: 'Liste des Voitures'
-
-               
-                # Ajout des filtres dans la vue list
                 filters:
                     - { property: 'brand', label: 'Marque', type: 'choice', choices: 
                         {'Peugeot': 'Peugeot', 'Renault': 'Renault', 'Audi': 'Audi', 'BMW': 'BMW', 'Mercedes': 'Mercedes'} }
@@ -65,35 +24,13 @@ easy_admin:
                     - { property: 'price', label: 'Prix' }
                     - { property: 'image', label: 'Image' }
                     - { property: 'description', label: 'Description' }
-                    
             security:
                 roles:
-                    - ROLE_EMPLOYE 
+                    - ROLE_EMPLOYE
+    
 
-        # Configuration pour les autres entités si vous en avez
-        # Exemple d'une entité utilisateur si elle est gérée dans l'admin
-        User:
-            class: App\Entity\User
-            controller: App\Controller\Admin\UserCrudController
-            label: 'Utilisateurs'
-            list:
-                title: 'Liste des Utilisateurs'
-            form:
-                fields:
-                    - { property: 'email', label: 'Email' }
-                    - { property: 'roles', label: 'Rôles' }
-                    - { property: 'password', label: 'Mot de passe' }
 
-        Avis:
-            class: App\Entity\Avis
-            controller: App\Controller\Admin\AvisCrudController
-            label: 'Avis Clients'
-            list:
-                title: 'Gestion des Avis'
-            form:
-                fields:
-                    - { property: 'nom', label: 'Nom' }
-                    - { property: 'prenom', label: 'Prénom' }
-                    - { property: 'commentaire', label: 'Commentaire' }
-                    - { property: 'note', label: 'Note' }
-                    - { property: 'approuve', label: 'Approuvé' }
+
+   
+              
+

@@ -1,6 +1,7 @@
-{# templates/contact.html.twig #}
 
-<!DOCTYPE html>
+
+
+{# <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
@@ -52,47 +53,90 @@
         </header>
         {% endblock %}
        
-
+    {% block body %}
         <main>
-            <section class="hero">
-                <img class="skyline_img" src="{{ asset('images/imgheader.png') }}" alt="Garage Auto" >
-                <div class="opacity"></div>
-                    <div class="hero-content">
-                    <h2 class="titre_contact">Besoin d'un devis ou conseil <br> Contactez-nous</h2>
+            <section class="contact-section">
+                <img class="img_supercar_contact" src="{{ asset('images/supercar_contact.png') }}" alt="supercar">
+                <div class="container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input 
+                            type="text" 
+                            id="nom" 
+                            name="nom" 
+                            required 
+                            class="form-control"
+                            placeholder="Votre nom"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <input 
+                            type="text" 
+                            id="prenom" 
+                            name="prenom" 
+                            class="form-control"
+                            placeholder="Votre prénom"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            class="form-control"
+                            placeholder="Votre email"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="objet">Objet</label>
+                            <input 
+                            type="text" 
+                            id="objet" 
+                            name="objet" 
+                            class="form-control"
+                            placeholder="Objet de votre message"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea 
+                            id="message" 
+                            name="message" 
+                            required 
+                            class="form-control"
+                            rows="5"
+                            placeholder="Votre message"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn-submit">
+                            Envoyer
+                            </button>
                 </div>
-            </section
-
-            <!-- Formulaire de contact -->
-            <div class="contact-form-container">
-                
-                    <form id="contact-form">
-                    <h2>Contactez-nous</h2>
-                        <label for="nom">Nom:</label>
-                        <input type="text" id="nom" name="nom" required><br>
-
-                        <label for="prenom">Prénom:</label>
-                        <input type="text" id="prenom" name="prenom" required><br>
-
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required><br>
-
-                        <label for="objet">Objet:</label>
-                        <input type="text" id="objet" name="objet" required><br>
-
-                        <label for="message">Message:</label>
-                        <textarea id="message" name="message" required></textarea><br>
-
-                            <button type="submit">Envoyer</button>
                     </form>
 
-
-                        <!-- Section pour afficher le message de confirmation ou d'erreur -->
-                      <div id="message-status" class="message-status"></div>
-            </div>
+                        <!-- Message de succès -->
+                        <div id="success-message" class="success-message hidden">
+                        <div class="success-content">
+                            <h3>Message envoyé avec succès !</h3>
+                            <p>Nous vous répondrons dans les plus brefs délais.</p>
+                        </div>
+                        </div>
+                    </div>
+                    </section>
         </main>
-
-        <!-- Footer -->
-        {% block footer %}
+    {% endblock %}
+        
+    {% block footer %}
         <footer>
             <div class="container">
                 <div class="footer-content">
@@ -116,75 +160,184 @@
                 </div>
             </div>
         </footer>
-        {% endblock %}
+    {% endblock %}
 
-        <script src="path/to/firebaseconfig.js"></script>
-        <script>
-          
-import { initializeApp } from "firebase/app";
-
-
-// Configuration de votre application Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyDQTUEQrcfGrrmScFOKrDEjcKnnqLuTLa4",
-  authDomain: "garagevp-a5ae3.firebaseapp.com",
-  projectId: "garagevp-a5ae3",
-  storageBucket: "garagevp-a5ae3.firebasestorage.app",
-  messagingSenderId: "533150300008",
-  appId: "1:533150300008:web:18ef9a3665738d0ebb48dd"
-};
-
-
-// Initialisation de Firebase
-const app = initializeApp(firebaseConfig);
-
-// Initialisation de Firestore
-const db = getFirestore(app);
-
-// Fonction pour envoyer le message à Firestore
-const sendMessage = async (formData) => {
-  try {
-    // Envoi des données à Firestore dans la collection "messages"
-    await addDoc(collection(db, "messages"), formData);
-    console.log("Message envoyé avec succès !");
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+        <script type="module" src="/js/firebase-config.js"></script>
+        <script type="module" src="/js/contact.js"></script>
     
-    // Affichage du message de succès
-    const messageStatus = document.getElementById('message-status');
-    messageStatus.textContent = "Votre message a été envoyé avec succès !";
-    messageStatus.className = 'message-status success';  // Ajout de la classe success
-    
-    // Réinitialiser le formulaire après envoi
-    document.getElementById("contact-form").reset();
+    </body>
+</html> #}
 
-  } catch (error) {
-    console.error("Erreur lors de l'envoi du message :", error);
-    
-    // Affichage du message d'erreur
-    const messageStatus = document.getElementById('message-status');
-    messageStatus.textContent = "Erreur lors de l'envoi du message. Veuillez réessayer.";
-    messageStatus.className = 'message-status error';  // Ajout de la classe error
-  }
-};
 
-// Récupérer le formulaire et ajouter l'événement pour la soumission
-const form = document.getElementById("contact-form");
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
 
-  // Collecte des données du formulaire
-  const formData = {
-    nom: form.querySelector("[name='nom']").value,
-    prenom: form.querySelector("[name='prenom']").value,
-    email: form.querySelector("[name='email']").value,
-    objet: form.querySelector("[name='objet']").value,
-    message: form.querySelector("[name='message']").value,
-    createdAt: new Date().toISOString(),  // Ajouter la date du message
-  };
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact - Garage V.Parrot</title>
+        <link rel="stylesheet" href="{{ asset('styles/contact.css') }}">
+    </head>
 
-  // Envoyer les données du formulaire à Firestore
-  sendMessage(formData);
-});
-        </script>
+    <body>
+        <!-- Header -->
+        <header>
+            <div class="header-container">
+                <nav class="navbar">
+                    <div class="div_tel">
+                        <img class="icone_tel" src="{{ asset('images/icone_tel.png') }}" alt="Garage Auto">
+                        <p class="texte_tel">Tel : 01 - 40 - 56 - 89 - 78</p>
+                    </div>
+
+                    <div class="div_adresse">
+                        <img class="icone_adresse" src="{{ asset('images/icone_localisation.png') }}" alt="Garage Auto">
+                        <p class="texte_adresse">123 Rue de l'Aube 75012 Paris</p>
+                    </div>
+
+                    <div class="div_email">
+                        <img class="icone_email" src="{{ asset('images/icone_email.png') }}" alt="Garage Auto">
+                        <p class="texte_email">e-mail : Contact-garagevp@gmail.com</p>
+                    </div>
+                </nav>
+
+                <ul class="menu">
+                    <img class="logo" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                    <li class="item"><a href="{{ path('app_home') }}">Accueil</a></li>
+                    <p class="separation">|</p>
+                    <li class="item"><a href="{{ path('app_nos_services') }}">Découvrez nos services</a></li>
+                    <p class="separation">|</p>
+                    <li class="item"><a href="{{ path('app_login') }}">Connexion</a></li>
+                    <p class="separation">|</p>
+                    <li class="item"><a href="{{ path('app_contact') }}">Contact</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <main>
+            <section class="contact-section">
+                <img class="img_supercar_contact" src="{{ asset('images/supercar_contact.png') }}" alt="supercar">
+                <div class="container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input 
+                                type="text" 
+                                id="nom" 
+                                name="nom" 
+                                required 
+                                class="form-control"
+                                placeholder="Votre nom"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <input 
+                                type="text" 
+                                id="prenom" 
+                                name="prenom" 
+                                class="form-control"
+                                placeholder="Votre prénom"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                required 
+                                class="form-control"
+                                placeholder="Votre email"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="objet">Objet</label>
+                            <input 
+                                type="text" 
+                                id="objet" 
+                                name="objet" 
+                                class="form-control"
+                                placeholder="Objet de votre message"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                required 
+                                class="form-control"
+                                rows="5"
+                                placeholder="Votre message"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn-submit">
+                                Envoyer
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Message de succès -->
+                    <div id="success-message" class="success-message hidden">
+                        <div class="success-content">
+                            <h3>Message envoyé avec succès !</h3>
+                            <p>Nous vous répondrons dans les plus brefs délais.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        
+                <footer>
+                
+                    <div class="full-footer">
+                        <div class="footer-info-garage">
+                            <img class="logo_footer" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                            <div class="footer-a_propos">
+                                <h2>A propos</h2>
+                                <div class="icone_adresse">
+                                    <img class="icone_adresse_footer" src="{{ asset('images/icone_localisation.png') }}" alt="Garage Auto"><p>123 Rue de l'Aube - 31400 TOULOUSE</p>
+                                </div>
+                                <div class="icone_telephone">
+                                    <img class="icone_telephone_footer" src="{{ asset('images/icone_tel.png') }}" alt="Garage Auto"><p class="num_tel">01 23 45 67 89</p>
+                                </div>
+                                <div class="icone-email">
+                                    <img class="icone_email_footer" src="{{ asset('images/icone_email.png') }}" alt="Garage Auto"><p class="email">contact@garagevp.fr</p>
+                                </div>
+                            </div>
+                            <div class="footer-horaires">
+                                <h2>Horaires</h2>
+                                <p>Lundi au vendredi</p>
+                                <p>de 8h a 21h</p>
+                                <p>samedi de 9h a 19h</p>
+                            </div>
+                        </div>    
+                            <div class="footer-media">
+                                <img class="icone_fb" src="{{ asset('images/icone_fb.png') }}" alt="Garage Auto">
+                                <img class="icone_twitter" src="{{ asset('images/icone_twitter.png') }}" alt="Garage Auto">
+                                <img class="icone_insta" class src="{{ asset('images/icone_insta.png') }}" alt="Garage Auto">
+                            </div>
+                            <hr class="trait-footer">
+                        <div class="footer-legal">
+                            <p class="mention"><a href="{{ path('app_mention_legale') }}">Mentions légales</a></p>
+                            <p class="politique"><a href="{{ path('app_politique_de_confidentialite') }}">Politique de confidentialité</a></p>
+                            <p class="condition"><a href="{{ path('app_conditions_utilisation') }}">Condition d'utilisation</a></p>
+                        </div>
+                    </div>
+            </footer>
+        <!-- Scripts Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        <script src="{{ asset('js/firebase-config.js') }}"></script>
+        <script src="{{ asset('js/contact.js') }}"></script>
     </body>
 </html>
-

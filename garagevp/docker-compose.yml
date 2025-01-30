@@ -89,6 +89,7 @@
       expose:
       - "9000"
       environment:
+        TEST_DATABASE_URL: "postgresql://postgres:armanie@127.0.0.1:5433/garagevp_test?serverVersion=13&charset=utf8"
         DATABASE_URL: "postgresql://postgres:armanie@symfony_db:5432/garagevp?serverVersion=13&charset=utf8"
         COMPOSER_ALLOW_SUPERUSER: "1"
         PHP_OPCACHE_ENABLE: 1
@@ -125,6 +126,7 @@
         - symfony
       ports:
         - 5432:5432
+        - 5433:5432
       restart: unless-stopped
 
 

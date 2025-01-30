@@ -1,276 +1,256 @@
 <?php
+
 namespace App\Entity;
+
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: "users")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-   #[ORM\Id]
-   #[ORM\GeneratedValue]
-   #[ORM\Column(type: "integer")]
-   private ?int $id = null;
+    // Identifiant unique de l'utilisateur
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: "integer")]
+    private ?int $id = null;
 
-   #[ORM\Column(length: 180, unique: true)]
-   private ?string $email = null;
+    // Adresse email unique de l'utilisateur
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $email = null;
 
-   #[ORM\Column(type: "json")]
-   private array $roles = [];
+    // Liste des rôles attribués à l'utilisateur (exemple : ROLE_USER, ROLE_ADMIN, ROLE_EMPLOYE)
+    #[ORM\Column(type: "json")]
+    private array $roles = [];
 
-   #[ORM\Column(type: "string")]
-   private string $password;
+    // Mot de passe hashé de l'utilisateur
+    #[ORM\Column(type: "string")]
+    private string $password;
 
-   #[ORM\Column(name: "first_name", type: "string", length: 255, nullable: true)]
-   private ?string $firstName = null;
+    // Prénom de l'utilisateur
+    #[ORM\Column(name: "first_name", type: "string", length: 255, nullable: true)]
+    private ?string $firstName = null;
 
-   #[ORM\Column(name: "last_name", type: "string", length: 255, nullable: true)]
-   private ?string $lastName = null;
+    // Nom de famille de l'utilisateur
+    #[ORM\Column(name: "last_name", type: "string", length: 255, nullable: true)]
+    private ?string $lastName = null;
 
-   #[ORM\Column(name: "created_at", type: "datetime_immutable", nullable: false, options: ["default" => "CURRENT_TIMESTAMP"])]
-   private \DateTimeImmutable $createdAt;
+    // Date et heure de création du compte utilisateur (initialisée automatiquement)
+    #[ORM\Column(name: "created_at", type: "datetime_immutable", nullable: false, options: ["default" => "CURRENT_TIMESTAMP"])]
+    private \DateTimeImmutable $createdAt;
 
-   #[ORM\Column(name: "last_login_at", type: "datetime_immutable", nullable: true)]
-   private ?\DateTimeImmutable $lastLoginAt = null;
+    // Dernière date et heure de connexion réussie de l'utilisateur
+    #[ORM\Column(name: "last_login_at", type: "datetime_immutable", nullable: true)]
+    private ?\DateTimeImmutable $lastLoginAt = null;
 
-   #[ORM\Column(name: "is_active", type: "boolean", options: ["default" => true])]
-   private bool $isActive = true;
+    // Statut du compte (actif ou désactivé)
+    #[ORM\Column(name: "is_active", type: "boolean", options: ["default" => true])]
+    private bool $isActive = true;
 
-   #[ORM\Column(name: "login_attempts", type: "integer", options: ["default" => 0])]
-   private int $loginAttempts = 0;
+    // Nombre de tentatives de connexion échouées
+    #[ORM\Column(name: "login_attempts", type: "integer", options: ["default" => 0])]
+    private int $loginAttempts = 0;
 
-   #[ORM\Column(name: "is_locked", type: "boolean", options: ["default" => false])]
-   private bool $isLocked = false;
+    // Indicateur si le compte est verrouillé après plusieurs tentatives échouées
+    #[ORM\Column(name: "is_locked", type: "boolean", options: ["default" => false])]
+    private bool $isLocked = false;
 
-   /**
-    * Constructeur qui initialise la date de création
-    */
-   public function __construct()
-   {
-       $this->createdAt = new \DateTimeImmutable('now');
-   }
+    // Date et heure où le compte a été verrouillé (null si non verrouillé)
+    #[ORM\Column(name: "locked_at", type: "datetime_immutable", nullable: true)]
+    private ?\DateTimeImmutable $lockedAt = null;
 
-   /**
-    * Retourne l'identifiant unique de l'utilisateur
-    */
-   public function getId(): ?int
-   {
-       return $this->id;
-   }
+    /**
+     * Constructeur qui initialise la date de création du compte
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable('now');
+    }
 
-   /**
-    * Retourne l'adresse email de l'utilisateur
-    */
-   public function getEmail(): ?string
-   {
-       return $this->email;
-   }
+    // Retourne l'identifiant unique de l'utilisateur
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
-   /**
-    * Définit l'adresse email de l'utilisateur
-    */
-   public function setEmail(string $email): self
-   {
-       $this->email = $email;
-       return $this;
-   }
+    // Retourne l'adresse email de l'utilisateur
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
 
-   /**
-    * Retourne l'identifiant utilisé pour l'authentification (email)
-    */
-   public function getUserIdentifier(): string
-   {
-       return (string) $this->email;
-   }
+    // Définit l'adresse email de l'utilisateur
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+        return $this;
+    }
 
-   /**
-    * Retourne les rôles de l'utilisateur avec ROLE_USER par défaut.
-    * Ajoute ROLE_EMPLOYE si l'utilisateur est un employé.
-    */
-   public function getRoles(): array
-   {
-       $roles = $this->roles;
+    // Retourne l'identifiant utilisé pour l'authentification (email)
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
 
-       // Ajouter les rôles de base
-       $roles[] = 'ROLE_USER';
+    // Retourne les rôles attribués à l'utilisateur
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
 
-       // Si l'utilisateur est un employé, ajouter ROLE_EMPLOYE
-       if (in_array('ROLE_EMPLOYE', $this->roles)) {
-           $roles[] = 'ROLE_EMPLOYE';
-       }
+        // Ajoute un rôle par défaut : ROLE_USER
+        $roles[] = 'ROLE_USER';
 
-       // Retourner les rôles uniques
-       return array_unique($roles);
-   }
+        // Si l'utilisateur a un rôle employé, l'ajouter à la liste
+        if (in_array('ROLE_EMPLOYE', $this->roles)) {
+            $roles[] = 'ROLE_EMPLOYE';
+        }
 
-   /**
-    * Définit les rôles de l'utilisateur (admin ou employé)
-    * 
-    * Rôle admin => ROLE_ADMIN
-    * Rôle employé => ROLE_EMPLOYE
-    */
-   public function setRoles(array $roles): self
-   {
-       $this->roles = $roles;
-       return $this;
-   }
+        return array_unique($roles); // Évite les doublons
+    }
 
-   /**
-    * Retourne le mot de passe hashé
-    */
-   public function getPassword(): string
-   {
-       return $this->password;
-   }
+    // Définit les rôles de l'utilisateur
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+        return $this;
+    }
 
-   /**
-    * Définit le mot de passe hashé
-    */
-   public function setPassword(string $password): self
-   {
-       $this->password = $password;
-       return $this;
-   }
+    // Retourne le mot de passe hashé
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
 
-   /**
-    * Efface les données sensibles
-    */
-   public function eraseCredentials(): void
-   {
-       // Méthode requise par l'interface UserInterface
-   }
+    // Définit le mot de passe hashé
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+        return $this;
+    }
 
-   /**
-    * Retourne le prénom de l'utilisateur
-    */
-   public function getFirstName(): ?string
-   {
-       return $this->firstName;
-   }
+    // Méthode requise par UserInterface pour effacer les données sensibles 
+    public function eraseCredentials(): void
+    {
+    }
 
-   /**
-    * Définit le prénom de l'utilisateur
-    */
-   public function setFirstName(?string $firstName): self
-   {
-       $this->firstName = $firstName;
-       return $this;
-   }
+    // Retourne le prénom de l'utilisateur
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
 
-   /**
-    * Retourne le nom de famille de l'utilisateur
-    */
-   public function getLastName(): ?string
-   {
-       return $this->lastName;
-   }
+    // Définit le prénom de l'utilisateur
+    public function setFirstName(?string $firstName): self
+    {
+        $this->firstName = $firstName;
+        return $this;
+    }
 
-   /**
-    * Définit le nom de famille de l'utilisateur
-    */
-   public function setLastName(?string $lastName): self
-   {
-       $this->lastName = $lastName;
-       return $this;
-   }
+    // Retourne le nom de famille de l'utilisateur
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
 
-   /**
-    * Retourne la date de création du compte
-    */
-   public function getCreatedAt(): \DateTimeImmutable
-   {
-       return $this->createdAt;
-   }
+    // Définit le nom de famille de l'utilisateur
+    public function setLastName(?string $lastName): self
+    {
+        $this->lastName = $lastName;
+        return $this;
+    }
 
-   /**
-    * Retourne la dernière date de connexion
-    */
-   public function getLastLoginAt(): ?\DateTimeImmutable
-   {
-       return $this->lastLoginAt;
-   }
+    // Retourne la date de création du compte utilisateur
+    public function getCreatedAt(): \DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
 
-   /**
-    * Définit la dernière date de connexion
-    */
-   public function setLastLoginAt(\DateTimeImmutable $lastLoginAt): self
-   {
-       $this->lastLoginAt = $lastLoginAt;
-       return $this;
-   }
+    // Retourne la dernière date de connexion de l'utilisateur
+    public function getLastLoginAt(): ?\DateTimeImmutable
+    {
+        return $this->lastLoginAt;
+    }
 
-   /**
-    * Vérifie si le compte est actif
-    */
-   public function isActive(): bool
-   {
-       return $this->isActive;
-   }
+    // Définit la dernière date de connexion de l'utilisateur
+    public function setLastLoginAt(\DateTimeImmutable $lastLoginAt): self
+    {
+        $this->lastLoginAt = $lastLoginAt;
+        return $this;
+    }
 
-   /**
-    * Définit si le compte est actif
-    */
-   public function setIsActive(bool $isActive): self
-   {
-       $this->isActive = $isActive;
-       return $this;
-   }
+    // Vérifie si le compte est actif
+    public function isActive(): bool
+    {
+        return $this->isActive;
+    }
 
-   /**
-    * Retourne le nombre de tentatives de connexion échouées
-    */
-   public function getLoginAttempts(): int
-   {
-       return $this->loginAttempts;
-   }
+    // Définit si le compte est actif ou non
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+        return $this;
+    }
 
-   /**
-    * Incrémente le compteur de tentatives de connexion
-    * Verrouille le compte après 3 tentatives échouées
-    */
-   public function incrementLoginAttempts(): void
-   {
-       $this->loginAttempts++;
-       if ($this->loginAttempts >= 3) {
-           $this->isLocked = true;
-       }
-   }
+    // Retourne le nombre de tentatives de connexion échouées
+    public function getLoginAttempts(): int
+    {
+        return $this->loginAttempts;
+    }
 
-   /**
-    * Réinitialise le compteur de tentatives et déverrouille le compte
-    */
-   public function resetLoginAttempts(): void
-   {
-       $this->loginAttempts = 0;
-       $this->isLocked = false;
-   }
+    // Incrémente le nombre de tentatives échouées et verrouille le compte si nécessaire
+    public function incrementLoginAttempts(): void
+    {
+        $this->loginAttempts++;
+        if ($this->loginAttempts >= 3) { // Si 3 tentatives échouées, verrouiller le compte
+            $this->isLocked = true;
+            $this->lockedAt = new \DateTimeImmutable('now');
+        }
+    }
 
-   /**
-    * Vérifie si le compte est verrouillé
-    */
-   public function isLocked(): bool
-   {
-       return $this->isLocked;
-   }
+    // Réinitialise les tentatives de connexion et déverrouille le compte
+    public function resetLoginAttempts(): void
+    {
+        $this->loginAttempts = 0;
+        $this->isLocked = false;
+        $this->lockedAt = null;
+    }
 
-   /**
-    * Définit si le compte est verrouillé
-    */
-   public function setLocked(bool $isLocked): self
-   {
-       $this->isLocked = $isLocked;
-       return $this;
-   }
+    // Vérifie si le compte est verrouillé et déverrouille automatiquement après 15 minutes
+    public function isLocked(): bool
+    {
+        if ($this->isLocked && $this->lockedAt) {
+            $now = new \DateTimeImmutable('now');
+            $elapsedTime = $now->getTimestamp() - $this->lockedAt->getTimestamp();
 
-   /**
-    * Retourne la représentation string de l'utilisateur (email)
-    */
-   public function __toString(): string
-   {
-       return $this->email ?? '';
-   }
+            if ($elapsedTime > 900) { // Si 15 minutes sont écoulées
+                $this->resetLoginAttempts();
+            }
+        }
 
+        return $this->isLocked;
+    }
+
+    // Définit si le compte est verrouillé
+    public function setLocked(bool $isLocked): self
+    {
+        $this->isLocked = $isLocked;
+        return $this;
+    }
+
+    // Retourne la date et l'heure où le compte a été verrouillé
+    public function getLockedAt(): ?\DateTimeImmutable
+    {
+        return $this->lockedAt;
+    }
+
+    // Retourne une représentation textuelle de l'utilisateur (email)
+    public function __toString(): string
+    {
+        return $this->email ?? '';
+    }
 }
+

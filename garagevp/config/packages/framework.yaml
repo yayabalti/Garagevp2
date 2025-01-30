@@ -1,16 +1,95 @@
 # see https://symfony.com/doc/current/reference/configuration/framework.html
-framework:
-    secret: '%env(APP_SECRET)%'
+# framework:
+#     secret: '%env(APP_SECRET)%'
     #csrf_protection: true
 
     # Note that the session will be started ONLY if you read or write from it.
-    session: true
+    # session: true
 
     #esi: true
     #fragments: true
 
+# when@test:
+#     framework:
+#         test: true
+#         session:
+#             storage_factory_id: session.storage.factory.mock_file
+
+
+
+
+
+
+# framework:
+   # Clé secrète pour la sécurité globale
+#    secret: '%env(APP_SECRET)%'
+   
+   # Protection CSRF pour les formulaires
+#    csrf_protection: true
+   
+   # Configuration des sessions
+#    session:
+#        enabled: true
+#        storage_factory_id: session.storage.factory.native   # Stockage PHP natif
+#        cookie_secure: auto                                  # Force HTTPS si disponible
+#        cookie_samesite: 'lax'                              # Protection CSRF
+#        cookie_httponly: true                               # Protection XSS
+   
+   # En-têtes de sécurité HTTP
+#    response:
+#        headers:
+#            Strict-Transport-Security: "max-age=31536000; includeSubDomains; preload"  # HSTS
+#            Content-Security-Policy: "default-src 'self'; script-src 'self'; style-src 'self'"  # CSP
+#            X-Frame-Options: "DENY"                          # Anti-Clickjacking
+#            X-Content-Type-Options: "nosniff"                # Sécurité MIME
+#            Referrer-Policy: "strict-origin-when-cross-origin"  # Contrôle des référents
+   
+   # Désactivation des fonctionnalités non utilisées
+#    esi: false
+#    fragments: false
+   
+   # Configuration de la validation
+#    validation:
+#        enable_attributes: true
+
+# Configuration spécifique aux tests
+# when@test:
+#    framework:
+#        test: true
+#        session:
+#            storage_factory_id: session.storage.factory.mock_file
+
+
+
+
+
+
+
+
+
+framework:
+   # Clé secrète globale
+   secret: '%env(APP_SECRET)%'
+   
+   # Protection CSRF
+   csrf_protection: true
+   
+   # Config sessions
+   session:
+       enabled: true
+       storage_factory_id: session.storage.factory.native   # Stockage natif
+       cookie_secure: auto                                  # HTTPS si dispo
+       cookie_samesite: 'lax'                              # Anti-CSRF
+       cookie_httponly: true                               # Anti-XSS
+   
+   esi: false
+   fragments: false
+   
+   validation:
+       enable_attributes: true
+
 when@test:
-    framework:
-        test: true
-        session:
-            storage_factory_id: session.storage.factory.mock_file
+   framework:
+       test: true
+       session:
+           storage_factory_id: session.storage.factory.mock_file

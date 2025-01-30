@@ -1,29 +1,62 @@
 {% extends '@EasyAdmin/page/content.html.twig' %}
 
-{% block content %}
-    <h1>Tableau de bord des Avis</h1>
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/styles/dashbord_employe.css') }}">
+{% endblock %}
 
-    {% if avisNonApprouves is not empty %}
-        <h2>Avis en attente de modération :</h2>
-        <div class="list-group">
-            {% for avis in avisNonApprouves %}
-                <div class="list-group-item">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <strong>{{ avis.nom }} {{ avis.prenom }}</strong>
-                        <span class="badge bg-primary">Note : {{ avis.note }}/5</span>
+{% block content %}
+    <div class="employe-dashboard">
+        <div class="dashboard-header">
+           <h1>Gestion des Véhicules</h1>
+
+           
+            <div class="stats-cards">
+                <div class="stat-card">
+                   <i class="fas fa-car"></i>
+                   <span class="stat-number">{{ cars|length }}</span>
+                   <span class="stat-label">Voitures en stock</span>
+                </div>
+            </div>
+        </div>
+
+       <div class="car-grid">
+            {% for car in cars %}
+                <div class="car-card">
+                    <div class="car-info">
+                       <h3>{{ car.brand }} {{ car.model }}</h3>
+                       <div class="car-details">
+                           <span><i class="fas fa-calendar"></i> {{ car.year }}</span>
+                           <span><i class="fas fa-gas-pump"></i> {{ car.engineType }}</span>
+                           <span><i class="fas fa-road"></i> {{ car.mileage }} km</span>
+                           <span><i class="fas fa-euro-sign"></i> {{ car.price|number_format(2, ',', ' ') }}</span>
+                       </div>
+                       <p class="car-description">{{ car.description|slice(0, 100) }}...</p>
                     </div>
-                    <p class="mt-2 mb-1"><em>"{{ avis.commentaire }}"</em></p>
-                    <div class="mt-2">
-                        <a href="{{ path('app_avis_edit', {'id': avis.id}) }}" class="btn btn-primary btn-sm">
-                            <i class="fas fa-edit"></i> Modérer
-                        </a>
+                     <div class="car-image">
+                        {% if car.image %}
+                        <img style="width: 60vh;" src="{{ asset(car.image) }}" alt="{{ car.brand }} {{ car.model }}">
+                        {% else %}
+                        <img src="{{ asset('images/default-car.jpg') }}" alt="Image par défaut">
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
         </div>
-    {% else %}
-        <div class="alert alert-info">
-            <i class="fas fa-info-circle"></i> Aucun avis en attente de modération.
-        </div>
-    {% endif %}
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

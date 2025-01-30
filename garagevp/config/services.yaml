@@ -1,5 +1,5 @@
 parameters:
-
+    uploads_directory: '%kernel.project_dir%/public/uploads'
 
 services:
     # Applique des valeurs par défaut à tous les services (autowire et autoconfigure)

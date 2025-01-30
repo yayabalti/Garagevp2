@@ -21,7 +21,7 @@ class UserFixtures extends Fixture
               ->setFirstName('Vincent')
               ->setLastName('Parrot')
               ->setPassword(
-                  $this->passwordHasher->hashPassword($admin, 'armanie77')
+                  $this->passwordHasher->hashPassword($admin, 'Armanie_77')
               );
 
         $manager->persist($admin);

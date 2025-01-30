@@ -792,30 +792,134 @@ p.separation {
 
 /* ______________________ page services ___________________________________ */
 
+
+
 .full_service{
-    background-color: #ffffff;
+    background-color: #fff51a;
 }
+
+img.icone_entre_meca {
+    width: 20vh;
+    margin-left: 70vh;
+}
+.titre_meca_entre{
+     color: black;
+    margin-left: 64vh;
+    margin-bottom: 30vh;
+}
+   
+
+h3.section_meca {
+    font-size: 8vh;
+    color: black;
+    margin-left: 58vh;
+    margin-bottom: 4vh;
+}
+
+
+hr.separation_meca {
+    height: 5px;
+    background-color: black;
+    margin: 0;
+    margin-bottom: 5vh;
+}
+
+
+
+
+
+
+h3.section_entretien{
+    font-size: 8vh;
+    color: black;
+    margin-left: 63vh;
+    margin-bottom: 4vh;
+    margin-top: 34vh;
+}
+
+
+hr.separation_entretien{
+    height: 5px;
+    background-color: black;
+    margin: 0;
+    margin-bottom: 5vh;
+
+}
+
+
+
+
+
+
+
+
+
+h3.section_carrosserie {
+    font-size: 8vh;
+    color: black;
+    margin-left: 59vh;
+    margin-bottom: 5vh;
+    margin-top: -3vh;
+}
+
+
+
+img.icone_peinture {
+    width: 30vh;
+    margin-left: 68vh;
+    margin-top: 20vh;
+}
+
+hr.separation_carrosserie{
+    height: 5px;
+    background-color: black;
+    margin: 0;
+    margin-bottom: 5vh;
+}
+
+
+img.icone_vente_de_voiture {
+    width: 28vh;
+    margin-left: 66vh;
+    margin-top: 23vh;
+}
+
+h3.section_vente_voiture{
+    font-size: 8vh;
+color: black;
+margin-left: 48vh;
+margin-bottom: 5vh;
+margin-top: -3vh;
+}
+
+
+hr.separation_vente_voiture {
+    margin-bottom: 4vh;
+    height: 5px;
+    background-color: black;
+    
+}
+
+
+a#bouttton_a_deplacer {
+    margin-left: 21vh;
+}
+
+
+
+a#bouttton_voiture {
+    width: 31vh;
+    margin-left: 59vh;
+}
+
+
 .services-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-/* .category-section {
-    margin-bottom: 4rem;
-    background: white;
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    background-color: yellow;
-} */
 
-.category-section > img {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1.5rem;
-    display: block;
-}
 
 .category-section h2 {
     text-align: center;
@@ -834,15 +938,10 @@ p.separation {
     transform: translateX(-50%);
     width: 100px;
     height: 3px;
-    background-color: #fff51a; /* Votre jaune du menu */
+    background-color: #fff51a; 
 }
 
-.category-section h3 {
-    color: #404040; /* Votre gris de navbar */
-    font-size: 1.8rem;
-    margin: 2rem 0;
-    text-align: center;
-}
+
 
 .services-grid {
     display: grid;
@@ -851,12 +950,13 @@ p.separation {
 }
 
 .service-card {
-    background: white;
-    border-radius: 8px;
+    background: #ffffff00;
+    border-radius: 9px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 8px 7px 10px 0px rgb(0 0 0 / 58%);
     transition: transform 0.3s ease;
-    display: flex;
+    display: flex
+;
     flex-direction: column;
 }
 
@@ -867,7 +967,7 @@ p.separation {
 .service-card h3 {
     padding: 1.5rem;
     margin: 0;
-    color: #3c3c3c;
+    color: #000000;
     font-size: 1.4rem;
     text-align: left;
     border-bottom: 2px solid #fff51a;
@@ -876,7 +976,7 @@ p.separation {
 .service-card p {
     padding: 1.5rem;
     margin: 0;
-    color: #666;
+    color: rgb(0, 0, 0);;
     flex-grow: 1;
 }
 
@@ -890,81 +990,53 @@ p.separation {
     display: inline-block;
     padding: 0.75rem 1.5rem;
     margin: 1.5rem;
-    background-color: #404040;
-    color: white;
+    background-color: #fff51a;
+    color: rgb(0, 0, 0);
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 28px;
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
     transition: all 0.3s ease;
+    width: 21vh;
+    margin-left: 11vh;
 }
 
 .service-card .btn:hover {
-    background-color: #fff51a;
-    color: #404040;
+    background-color: black;
+    color: #ffffff;
 }
 
 /*____________________________ Footer _____________________________*/
-footer {
-    background-color: #333;
+
+.full-footer {
+    background-color: #1d1d1d;
     color: #fff;
-    padding: 20px 0;
+    
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+img.logo_footer {
+    width: 27vh;
+    position: relative;
+    margin-left: -37vh;
+    bottom: -6vh;
 }
 
-.footer-logo img {
-    height: 50px;
+
+
+/*__________ mention legale/politique de confidentialité/politique dutilisation _____________________*/
+
+/*trait de separation*/
+
+hr.trait-footer {
+    margin: 0;
 }
 
-.footer-info, .footer-schedule {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.footer-info h3, .footer-schedule h3 {
-    color: #f7f700;
-    margin-bottom: 10px;
-}
-
-.footer-info p, .footer-schedule p {
-    margin: 5px 0;
-}
-
-.footer-schedule {
-    margin-top: 20px;
-}
-
-.footer-social-media {
-    flex-basis: 100%;
-    margin-top: 20px;
-}
-
-.footer-social-media a {
-    color: #f7f700;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.footer-social-media a:hover {
+/* mention legale */
+.footer-legal a:hover {
     color: #e0e000;
 }
 
-.footer-legal {
-    flex-basis: 100%;
-    text-align: center;
-    margin-top: 20px;
-}
 
 .footer-legal a {
     color: #f7f700;
@@ -974,7 +1046,107 @@ footer {
     margin: 5px 10px;
 }
 
-.footer-legal a:hover {
-    color: #e0e000;
+
+.footer-legal {
+    flex-basis: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -2vh;
+    margin-top: 6px;
 }
 
+p.politique {
+    font-size: 61%;
+}
+
+p.condition {
+    font-size: 61%;
+}
+
+p.mention {
+    font-size: 61%;
+}
+
+
+/*________________________________ resaux sociaux __________________________________*/
+
+img.icone_fb {
+    width: 4vh;
+    height: 4vh;
+    margin-top: 3px;
+}
+
+img.icone_twitter {
+    width: 8vh;
+    height: 5vh;
+}
+
+img.icone_insta {
+    width: 6vh;
+    height: 5vh;
+    margin-bottom: 2vh;
+}
+
+.footer-media {
+    display: flex;
+    margin-left: 89vh;
+    height: 6vh;
+}
+
+/*_________________________________ info garage_____________________________________*/
+
+img.icone_email_footer {
+    width: 4vh;
+    height: 4vh;
+}
+
+
+img.icone_telephone_footer {
+    width: 5vh;
+    height: 5vh;
+    margin-left: -1%;
+}
+
+
+img.icone_adresse_footer {
+    width: 4vh;
+    height: 4vh;
+    margin-top: 1vh;
+    padding-right: 1vh;
+}
+
+
+.footer-info-garage {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.icone_adresse {
+    display: flex;
+}
+
+
+.icone_telephone {
+    display: flex;
+}
+
+
+.icone-email {
+    display: flex;
+}
+
+.num_tel {
+    margin-top: 3%;
+    margin-left: 1vh;
+}
+
+p.email {
+    margin-top: 1vh;
+    margin-left: 2vh;
+}
+
+
+.footer-a_propos {
+    font-size: 2vh;
+}
