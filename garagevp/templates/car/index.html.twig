@@ -70,7 +70,7 @@
         {% for car in cars %}
             <div class="car-card">
                 {% if car.image %}
-                    <img src="{{ asset(car.image) }}" alt="{{ car.model }}">
+                    <img src="{{ asset(car.image) }}" alt="{{ car.brand }} {{ car.model }}">
                 {% else %}
                     <img src="{{ asset('images/default-car.jpg') }}" alt="Image par défaut">
                 {% endif %}

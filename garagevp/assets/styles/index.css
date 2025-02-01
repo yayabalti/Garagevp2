@@ -1115,13 +1115,147 @@ img.img_lambo_contact {
     padding-bottom: 4vh;
 }
 
+/*______________________________ page avis visiteur______________________________________ */
+
+/* Style pour le carrousel */
+.reviews-carousel {
+    position: relative;
+    width: 100%;
+    padding: 40px 0;  /* Espace intérieur autour du carrousel */
+    overflow: hidden; /* Empêche de voir les éléments qui débordent */
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease;
+    flex-wrap: nowrap; /* Assure que tous les éléments restent sur une ligne */
+}
+
+.review-slide {
+    flex: 0 0 auto; /* Les colonnes ne rétréciront pas */
+    width: 25%; /* La largeur de chaque avis (par exemple, 25% pour 4 avis visibles) */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 10px; /* Un petit espace entre chaque avis */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.star {
+    font-size: 1.5em;
+}
+
+.star.filled {
+    color: gold;
+}
+
+/* Style pour la modal */
+
+label.required {
+    color: #e0e000;
+}
 
 
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1000;
+}
 
+.modal-content {
+    position: relative;
+    background-color: #262626;
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 15px;
+}
 
+.close-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color:#e0e000;
+}
 
+.review-button {
+    padding: 7px 8px;
+    background-color: #000;
+    color: #e0e000;
+    border: none;
+    border-radius: 11px;
+    cursor: pointer;
+    margin-left: 92vh;
+    font-size: 2vh;
+}
+
+/* Style pour le formulaire dans la modal */
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.rating-selector .stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+
+.rating-selector input {
+    display: none;
+}
+
+.rating-selector label {
+    font-size: 30px;
+    color: #ddd;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.rating-selector label:hover,
+.rating-selector label:hover ~ label,
+.rating-selector input:checked ~ label {
+    color: #ffb800;
+}
 
 /* ________________________________Footer_______________________________________________ */
+
 .full-footer {
     background-color: #1d1d1d;
     color: #fff;
@@ -1256,4 +1390,11 @@ img.icone_adresse_footer {
 p.email {
     margin-top: 1vh;
     margin-left: 2vh;
+}
+
+
+.footer-a_propos {
+    font-size: 11px;
+    margin-top: 37px;
+    margin-right: -45vh;
 }

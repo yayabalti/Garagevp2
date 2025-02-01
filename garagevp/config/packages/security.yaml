@@ -64,79 +64,12 @@
 
 
 
-
-
-
-
-# security:
-#     # Encoders (les algorithmes de hachage des mots de passe)
-#     password_hashers:
-#         App\Entity\User:
-#             algorithm: bcrypt
-#             cost: 12
-
-#     # Providers (Définir comment obtenir les utilisateurs)
-#     providers:
-#         app_user_provider:
-#             entity:
-#                 class: App\Entity\User
-#                 property: email
-
-#     # Firewalls (Régles de sécurité par URL)
-#     firewalls:
-#         # Sécuriser les routes liées à l'API avec JWT
-#         api:
-#             pattern: ^/api
-#             stateless: true
-#             provider: app_user_provider
-
-#             # Authentification par JWT via LexikJWTAuthenticationBundle
-#             jwt: ~  # Active le mécanisme JWT, pas besoin de plus de configuration ici
-
-#         # Firewall principal pour l'authentification via formulaire (web)
-#         main:
-#             lazy: true
-#             provider: app_user_provider
-#             custom_authenticator: App\Security\LoginFormAuthenticator
-#             form_login:
-#                 login_path: app_login
-#                 check_path: app_login
-#                 enable_csrf: true
-#             entry_point: form_login
-#             logout:
-#                 path: app_logout
-#                 target: app_home
-#             remember_me:
-#                 secret: '%kernel.secret%'
-#                 lifetime: 604800 # 1 semaine
-#                 secure: true
-#                 always_remember_me: true
-#             login_throttling:
-#                 max_attempts: 3
-#                 interval: '15 minutes'
-
-#     # Route access control (Contrôler les accès par rôle)
-#     access_control:
-#         # Autoriser l'accès aux routes API sans authentification pour certaines
-#         - { path: ^/api/login, roles: PUBLIC_ACCESS }
-#         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
-
-#         # Contrôler l'accès à d'autres routes (admin, etc.)
-#         - { path: ^/easyemploye/dashboard, roles: ROLE_EMPLOYE }
-#         - { path: ^/admin, roles: ROLE_ADMIN }
-
-
-
-
-
-
-
-
 security:
     # Encoders
     password_hashers:
         App\Entity\User:
-            algorithm: auto
+            algorithm: bcrypt
+            cost: 12
 
     # Providers
     providers:

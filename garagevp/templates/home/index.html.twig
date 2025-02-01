@@ -16,15 +16,15 @@
                 </div>
                 <nav class="navbar">
                     <div class="div_tel">
-                        <img class="icone_tel" src="{{ asset('images/icone_tel.png') }}" alt="Garage Auto">
+                        <img class="icone_tel" src="{{ asset('images/icone_tel.png') }}" alt="icone telephone">
                         <p class="texte_tel">01 - 40 - 56 - 89 - 78</p>
                     </div>
                     <div class="div_adresse">
-                        <img class="icone_adresse" src="{{ asset('images/icone_localisation.png') }}" alt="Garage Auto">
+                        <img class="icone_adresse" src="{{ asset('images/icone_localisation.png') }}" alt="icone adresse">
                         <p class="texte_adresse">123 Rue de l'Aube - 31400 TOULOUSE</p>
                     </div>
                     <div class="div_email">
-                        <img class="icone_email" src="{{ asset('images/icone_email.png') }}" alt="Garage Auto">
+                        <img class="icone_email" src="{{ asset('images/icone_email.png') }}" alt="icone email">
                         <p class="texte_email">Contact-garagevp@gmail.com</p>
                     </div>
                 </nav>
@@ -52,7 +52,7 @@
                     {% if is_granted('ROLE_EMPLOYE') %}
                         <li class="boutton_employe">
                             <a href="{{ path('employe_dashboard')}}" class="btn btn-primary"><i class="fas fa-user-cog me-2">
-                                <i class="fas fa-cogs"></i>Accès Employé
+                                <i class="fas fa-cogs"></i>Accès Employés
                             </a>
                             <a href="{{ path('app_logout') }}" class="boutton_deconex_employe">
                                <i class="fas fa-times"></i>
@@ -81,21 +81,21 @@
                     <div class="div_meca">
                         <img class="icone_meca" src="{{ asset('images/icone_mecanique.png') }}" alt="supercar">
                         <h1 class="sous_titre_m">Mécanique|Entretien</h1>
-                        <p class="texte_meca">Nous assurons l'entretien et la réparation de votre vehicule pour garentir sa performance et sa securité.Diagnostics précis,révisons complètes et réparations variées sont réalisés par des mécaniciens expérimentés avec des équipements modernes.Faites confiance a notre expertise pour rouler en toute sérénité</p>
+                        <p class="texte_meca">Nous assurons l'entretien et la réparation de votre véhicule pour garantir sa performance et sa securité. Diagnostics précis,révisons complètes et réparations variées sont réalisés par des mécaniciens expérimentés avec des équipements modernes. Faites confiance a notre expertise pour rouler en toute sérénité</p>
                         <a href="{{ path('app_nos_services') }}" class="button_meca">en savoir plus</a>
                     </div>
 
                     <div class="div_carrosserie">
                         <img class="icone_carrosserie" src="{{ asset('images/incon_carrosserie.png') }}" alt="supercar">
                         <h1 class="sous_titre_c">Carrosserie</h1>
-                        <p class="texte_carrosserie">Nous reparons les bosses, rayures et éléments endommagées, tout en maitrisant la peinture pour un rendu impecable.Que ce soit pour un accident , une remise a neuf ou une retouche , notre expertise garentit un travail de qualité pour redonner tout sont éclat a votre voiture</p>
+                        <p class="texte_carrosserie">Nous reparons les bosses, rayures et éléments endommagés, tout en maitrisant la peinture pour un rendu impeccable.Que ce soit pour un accident, une remise à neuf ou une retouche, notre expertise garantie un travail de qualité pour redonner tout sont éclat a votre voiture</p>
                         <a href="{{ path('app_nos_services') }}" class="button_carrosserie">en savoir plus</a>
                     </div>
 
                     <div class="div_vente_voiture">
                         <img class="icone_vente_voiture" src="{{ asset('images/icon_vente_voiture.png') }}" alt="supercar">
                         <h1 class="sous_titre_v">Vente de voiture</h1>
-                        <p class="texte_vente_voiture">Nous proposonsune selection de voitures d'occasion adaptées a tout les besions et budjets.Notre équipe vous acompagne dans le choix du véhicule idéal et vous conseille sur les obtions de financement.Faites confiance a notre expertise pour un achat en toute sérénité.</p>
+                        <p class="texte_vente_voiture">Nous proposons une selection de voitures d'occasion adaptées a tout les besions et budjets. Notre équipe vous accompagne dans le choix du véhicule idéal et vous conseille sur les options de financement. Faites confiance a notre expertise pour un achat en toute sérénité</p>
                         <a href="{{ path('car_index') }}" class="button_vente_voiture">en savoir plus</a>
                     </div>
             </div>
@@ -192,7 +192,7 @@
 
                         <div class="div_moteur"> 
                             <img class="icone_moteur" src="{{ asset('images/icone_moteur.png') }}" alt="supercar">
-                            <p class="texte_moteur">Moteur certifier et garentie</p>
+                            <p class="texte_moteur">Moteur certifier et garantie</p>
                         </div>
                         
                         <div class="div_clef"> 
@@ -209,31 +209,66 @@
                         
                         <div class="div_reparation"> 
                             <img class="icone_reparation" src="{{ asset('images/icone_reparation.png') }}" alt="supercar">
-                            <p class="texte_garentie">Réparations garentie</p>
+                            <p class="texte_garentie">Réparations garantie</p>
                         </div>
                         
                     </div>
 
-            <!-- Témoignages -->
-            <section id="testimonials">
-                <div class="container">
-                    <h2>Avis de nos clients</h2>
-                    <div class="carousel">
-                        <div class="testimonial">
-                            <p>"Excellent service, très professionnel!"</p>
-                            <p>- Client Satisfait</p>
-                        </div>
-                        <!-- Ajoute plus de témoignages ici -->
+            <!-- page avis visiteur -->
+          {# Carrousel des avis #}
+          <div class="reviews-carousel">
+    <div class="carousel-container">
+        {% for review in approvedReviews %}
+            <div class="review-slide">
+                <div class="review-content">
+                    <div class="review-stars">
+                        {% for i in 1..5 %}
+                            {% if i <= review.rating %}
+                                <span class="star filled">★</span>
+                            {% else %}
+                                <span class="star">★</span>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    <a href="{{ path('app_home') }}" class="btn">Qui sommes-nous ?</a> 
+                    <p class="review-comment">{{ review.comment }}</p>
+                    <p class="review-author">{{ review.firstname }} {{ review.lastname }}</p>
                 </div>
-            </section>
+            </div>
+        {% endfor %}
+    </div>
+    <!-- Flèches de navigation -->
+    <button class="carousel-prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="carousel-next" onclick="moveSlide(1)">&#10095;</button>
+</div>
 
-            
+            {# Bouton pour ouvrir la popup #}
+            <button class="review-button" onclick="openReviewModal()">Laisser un avis</button>
+
+            {# Modal pour le formulaire d'avis #}
+            <div id="reviewModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button" onclick="closeReviewModal()">&times;</span>
+                    {{ form_start(reviewForm, {'attr': {'class': 'review-form'}}) }}
+                        {{ form_row(reviewForm.firstname) }}
+                        {{ form_row(reviewForm.lastname) }}
+                        {{ form_row(reviewForm.email) }}
+                        <div class="rating-selector">
+                            <div class="stars">
+                                {% for i in 1..5 %}
+                                    <input type="radio" name="{{ reviewForm.rating.vars.full_name }}" id="star{{ i }}" value="{{ i }}">
+                                    <label for="star{{ i }}">★</label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {{ form_row(reviewForm.comment) }}
+                        <button type="submit" class="submit-button">Envoyer</button>
+                    {{ form_end(reviewForm) }}
+                </div>
+            </div>
         </main>
 
         <!-- Footer -->
-        {% block footer %}
+          {% block footer %}
                 <footer>
                 
                     <div class="full-footer">
@@ -270,11 +305,14 @@
                             <p class="condition"><a href="{{ path('app_conditions_utilisation') }}">Condition d'utilisation</a></p>
                         </div>
                     </div>
-            </footer>
-        {% endblock %}
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-        <script src="{{ asset('js/firebase-config.js') }}"></script>
-        <script src="{{ asset('js/contact.js') }}"></script>
+                </footer>
+          {% endblock %}
+            {# stokage de message firebase via le formulaire de contact #}
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+            <script src="{{ asset('js/firebase-config.js') }}"></script>
+            <script src="{{ asset('js/contact.js') }}"></script>
+            {# pop up page avis  #}
+            <script src="{{ asset('js/review.js') }}"></script>
     </body>
 </html>

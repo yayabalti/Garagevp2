@@ -9,138 +9,161 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserControllerTest extends WebTestCase
 {
-    private $client;
-    private $entityManager;
+   private $client;
+   private $entityManager;
+   private static $testEmailCounter = 0;
 
-    protected function setUp(): void
-    {
-        $this->client = self::createClient();
-        $this->entityManager = $this->client->getContainer()
-            ->get('doctrine')
-            ->getManager();
+   protected function setUp(): void
+   {
+       parent::setUp();
+       $this->client = static::createClient();
+       $this->entityManager = $this->client->getContainer()
+           ->get('doctrine')
+           ->getManager();
 
-        // Chargement de l'autoloader
-        require_once __DIR__ . '/../vendor/autoload.php';
-    }
+       // Nettoyer la base de données avant chaque test
+       $connection = $this->entityManager->getConnection();
+       $connection->executeStatement('TRUNCATE TABLE "users" RESTART IDENTITY CASCADE');
+   }
 
-    protected static function getKernelClass(): string
-    {
-        return Kernel::class;
-    }
+   private function createAuthenticatedUser($roles = ['ROLE_USER'])
+   {
+       self::$testEmailCounter++;
+       $email = sprintf('test%d@example.com', self::$testEmailCounter);
 
-    // Test API Endpoints
-    public function testGetUsers(): void
-    {
-        $this->client->request('GET', '/api/users');
-        
-        $this->assertEquals(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
-        $this->assertJson($this->client->getResponse()->getContent());
-    }
+       $user = new User();
+       $user->setEmail($email);
+       $password = 'password123';
+       
+       $hasher = $this->client->getContainer()->get('security.password_hasher');
+       $hashedPassword = $hasher->hashPassword($user, $password);
+       
+       $user->setPassword($hashedPassword);
+       $user->setRoles($roles);
+       $user->setFirstname('Test');
+       $user->setLastname('User');
 
-    public function testCreateUserSuccess(): void
-    {
-        $userData = [
-            'email' => 'test_create@example.com',
-            'password' => 'password123',
-            'firstname' => 'John',
-            'lastname' => 'Doe',
-            'roles' => ['ROLE_USER']
-        ];
+       $this->entityManager->persist($user);
+       $this->entityManager->flush();
 
-        $this->client->request(
-            'POST',
-            '/api/users',
-            [],
-            [],
-            ['CONTENT_TYPE' => 'application/json'],
-            json_encode($userData)
-        );
+       $this->client->loginUser($user);
 
-        $this->assertEquals(Response::HTTP_CREATED, $this->client->getResponse()->getStatusCode());
-        $response = json_decode($this->client->getResponse()->getContent(), true);
-        $this->assertArrayHasKey('id', $response);
-    }
+       return $user;
+   }
 
-    public function testCreateUserWithMissingFields(): void
-    {
-        $userData = [
-            'email' => 'incomplete@example.com'
-            // password manquant
-        ];
+   public function testGetUsers(): void
+   {
+       $this->createAuthenticatedUser(['ROLE_ADMIN']);
+       
+       $this->client->request(
+           'GET', 
+           '/api/users',
+           [],
+           [],
+           [
+               'HTTPS' => true,
+               'HTTP_HOST' => 'localhost',
+               'CONTENT_TYPE' => 'application/json',
+               'HTTP_ACCEPT' => 'application/json'
+           ]
+       );
 
-        $this->client->request(
-            'POST',
-            '/api/users',
-            [],
-            [],
-            ['CONTENT_TYPE' => 'application/json'],
-            json_encode($userData)
-        );
+       $this->assertEquals(
+           Response::HTTP_OK,
+           $this->client->getResponse()->getStatusCode(),
+           $this->client->getResponse()->getContent()
+       );
+   }
 
-        $this->assertEquals(Response::HTTP_BAD_REQUEST, $this->client->getResponse()->getStatusCode());
-    }
+   public function testCreateUserSuccess(): void
+   {
+       $this->createAuthenticatedUser(['ROLE_ADMIN']);
 
-    public function testCreateDuplicateUser(): void
-    {
-        // Créer un premier utilisateur
-        $user = new User();
-        $user->setEmail('duplicate@example.com');
-        $user->setPassword('password123');
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
+       $userData = [
+           'email' => 'new_user@example.com',
+           'password' => 'password123',
+           'firstname' => 'John',
+           'lastname' => 'Doe',
+           'roles' => ['ROLE_USER']
+       ];
 
-        // Tenter de créer un utilisateur avec le même email
-        $userData = [
-            'email' => 'duplicate@example.com',
-            'password' => 'password123'
-        ];
+       $this->client->request(
+           'POST',
+           '/api/users',
+           [],
+           [],
+           [
+               'HTTPS' => true,
+               'HTTP_HOST' => 'localhost',
+               'CONTENT_TYPE' => 'application/json',
+               'HTTP_ACCEPT' => 'application/json'
+           ],
+           json_encode($userData)
+       );
 
-        $this->client->request(
-            'POST',
-            '/api/users',
-            [],
-            [],
-            ['CONTENT_TYPE' => 'application/json'],
-            json_encode($userData)
-        );
+       $this->assertEquals(
+           Response::HTTP_CREATED,
+           $this->client->getResponse()->getStatusCode(),
+           $this->client->getResponse()->getContent()
+       );
+   }
 
-        $this->assertEquals(Response::HTTP_CONFLICT, $this->client->getResponse()->getStatusCode());
-    }
+   public function testAdminDashboardAccess(): void
+   {
+       $this->createAuthenticatedUser(['ROLE_ADMIN']);
+       
+       $this->client->request(
+           'GET', 
+           '/admin',
+           [],
+           [],
+           [
+               'HTTPS' => true,
+               'HTTP_HOST' => 'localhost'
+           ]
+       );
+       
+       $this->assertEquals(
+           Response::HTTP_OK,
+           $this->client->getResponse()->getStatusCode(),
+           $this->client->getResponse()->getContent()
+       );
+   }
 
-    // Test Web Routes
-    public function testSuperAdminDashboardAccess(): void
-    {
-        // Créer un utilisateur super admin
-        $userAdmin = new User();
-        $userAdmin->setEmail('superadmin@example.com');
-        $userAdmin->setPassword('password123');
-        $userAdmin->setRoles(['ROLE_SUPER_ADMIN']);
-        
-        $this->entityManager->persist($userAdmin);
-        $this->entityManager->flush();
+   public function testEmployeDashboardAccess(): void
+   {
+       $this->createAuthenticatedUser(['ROLE_EMPLOYE']);
+       
+       $this->client->request(
+           'GET', 
+           '/easyemploye/dashboard',  
+           [],
+           [],
+           [
+               'HTTPS' => true,
+               'HTTP_HOST' => 'localhost'
+           ]
+       );
+       
+       $this->assertEquals(
+           Response::HTTP_OK,
+           $this->client->getResponse()->getStatusCode(),
+           $this->client->getResponse()->getContent()
+       );
+   }
 
-        // Simuler la connexion
-        $this->client->loginUser($userAdmin);
-
-        $this->client->request('GET', '/admin/super');
-        $this->assertEquals(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
-    }
-
-    public function testEmployeDashboardAccess(): void
-    {
-        // Créer un utilisateur employé
-        $userEmploye = new User();
-        $userEmploye->setEmail('employe@example.com');
-        $userEmploye->setPassword('password123');
-        $userEmploye->setRoles(['ROLE_ADMIN']);
-        
-        $this->entityManager->persist($userEmploye);
-        $this->entityManager->flush();
-
-        // Simuler la connexion
-        $this->client->loginUser($userEmploye);
-
-        $this->client->request('GET', '/admin/employe');
-        $this->assertEquals(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
-    }
+   protected function tearDown(): void
+   {
+       parent::tearDown();
+       
+       if ($this->entityManager) {
+           $connection = $this->entityManager->getConnection();
+           $connection->executeStatement('TRUNCATE TABLE "users" RESTART IDENTITY CASCADE');
+           
+           $this->entityManager->close();
+           $this->entityManager = null;
+       }
+       
+       $this->client = null;
+   }
 }

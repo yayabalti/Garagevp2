@@ -1,4 +1,40 @@
+#  easy_admin:
+#      design:
+#          use_pretty_urls: true
+#      entities:
+#          Car:
+#              class: App\Entity\Car
+#              controller: App\Controller\Admin\CarCrudController
+#              label: 'Voitures'
+#              list:
+#                  title: 'Liste des Voitures'
+#                  filters:
+#                      - { property: 'brand', label: 'Marque', type: 'choice', choices: 
+#                          {'Peugeot': 'Peugeot', 'Renault': 'Renault', 'Audi': 'Audi', 'BMW': 'BMW', 'Mercedes': 'Mercedes'} }
+#                      - { property: 'engineType', label: 'Type de carburant', type: 'choice', choices: 
+#                          {'Diesel': 'diesel', 'Essence': 'essence'} }
+#                      - { property: 'year', label: 'Année de mise en circulation' }
+#                      - { property: 'mileage', label: 'Kilométrage' }
+#                      - { property: 'price', label: 'Prix' }
+#              form:
+#                  fields:
+#                      - { property: 'model', label: 'Modèle' }
+#                      - { property: 'brand', label: 'Marque' }
+#                      - { property: 'year', label: 'Année' }
+#                      - { property: 'engineType', label: 'Type de carburant' }
+#                      - { property: 'mileage', label: 'Kilométrage' }
+#                      - { property: 'price', label: 'Prix' }
+#                      - { property: 'image', label: 'Image' }
+#                      - { property: 'description', label: 'Description' }
+#              security:
+#                  roles:
+#                      - ROLE_EMPLOYE
+
+
 easy_admin:
+    design:
+        use_pretty_urls: true
+
     entities:
         Car:
             class: App\Entity\Car
@@ -14,6 +50,9 @@ easy_admin:
                     - { property: 'year', label: 'Année de mise en circulation' }
                     - { property: 'mileage', label: 'Kilométrage' }
                     - { property: 'price', label: 'Prix' }
+                security:
+                    roles:
+                        - ROLE_EMPLOYE
             form:
                 fields:
                     - { property: 'model', label: 'Modèle' }
@@ -27,6 +66,35 @@ easy_admin:
             security:
                 roles:
                     - ROLE_EMPLOYE
+
+        Review:
+            class: App\Entity\Review
+            controller: App\Controller\EmployeReviewCrudController
+            label: 'Avis'
+            list:
+                title: 'Liste des Avis'
+                filters:
+                    - { property: 'firstname', label: 'Prénom' }
+                    - { property: 'lastname', label: 'Nom' }
+                    - { property: 'email', label: 'E-mail' }
+                    - { property: 'createdAt', label: 'Date de création' }
+                    - { property: 'approved', label: 'Approuvé' }
+                security:
+                    roles:
+                        - ROLE_EMPLOYE
+            form:
+                fields:
+                    - { property: 'firstname', label: 'Prénom' }
+                    - { property: 'lastname', label: 'Nom' }
+                    - { property: 'email', label: 'E-mail' }
+                    - { property: 'rating', label: 'Note' }
+                    - { property: 'comment', label: 'Commentaire' }
+                    - { property: 'approved', label: 'Approuvé' }
+                    - { property: 'createdAt', label: 'Date de création' }
+            security:
+                roles:
+                    - ROLE_EMPLOYE
+
     
 
 

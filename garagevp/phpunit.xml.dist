@@ -17,7 +17,7 @@
         <server name="SYMFONY_PHPUNIT_VERSION" value="9.5" />
         <env name="KERNEL_CLASS" value="App\Kernel"/>
         <!-- Configuration de la base de données PostgreSQL pour les tests -->
-        <env name="DATABASE_URL" value="postgresql://postgres:armanie@127.0.0.1:5433/garagevp_test?serverVersion=13&amp;charset=utf8"/>
+        <env name="DATABASE_URL" value="postgresql://postgres:armanie@localhost:5433/garagevp_test?serverVersion=13&amp;charset=utf8"/>
     </php>
 
     <testsuites>

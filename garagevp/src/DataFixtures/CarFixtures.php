@@ -32,7 +32,7 @@ class CarFixtures extends Fixture
             $car = new Car();
             $car->setModel($data['model'])
                 ->setbrand($data['brand'])
-                ->setYear(rand(1900, 2025)) // Génère une année entre 2005 et 2023
+                ->setYear(rand(2010, 2025)) // Génère une année entre 2005 et 2023
                 ->setEngineType($engineTypes[array_rand($engineTypes)]) // Associe un type de carburant aléatoire
                 ->setMileage(rand(5000, 300000)) // Génère un kilométrage entre 5 000 et 200 000
                 ->setPrice(rand(5000, 50000)) // Génère un prix entre 5 000 € et 50 000 €
