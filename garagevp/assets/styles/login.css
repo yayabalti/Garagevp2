@@ -267,8 +267,8 @@ main {
 img.logo_footer {
     width: 27vh;
     position: relative;
-    margin-left: -37vh;
-    bottom: -6vh;
+    margin-left: -29vh;
+    bottom: -4vh;
 }
 
 
@@ -321,25 +321,25 @@ p.mention {
 /*________________________________ resaux sociaux __________________________________*/
 
 img.icone_fb {
-    width: 6vh;
-    height: 6vh;
+    width: 5vh;
+    height: 5vh;
     margin-top: 3px;
 }
 
 img.icone_twitter {
-    width: 11vh;
-    height: 7vh;
+    width: 10vh;
+    height: 6vh;
 }
 
 img.icone_insta {
-    width: 8vh;
-    height: 7vh;
+    width: 7vh;
+    height: 6vh;
     margin-bottom: 2vh;
 }
 
 .footer-media {
     display: flex;
-    margin-left: 89vh;
+    margin-top: 11vh;
 }
 
 /*_________________________________ info garage_____________________________________*/
@@ -392,4 +392,18 @@ img.icone_adresse_footer {
 p.email {
     margin-top: 1vh;
     margin-left: 2vh;
+}
+
+
+.footer-a_propos {
+    font-size: 73%;
+    margin-top: 37px;
+    width: 34vh;
+    margin-left: -16vh;
+}
+
+.footer-horaires {
+    margin-top: 37px;
+    font-size: 73%;
+   
 }

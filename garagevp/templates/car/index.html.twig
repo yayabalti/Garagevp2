@@ -6,6 +6,24 @@
         <title>{% block title %}voiture{% endblock %}</title>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('styles/car.css') }}">
+        <!-- Balises SEO -->
+        <title>Voitures d'occasion - Garage V.P</title>
+        <meta name="description" content="Découvrez nos voitures d'occasion à vendre chez Garage V.P. Trouvez la voiture idéale parmi nos modèles récents et bien entretenus.">
+        <meta name="keywords" content="voitures d'occasion, achat voiture, vente auto, garage V.P, voitures récentes">
+        <meta name="author" content="Garage V.P">
+
+        <!-- Balises Open Graph (Facebook, LinkedIn) -->
+        <meta property="og:title" content="Voitures d'occasion - Garage V.P">
+        <meta property="og:description" content="Parcourez notre sélection de voitures d'occasion à vendre chez Garage V.P. Qualité et prix compétitifs !">
+        <meta property="og:image" content="{{ asset('images/logo.png') }}">
+        <meta property="og:url" content="https://www.garagevp.fr/voitures">
+        <meta property="og:type" content="website">
+
+        <!-- Balises Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Voitures d'occasion - Garage V.P">
+        <meta name="twitter:description" content="Trouvez votre voiture idéale parmi notre sélection d'occasions récentes et bien entretenues.">
+        <meta name="twitter:image" content="{{ asset('images/logo.png') }}">
     </head>
 
     <body>
@@ -66,13 +84,17 @@
     </div>
 
     {# Liste des voitures #}
+    <div class="car-cards-container">
     {% if cars is defined and cars|length > 0 %}
         {% for car in cars %}
             <div class="car-card">
                 {% if car.image %}
-                    <img src="{{ asset(car.image) }}" alt="{{ car.brand }} {{ car.model }}">
-                {% else %}
-                    <img src="{{ asset('images/default-car.jpg') }}" alt="Image par défaut">
+                    {# Gestion des différents formats de chemins #}
+                {% set imagePath = car.image starts with 'uploads/' ? car.image : 'uploads/' ~ car.image %}
+                
+                <img src="{{ asset(imagePath) }}" alt="{{ car.brand }} {{ car.model }}">
+            {% else %}
+                <img src="{{ asset('uploads/default-car.jpg') }}" alt="Image par défaut">
                 {% endif %}
                 <div class="car-card-content">
                     <h3>{{ car.model }} ({{ car.year }})</h3>
@@ -88,6 +110,7 @@
     {% else %}
         <p>Aucune voiture disponible pour le moment.</p>
     {% endif %}
+    </div>
 {% endblock %}
         </main>
             {% block footer %}
@@ -114,12 +137,13 @@
                                 <p>de 8h a 21h</p>
                                 <p>samedi de 9h a 19h</p>
                             </div>
-                        </div>    
                             <div class="footer-media">
                                 <img class="icone_fb" src="{{ asset('images/icone_fb.png') }}" alt="Garage Auto">
                                 <img class="icone_twitter" src="{{ asset('images/icone_twitter.png') }}" alt="Garage Auto">
                                 <img class="icone_insta" class src="{{ asset('images/icone_insta.png') }}" alt="Garage Auto">
                             </div>
+                        </div>    
+                            
                             <hr class="trait-footer">
                         <div class="footer-legal">
                             <p class="mention"><a href="{{ path('app_mention_legale') }}">Mentions légales</a></p>

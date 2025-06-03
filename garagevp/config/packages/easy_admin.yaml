@@ -44,7 +44,7 @@ easy_admin:
                 title: 'Liste des Voitures'
                 filters:
                     - { property: 'brand', label: 'Marque', type: 'choice', choices: 
-                        {'Peugeot': 'Peugeot', 'Renault': 'Renault', 'Audi': 'Audi', 'BMW': 'BMW', 'Mercedes': 'Mercedes'} }
+                        {'Peugeot': 'Peugeot', 'Renault': 'Renault', 'Audi': 'Audi', 'BMW': 'BMW', 'Mercedes': 'Mercedes', 'Seat': 'Seat'} }
                     - { property: 'engineType', label: 'Type de carburant', type: 'choice', choices: 
                         {'Diesel': 'diesel', 'Essence': 'essence'} }
                     - { property: 'year', label: 'Année de mise en circulation' }
@@ -94,6 +94,11 @@ easy_admin:
             security:
                 roles:
                     - ROLE_EMPLOYE
+                    
+
+    security:
+        roles:
+            - ROLE_ADMIN                
 
     
 

@@ -5,6 +5,24 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>{% block title %}Nos services{% endblock %}</title>
             <link rel="stylesheet" href="{{ asset('styles/nos_services.css') }}">
+            {# Balises SEO #}
+            <title>garagevp</title>
+            <meta name="description" content="{% block meta_description %}Garage VP - Votre expert automobile pour l'entretien, la réparation et la vente de véhicules d'occasion{% endblock %}">
+            <meta name="keywords" content="{% block meta_keywords %}garage, mécanique, entretien, réparation, carrosserie, vente de voiture{% endblock %}">
+            <meta name="author" content="Garage VP">
+            
+            {# Balises Open Graph (Facebook) #}
+            <meta property="og:title" content="{% block og_title %}Garage VP - Entretien et Vente de Véhicules{% endblock %}">
+            <meta property="og:description" content="{% block og_description %}Nous assurons l'entretien, la réparation et la vente de véhicules d'occasion à Toulouse{% endblock %}">
+            <meta property="og:image" content="{% block og_image %}{{ asset('images/logo.png') }}{% endblock %}">
+            <meta property="og:url" content="{{ app.request.uri }}">
+            <meta property="og:type" content="website">
+
+            {# Balises Twitter Card #}
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:title" content="{% block twitter_title %}Garage VP - Votre expert automobile{% endblock %}">
+            <meta name="twitter:description" content="{% block twitter_description %}Entretien, réparation et vente de voitures d'occasion à Toulouse{% endblock %}">
+            <meta name="twitter:image" content="{% block twitter_image %}{{ asset('images/logo.png') }}{% endblock %}">
         </head>
 
     <body>
@@ -195,12 +213,13 @@
                                 <p>de 8h a 21h</p>
                                 <p>samedi de 9h a 19h</p>
                             </div>
-                        </div>    
                             <div class="footer-media">
                                 <img class="icone_fb" src="{{ asset('images/icone_fb.png') }}" alt="Garage Auto">
                                 <img class="icone_twitter" src="{{ asset('images/icone_twitter.png') }}" alt="Garage Auto">
                                 <img class="icone_insta" class src="{{ asset('images/icone_insta.png') }}" alt="Garage Auto">
                             </div>
+                        </div>    
+                            
                             <hr class="trait-footer">
                         <div class="footer-legal">
                             <p class="mention"><a href="{{ path('app_mention_legale') }}">Mentions légales</a></p>

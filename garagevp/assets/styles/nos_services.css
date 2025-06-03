@@ -1,625 +1,4 @@
 
-/* _________________________________version de base_____________________________________ */
-
-/* body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-} */
-
-
-
-/*___________________ nav barr (gris)_______________________ */
-
-/* nav.navbar {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.navbar{
-    background-color: #404040;
-    padding: 1em;
-    position: relative;
-    clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 5% 0%);
-    width: 1269px;
-    height: 6vh;
-    margin-left: 14%;
-} */
-
-
-
-/*______________________ tel_____________________________ */
-
-/* img.icone_tel {
-    width: 7vh;
-    height: 7vh;
-    padding-right: 3vh;
-}
-
-.div_tel {
-    display: flex;
-    align-items: center;
-    width: 45%;
-    margin-left: 4%;
-}
-
-.texte_tel{
-    color: white;
-}  */
-
-
-
-/*____________________ email___________________ */
-
-/* img.icone_email {
-    width: 6vh;
-    height: 6vh;
-    padding-right: 3vh;
-}
-
-.div_email {
-    display: flex;
-    align-items: center;
-    width: 42%;
-}
-
-.texte_email{
-    color: white;
-} */
-
-
-/*____________________adresse___________________ */
-
- /* img.icone_adresse {
-    width: 6vh;
-    height: 6vh;
-    padding-right: 3vh;
-}
-
-.div_adresse {
-    display: flex;
-    align-items: center;
-    width: 50%;
-}
-
-.texte_adresse{
-    color: white;
-    margin-right: 0vh;
-} */
-
-
-
-
-/*_________________ logo_________________ */
-/* 
-.logo{
-    width: 26vh;
-    position: absolute;
-    bottom: 79vh;
-    left: 1vh;
-    z-index: -1;
-} */
-
-
-
-/*___________________ menu nav____________________ */
-
-
-/* .menu {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #fff51a;
-    height: 6vh;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-size: inherit;
-}
-
-.item {
-    transition: transform 0.3s ease;
-}
-
-.item:hover {
-    transform: scale(1.2);
-}
-
-p.separation {
-    font-weight: 900;
-    color: rgb(0, 0, 0);
-    margin-right: 0px;
-} */
-
-
-/*____________________________ Carousel d'image _____________________________*/
-
-
-/* .opacity {
-    background-color: rgb(0 0 0 / 64%);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0vh;
-}
-
-
-
-
-
-.titre {
-    color: #FFD700;
-    font-size: 8vh;
-    position: absolute;
-    top: 18vh;
-    left: 77vh;
-}
-
-
-.hero {
-    position: relative;
-    height: 60vh;
-    overflow: hidden;
-}
-
-.carousel-wrapper {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.carousel-slides {
-    width: 100%;
-    height: 100%;
-}
-
-.carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    object-fit: cover;
-    display: none;
-}
-
-.carousel-slide.active {
-    opacity: 1;
-    display: block;
-}  */
-
-/*____________________________ Footer _____________________________*/
-
-
-/* footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.footer-logo img {
-    height: 50px;
-}
-
-.footer-info p {
-    margin: 5px 0;
-}
-
-.footer-social-media a {
-    color: #f7f700;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.footer-social-media a:hover {
-    color: #e0e000;
-}
-
-.footer-legal {
-    text-align: right;
-}
-
-.footer-legal a {
-    color: #f7f700;
-    text-decoration: none;
-    font-weight: bold;
-    display: block;
-    margin: 5px 0;
-}
-
-.footer-legal a:hover {
-    color: #e0e000;
-}  */
-
-/* Background Patterns */
- /* body::before {
-    content: '';
-    position: absolute;
-    color: black;
-    z-index: -1;
-}  */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ____________________version ramsterisé abec la parite nos service _____________________________ */
-
-
-/* body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-} */
-
-/*___________________ nav barr (gris)_______________________ */
-
-/* nav.navbar {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.navbar{
-    background-color: #404040;
-    padding: 1em;
-    position: relative;
-    clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 5% 0%);
-    width: 1269px;
-    height: 6vh;
-    margin-left: 14%;
-} */
-
-/*______________________ tel_____________________________ */
-
-/* img.icone_tel {
-    width: 7vh;
-    height: 7vh;
-    padding-right: 3vh;
-}
-
-.div_tel {
-    display: flex;
-    align-items: center;
-    width: 45%;
-    margin-left: 4%;
-}
-
-.texte_tel{
-    color: white;
-} */
-
-/*____________________ email___________________ */
-
-/* img.icone_email {
-    width: 6vh;
-    height: 6vh;
-    padding-right: 3vh;
-}
-
-.div_email {
-    display: flex;
-    align-items: center;
-    width: 42%;
-}
-
-.texte_email{
-    color: white;
-} */
-
-/*____________________adresse___________________ */
-
-/* img.icone_adresse {
-    width: 6vh;
-    height: 6vh;
-    padding-right: 3vh;
-}
-
-.div_adresse {
-    display: flex;
-    align-items: center;
-    width: 50%;
-}
-
-.texte_adresse{
-    color: white;
-    margin-right: 0vh;
-} */
-
-/*_________________ logo_________________ */
-
-/* .logo{
-    width: 26vh;
-    position: absolute;
-    bottom: 79vh;
-    left: 1vh;
-    z-index: -1;
-} */
-
-/*___________________ menu nav____________________ */
-
-/* .menu {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #fff51a;
-    height: 6vh;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-size: inherit;
-}
-
-.item {
-    transition: transform 0.3s ease;
-}
-
-.item:hover {
-    transform: scale(1.2);
-}
-
-p.separation {
-    font-weight: 900;
-    color: rgb(0, 0, 0);
-    margin-right: 0px;
-} */
-
-/*____________________________ Carousel d'image _____________________________*/
-
-/* .opacity {
-    background-color: rgb(0 0 0 / 64%);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0vh;
-}
-
-.titre {
-    color: #FFD700;
-    font-size: 8vh;
-    position: absolute;
-    top: 18vh;
-    left: 77vh;
-}
-
-.hero {
-    position: relative;
-    height: 60vh;
-    overflow: hidden;
-}
-
-.carousel-wrapper {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.carousel-slides {
-    width: 100%;
-    height: 100%;
-}
-
-.carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    object-fit: cover;
-    display: none;
-}
-
-.carousel-slide.active {
-    opacity: 1;
-    display: block;
-} */
-
-
-
-
-
-
-/* ______________________ page services ___________________________________ */
-
-/* .services-container {
-    padding: 2rem;
-}
-
-.category-section {
-    margin-bottom: 3rem;
-}
-
-.category-section h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.service-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.service-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.service-card h3 {
-    padding: 1rem;
-    margin: 0;
-}
-
-.service-card p {
-    padding: 0 1rem;
-    margin-bottom: 1rem;
-}
-
-.service-card .btn {
-    display: block;
-    margin: 1rem;
-    padding: 0.5rem 1rem;
-    text-align: center;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-} */
-
-
-
-
-
-/*____________________________ Footer _____________________________*/
-
-/* footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.footer-logo img {
-    height: 50px;
-}
-
-.footer-info, .footer-schedule {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.footer-info h3, .footer-schedule h3 {
-    color: #f7f700;
-    margin-bottom: 10px;
-}
-
-.footer-info p, .footer-schedule p {
-    margin: 5px 0;
-}
-
-.footer-schedule {
-    margin-top: 20px;
-}
-
-.footer-social-media {
-    flex-basis: 100%;
-    margin-top: 20px;
-}
-
-.footer-social-media a {
-    color: #f7f700;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.footer-social-media a:hover {
-    color: #e0e000;
-}
-
-.footer-legal {
-    flex-basis: 100%;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.footer-legal a {
-    color: #f7f700;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    margin: 5px 10px;
-}
-
-.footer-legal a:hover {
-    color: #e0e000;
-} */
-
-
-
-
-
-
-/* _________________________________version statique remasterisé______________________________________  */
-
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -1018,8 +397,8 @@ a#bouttton_voiture {
 img.logo_footer {
     width: 27vh;
     position: relative;
-    margin-left: -37vh;
-    bottom: -6vh;
+    margin-left: -29vh;
+    bottom: -4vh;
 }
 
 
@@ -1072,26 +451,25 @@ p.mention {
 /*________________________________ resaux sociaux __________________________________*/
 
 img.icone_fb {
-    width: 4vh;
-    height: 4vh;
+    width: 5vh;
+    height: 5vh;
     margin-top: 3px;
 }
 
 img.icone_twitter {
-    width: 8vh;
-    height: 5vh;
+    width: 10vh;
+    height: 6vh;
 }
 
 img.icone_insta {
-    width: 6vh;
-    height: 5vh;
+    width: 7vh;
+    height: 6vh;
     margin-bottom: 2vh;
 }
 
 .footer-media {
     display: flex;
-    margin-left: 89vh;
-    height: 6vh;
+    margin-top: 11vh;
 }
 
 /*_________________________________ info garage_____________________________________*/
@@ -1148,5 +526,397 @@ p.email {
 
 
 .footer-a_propos {
-    font-size: 2vh;
+    font-size: 73%;
+    margin-top: 37px;
+    width: 34vh;
+    margin-left: -16vh;
+}
+
+.footer-horaires {
+    margin-top: 37px;
+    font-size: 73%;
+   
+}
+
+
+/* _______________________________responsive_______________________________________ */
+
+
+@media screen and (max-width: 768px) {
+
+
+    /* Global Responsive Adjustments */
+    body {
+        font-size: 14px;
+    }
+
+
+
+
+    /* Header and Navigation */
+    .header-container {
+        flex-direction: column;
+    }
+
+    .logo {
+        width: 14vh;
+        position: absolute;
+        bottom: 87vh;
+        left: -1vh;
+        z-index: 0;
+    }
+
+    .navbar {
+        width: 300px !important;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px !important;
+        clip-path: none !important;
+        margin-left: 0 !important;
+    }
+
+    .navbar div {
+        margin: 5px 0;
+        width: 100% !important;
+        justify-content: center;
+    }
+
+    .menu {
+        flex-direction: column;
+        height: auto !important;
+        margin-left: -6vh;
+    }
+
+    .menu .item {
+        margin: 10px 0;
+    }
+
+    .menu .separation {
+        display: none;
+    }
+
+
+
+
+
+    /* Hero Section */
+    section.hero {
+        height: 31vh;
+        position: relative;
+    }
+
+    .skyline_img {
+        height: 50vh;
+        object-fit: cover;
+    }
+
+    .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .titre_header {
+        font-size: 2vh !important;
+        text-align: center;
+        left: 50% !important;
+        transform: translateX(-50%);
+        width: 46vh;
+        margin-bottom: 17vh;
+    }
+
+    .logo_main {
+        width: 50% !important;
+        position: static !important;
+        margin: 0 auto;
+        margin-top: 25vh;
+    }
+
+    .hero .opacity {
+        background-color: #0000008c;
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        height: 206px;
+        bottom: -4px;
+    }
+
+
+    img.icone_email {
+        width: 3vh;
+        height: 3vh;
+        padding-right: 1vh;
+        margin-left: 21vh;
+    }
+
+
+    .texte_email {
+        
+        margin-left: 0%;
+        font-size: 9px;
+    }
+
+    nav.navbar {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+        clip-path: none;
+        height: auto;
+    }
+
+    .menu {
+        flex-direction: row;
+        height: auto;
+        padding: 1em 0;
+    }
+
+    .menu .item {
+        margin: 0.5em 0;
+    }
+
+
+
+
+    /* Logo */
+    .logo {
+        width: 105px;
+        position: relative;
+        bottom: 11vh;
+        left: -15vh;
+        margin: 0;
+    }
+
+
+
+
+
+    /* Header */
+    .hero {
+        height: auto;
+    }
+
+    .titre_header {
+        font-size: 4vh;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        text-align: center;
+        padding: 1em;
+    }
+
+    .logo_main {
+        width: 80%;
+        position: relative;
+        bottom: auto;
+        left: auto;
+        margin: 1em auto;
+    }
+
+
+
+
+
+    /* Services */
+    .services-container {
+        padding: 1em;
+    }
+
+    .services-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .service-card {
+        width: 100%;
+        margin: 1em 0;
+    }
+
+
+
+
+    /* Contact Form */
+    .contact-section {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .contact-form {
+        width: 90%;
+        margin: 1em auto;
+        padding: 1em;
+    }
+
+    .img_lambo_contact {
+        width: 100%;
+        height: auto;
+    }
+
+
+
+
+    /* Footer */
+    .full-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-info-garage {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-a_propos, .footer-horaires {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-media {
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo_footer {
+        position: static !important;
+        margin: 0 auto !important;
+    }
+
+    .footer-legal {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-legal p {
+        margin: 10px 0;
+    }
+
+
+
+
+    /* Full Services Section */
+
+    .service-card .btn {
+        margin-left: 9vh;
+    }
+
+
+    .full_service {
+        flex-direction: column;
+    }
+
+    .titre_meca_entre{
+        text-align: center;
+        margin-left: 0;
+    }
+
+    h3.section_vente_voiture {
+        font-size: 3vh;
+        color: black;
+        margin-left: 11vh;
+        margin-bottom: 5vh;
+        margin-top: -3vh;
+    }
+
+    a#bouttton_voiture {
+        width: 31vh;
+        margin-left: 3vh;
+    }
+
+    h3.section_carrosserie {
+        font-size: 4vh;
+        color: black;
+        margin-left: 11vh;
+        margin-bottom: 2vh;
+        margin-top: -2vh;
+    }
+
+    h3.section_meca {
+        font-size: 4vh;
+        color: black;
+        margin-left: 11vh;
+        margin-bottom: 4vh;
+    }
+
+    h3.section_entretien {
+        font-size: 5vh;
+        color: black;
+        margin-left: 11vh;
+        margin-bottom: 4vh;
+        margin-top: 22vh;
+    }
+
+    img.icone_entre_meca{
+        padding-left: 0;
+        display: block;
+        width: 11vh;
+        margin-left: 17vh;
+    }
+
+    img.icone_vente_de_voiture {
+        width: 18vh;
+        margin-left: 14vh;
+        margin-top: 23vh;
+    }
+
+    img.icone_peinture {
+        width: 21vh;
+        margin-left: 14vh;
+        margin-top: 18vh;
+    }
+
+    /* Buttons */
+    .btn {
+        display: block;
+        width: 80%;
+        margin: 1em auto;
+        text-align: center;
+    }
+
+    /* Review Section */
+    .review-slide {
+        width: 100%;
+    }
+
+    a#bouttton_a_deplacer {
+        margin-left: 8vh;
+    }
+
+    .review-button {
+        margin: 1em auto;
+        display: block;
+    }
+
+    /* Modal */
+    .modal-content {
+        width: 95%;
+        margin: 2.5% auto;
+    }
+
+    /* Contact Info */
+    .div_email {
+        width: 100%;
+        justify-content: center;
+        margin: 0.5em 0;
+    }
+
+    .div_adresse{
+        display: none;
+    }
+
+    .div_tel{
+        display: none;
+    }
+
+    /* Carousel */
+    .carousel-wrapper {
+        height: auto;
+    }
+
+    .carousel-slides img {
+        width: 100%;
+        height: auto;
+    }
+
 }

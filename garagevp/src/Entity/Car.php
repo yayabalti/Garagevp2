@@ -15,8 +15,9 @@ class Car
 {
     
     #[ORM\Id]
-    #[ORM\GeneratedValue]
     #[ORM\Column(type: "integer")]
+    #[ORM\GeneratedValue(strategy: "SEQUENCE")]
+    #[ORM\SequenceGenerator(sequenceName: "cars_id_seq", initialValue: 1, allocationSize: 1)]
     private ?int $id = null;
     
     #[ORM\Column(type: "string", length: 255)]
@@ -32,7 +33,7 @@ class Car
     #[ORM\Column(type: "string", length: 255)]
     #[Assert\NotBlank(message: "La marque est obligatoire")]
     #[Assert\Choice(
-        choices: ['Peugeot', 'Renault', 'Audi', 'BMW', 'Mercedes','Opel','Dacia','Volkswagen','Seat','Citroën'],
+        choices: ['Peugeot', 'Renault', 'Audi', 'BMW', 'Mercedes','Opel','Dacia','Volkswagen','Citroën','Porsche','Toyota','Ford','Seat','Porsche'],
         message: "Veuillez choisir une marque valide"
     )]
     private string $brand;
@@ -71,7 +72,7 @@ class Car
         max: 1000000,
         notInRangeMessage: "Le prix doit être entre {{ min }} et {{ max }} euros."
     )]
-    private ?float  $price = null;
+    private ?string  $price = null;
     
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
@@ -152,12 +153,12 @@ class Car
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getPrice(): ?string
     {
         return $this->price;
     }
 
-    public function setPrice(?float $price): self
+    public function setPrice(?string $price): self
     {
         $this->price = $price;
         return $this;

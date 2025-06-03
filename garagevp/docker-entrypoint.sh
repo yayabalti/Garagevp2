@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-# Vider le cache au démarrage
-php bin/console cache:clear
+# Vider le cache en tant que www-data
+php bin/console cache:clear --env=dev
 
-# Démarrer PHP-FPM
+# Garder le conteneur en vie
 exec "$@"

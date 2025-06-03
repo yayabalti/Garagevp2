@@ -39,6 +39,10 @@ when@prod:
                 type: pool
                 pool: doctrine.result_cache_pool
 
+        migrations:
+        migrations_paths:
+            'DoctrineMigrations': '%kernel.project_dir%/src/Migrations'
+
     framework:
         cache:
             pools:

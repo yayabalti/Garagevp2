@@ -5,7 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Garage v.p{% endblock %}</title>
     <link rel="stylesheet" href="{{ asset('styles/styles.css') }}">
+    {# Balises SEO #}
+    <title>{% block title %}Garage V.P{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Réparations et entretiens de véhicules à Toulouse{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}garage, réparation auto, entretien, mécanique, Toulouse{% endblock %}">
     
+    {# Open Graph (Facebook & LinkedIn) #}
+    <meta property="og:title" content="{% block og_title %}Garage V.P{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Nous prenons soin de votre voiture avec expertise !{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{{ asset('images/logo.png') }}{% endblock %}">
+    <meta property="og:url" content="{{ app.request.uri }}">
+    <meta property="og:type" content="website">
+
+    {# Twitter Card #}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}Garage V.P{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Experts en entretien et réparation automobile à Toulouse.{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{{ asset('images/logo.png') }}{% endblock %}">
 </head>
 <body>
     <!-- Header -->

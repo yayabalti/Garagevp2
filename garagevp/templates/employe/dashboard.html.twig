@@ -35,9 +35,12 @@
                     </div>
                      <div class="car-image">
                         {% if car.image %}
-                        <img style="width: 60vh;" src="{{ asset(car.image) }}" alt="{{ car.brand }} {{ car.model }}">
+                            {# Gestion des différents formats de chemins #}
+                            {% set imagePath = car.image starts with 'uploads/' ? car.image : 'uploads/' ~ car.image %}
+                            
+                            <img style="width: 60vh;" src="{{ asset(imagePath) }}" alt="{{ car.brand }} {{ car.model }}">
                         {% else %}
-                        <img src="{{ asset('images/default-car.jpg') }}" alt="Image par défaut">
+                            <img src="{{ asset('uploads/default-car.jpg') }}" alt="Image par défaut">
                         {% endif %}
                     </div>
                 </div>

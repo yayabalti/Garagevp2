@@ -136,51 +136,8 @@ p.separation {
     margin-right: 0px;
 }
 
-/*__________________ boutton acces easyadmin_________________ */
-
-a.btn.btn-primary {
-    color: #ffffff;
-    background-color: #007bff;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-a.btn.btn-primary:hover {
-    background-color: #0056b3;
-    text-decoration: none;
-}
-
 
 /*__________________ Header__________________ */
-
-
-
-section.hero {
-    height: 82vh;
-}
-
-img.skyline_img{
-    width: 100%;
-    height: 100%;
-}
-
-.titre_header{
-    z-index: 2;
-    position: absolute;
-    color: yellow;
-    font-size: 8vh;
-    bottom: 31vw;
-    left: 14vh;
-}
-
-.logo_main{
-    z-index: 2;
-    width: 30%;
-    position: absolute;
-    bottom: -23vh;
-    left: 72vh;
-}
 
 
 /* page opacity */
@@ -192,17 +149,21 @@ img.skyline_img{
     width: 100%;
     height: 606px;
     bottom: -3px;
+} 
+
+
+
+
+
+/* _________________________Formulaire______________________________ */
+
+section.contact-section {
+    height: 90vh;
 }
-
-
-
-
-
-/* Formulaire */
 
 .contact-section {
     padding: 0px 0;
-    height: 96vh;
+    height: 90vh;
   }
   
   .container {
@@ -217,9 +178,9 @@ img.skyline_img{
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: absolute;
-    top: 23vh;
+    top: 18vh;
     width: 67vh;
-    height: 75vh;
+    height: 72vh;
     margin-left: -41vh;
   }
   
@@ -257,13 +218,14 @@ img.skyline_img{
   .btn-submit {
     background: #0066cc;
     color: white;
-    padding: 12px 30px;
+    padding: 6px 0px;
     border: none;
-    border-radius: 4px;
+    border-radius: 18px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 100%;
+    width: 27%;
+    margin-left: 24vh;
   }
   
   .btn-submit:hover {
@@ -291,12 +253,12 @@ img.skyline_img{
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     text-align: center;
     z-index: 1000;
-  }
+}
 
-  .success-message h3 {
+.success-message h3 {
     color: #28a745;
     margin-bottom: 10px;
-  }
+}
 
   .success-content {
     animation: fadeIn 0.5s ease-out;
@@ -308,6 +270,7 @@ img.skyline_img{
   
   img.img_supercar_contact {
     width: 100%;
+    height: 90vh;
 }
 
 
@@ -322,8 +285,8 @@ img.skyline_img{
 img.logo_footer {
     width: 27vh;
     position: relative;
-    margin-left: -37vh;
-    bottom: -6vh;
+    margin-left: -29vh;
+    bottom: -4vh;
 }
 
 
@@ -376,25 +339,25 @@ p.mention {
 /*________________________________ resaux sociaux __________________________________*/
 
 img.icone_fb {
-    width: 6vh;
-    height: 6vh;
+    width: 5vh;
+    height: 5vh;
     margin-top: 3px;
 }
 
 img.icone_twitter {
-    width: 11vh;
-    height: 7vh;
+    width: 10vh;
+    height: 6vh;
 }
 
 img.icone_insta {
-    width: 8vh;
-    height: 7vh;
+    width: 7vh;
+    height: 6vh;
     margin-bottom: 2vh;
 }
 
 .footer-media {
     display: flex;
-    margin-left: 89vh;
+    margin-top: 11vh;
 }
 
 /*_________________________________ info garage_____________________________________*/
@@ -447,4 +410,18 @@ img.icone_adresse_footer {
 p.email {
     margin-top: 1vh;
     margin-left: 2vh;
+}
+
+
+.footer-a_propos {
+    font-size: 73%;
+    margin-top: 37px;
+    width: 34vh;
+    margin-left: -16vh;
+}
+
+.footer-horaires {
+    margin-top: 37px;
+    font-size: 73%;
+   
 }

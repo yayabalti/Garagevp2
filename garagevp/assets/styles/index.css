@@ -1,388 +1,3 @@
-/* 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-} */
-
-
-
-/*___________________ nav barr (gris)_______________________ */
-
-/* nav.navbar {
-    display: flex;
-    justify-content: flex-end;
-    width: 1269px;
-}
-
-.navbar{
-    background-color: #404040;
-    padding: 1em;
-    position: relative;
-    clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 5% 0%);
-    width: 1274px;
-    height: 6vh;
-    margin-left: 14%;
-} */
-
-
-/*_________________ logo_________________ */
-
-/* .logo{
-    width: 26vh;
-    position: absolute;
-    bottom: 79vh;
-    left: 1vh;
-    z-index: -1;
-} */
-
-
-
-/*______________________ tel_____________________________ */
-/* img.icone_tel {
-    width: 7vh;
-    height: 7vh;
-    padding-right: 3vh;
-}
-
-.div_tel {
-    display: flex;
-    align-items: center;
-    width: 45%;
-    margin-left: 4%;
-}
-
-.texte_tel{
-    color: white;
-} */
-
-
-
-/*____________________ email___________________ */
-
-/* img.icone_email {
-    width: 6vh;
-    height: 6vh;
-    padding-right: 3vh;
-}
-
-.div_email {
-    display: flex;
-    align-items: center;
-    width: 42%;
-}
-
-.texte_email{
-    color: white;
-} */
-
-
-/*____________________adresse___________________ */
-
-/* img.icone_adresse {
-    width: 6vh;
-    height: 6vh;
-    padding-right: 3vh;
-}
-
-.div_adresse {
-    display: flex;
-    align-items: center;
-    width: 50%;
-}
-
-.texte_adresse{
-    color: white;
-    margin-right: 0vh;
-} */
-
-
-
-
-
-
-/*___________________ menu nav____________________ */
-
-/* 
-.menu {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #fff51a;
-    height: 6vh;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.titre_menu_nav{
-color: black;
-text-decoration: none;
-}
-
-
-.item {
-    transition: transform 0.3s ease;
-    
-}
-
-.item:hover {
-    transform: scale(1.2);
-}
-
-p.separation {
-    font-weight: 900;
-    color: rgb(0, 0, 0);
-    margin-right: 0px;
-}
-
-.bouton_nav{
-    text-decoration: none;
-    color: black;
-} */
-
-/*__________________ boutton acces easyadmin_________________ */
-
-/* a.btn.btn-primary {
-    color: #ffffff;
-    background-color: #007bff;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-a.btn.btn-primary:hover {
-    background-color: #0056b3;
-    text-decoration: none;
-} */
-
-
-/*__________________ Header__________________ */
-
-
-
-/* section.hero {
-    height: 82vh;
-}
-
-img.skyline_img{
-    width: 100%;
-    height: 100%;
-}
-
-.titre_header{
-    z-index: 2;
-    position: absolute;
-    color: yellow;
-    font-size: 8vh;
-    bottom: 31vw;
-    left: 14vh;
-}
-
-.logo_main{
-    z-index: 2;
-    width: 30%;
-    position: absolute;
-    bottom: -23vh;
-    left: 72vh;
-} */
-
-
-/* page opacity */
-
-/* .hero .opacity {
-    background-color: #0000008c;
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 606px;
-    bottom: 12px;
-} */
-
-
-
-/*________________page nos Services___________________*/
-
-
-/* div services */
-/* #services {
-    padding: 40px 20px;
-    background-color: #f4f4f4;
-}
-
-#services .service {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-#services .service img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-#services .btn {
-    background-color: #f7f700;
-    color: #333;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-#services .btn:hover {
-    background-color: #e0e000;
-} */
-
-
-
-/* Contact Form Section */
-/* #contact-form {
-    background-color: #333;
-    color: #fff;
-    padding: 40px 20px;
-}
-
-#contact-form .contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-#contact-form form {
-    display: flex;
-    flex-direction: column;
-}
-
-#contact-form label {
-    margin-bottom: 5px;
-}
-
-#contact-form input, #contact-form textarea {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-}
-
-#contact-form button {
-    background-color: #f7f700;
-    color: #333;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#contact-form button:hover {
-    background-color: #e0e000;
-} */
-
-
-
-
-
-
-
-/* Testimonials Section */
-/* #testimonials {
-    padding: 40px 20px;
-    background-color: #f4f4f4;
-    text-align: center;
-}
-
-.carousel {
-    display: flex;
-    overflow: hidden;
-    position: relative;
-}
-
-.testimonial {
-    margin: 0 auto;
-    max-width: 600px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-}
-
-.testimonial p {
-    margin: 10px 0;
-} */
-
-
-
-
-
-
-
-
-
-/* Footer */
-/* footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.footer-logo img {
-    height: 50px;
-}
-
-.footer-info p {
-    margin: 5px 0;
-}
-
-.footer-social-media a {
-    color: #f7f700;
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.footer-social-media a:hover {
-    color: #e0e000;
-}
-
-.footer-legal {
-    text-align: right;
-}
-
-.footer-legal a {
-    color: #f7f700;
-    text-decoration: none;
-    font-weight: bold;
-    display: block;
-    margin: 5px 0;
-}
-
-.footer-legal a:hover {
-    color: #e0e000;
-} */
-
-/* Background Patterns */
-/* body::before {
-    content: '';
-    position: absolute;
-    color: black;
-    z-index: -1;
-} */
-
-
-
-
-
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -581,7 +196,7 @@ p.separation {
 .boutton_deconex_employe {
     margin-left: -35px;
     background-color: #ff0018;
-    padding: 2px 9px;
+    padding: 0px 9px;
     border-radius: 12px;
     transform: none;
     margin-left: -36px;
@@ -600,7 +215,7 @@ section.hero {
 
 img.skyline_img{
     width: 100%;
-    height: 100%;
+    height: 102%;
 }
 
 .titre_header{
@@ -627,8 +242,8 @@ img.skyline_img{
     position: absolute;
     z-index: 1;
     width: 100%;
-    height: 606px;
-    bottom: 12px;
+    height: 618px;
+    bottom: 0px;
 }
 
 /*__________________________________page nos Services___________________________*/
@@ -757,7 +372,6 @@ img.icone_vente_voiture {
 }
 
 
-
 p.texte_vente_voiture {
     font-size: 2vh;
     width: 39vh;
@@ -824,9 +438,9 @@ a.button_vente_voiture {
 /*_____________________________ icone moteur____________________________________  */
 
     img.icone_moteur {
-        width: 13vh;
-        padding-left: 18vh;
-        padding-top: 10vh; 
+        width: 9vh;
+        padding-left: 20vh;
+        padding-top: 4vh; 
     }
 
     p.texte_moteur {
@@ -844,9 +458,9 @@ a.button_vente_voiture {
 
 
     img.icone_clef {
-        width: 11vh;
-    padding-top: 59px;
-    padding-left: 28vh;
+        width: 7vh;
+    padding-top: 35px;
+    padding-left: 30vh;
     }
 
 
@@ -854,7 +468,8 @@ a.button_vente_voiture {
         color: white;
         padding-left: 29vh;
         font-family: math;
-        padding-top: 3px;
+        padding-top: 9px;
+        margin: 0vh;
     }
     
     /* _________________________________icone diag_________________________________ */
@@ -864,14 +479,15 @@ a.button_vente_voiture {
     }
 
     img.icone_diag {
-        width: 12vh;
-        padding-top: 93px;
+        width: 9vh;
+        padding-top: 39px;
+        padding-left: 2vh;
     }
 
     p.texte_diag {
         color: white;
-        font-family: math;
-        margin-left: -6vh;
+    font-family: math;
+    margin-left: -4vh;
     }
 
 
@@ -884,9 +500,9 @@ a.button_vente_voiture {
     }
 
     img.icone_reparation {
-        padding-left: 35vh;
-        padding-top: 53px;
-        width: 10vh;
+        padding-left: 36vh;
+        padding-top: 6px;
+        width: 7vh;
     }
 
     p.texte_garentie {
@@ -903,10 +519,10 @@ a.button_vente_voiture {
 /* ___________________________page contact_____________________________________ */
 
 img.img_lambo_contact {
-    width: 58%;
-    height: 104vh;
-    padding-left: 4vh;
-    padding-top: 4vh;
+    width: 60%;
+    height: 100vh;
+    padding-left: 0vh;
+    padding-top: 0vh;
 }
 
 
@@ -924,7 +540,7 @@ img.img_lambo_contact {
 
 
 .contact-section {
-    height: 114vh;
+    height: 100vh;
     display: flex;
     background-color: black;
     flex-wrap: wrap;
@@ -938,12 +554,13 @@ img.img_lambo_contact {
   
   .contact-form {
     background: #4040404a;
-    padding: 30px;
+    padding: 2vh;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     top: 23vh;
-    width: 67vh;
-    height: 75vh;
+    width: 61vh;
+    height: 69vh;
+    margin-left: 5vh;
   }
   
   .form-group {
@@ -955,15 +572,17 @@ img.img_lambo_contact {
     margin-bottom: 5px;
     font-weight: 500;
     color: #ffd700;
+    margin-left: 2vh;
   }
   
   .form-control {
-    width: 94%;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
+    width: 89%;
+    padding: 6px 15px;
+    /* border: 0px solid #ddd; */
+    border-radius: 17px;
+    font-size: 14px;
     transition: border-color 0.3s;
+    margin-left: 1vh;
   }
   
   .form-control:focus {
@@ -980,14 +599,15 @@ img.img_lambo_contact {
   .btn-submit {
     background: #0066cc;
     color: white;
-    padding: 12px 30px;
+    padding: 6px;
     border: none;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 51%;
-    margin-left: 13vh;
+    width: 34%;
+    margin-left: 19vh;
+
   }
   
   .btn-submit:hover {
@@ -1121,24 +741,24 @@ img.img_lambo_contact {
 .reviews-carousel {
     position: relative;
     width: 100%;
-    padding: 40px 0;  /* Espace intérieur autour du carrousel */
-    overflow: hidden; /* Empêche de voir les éléments qui débordent */
+    padding-top: 40px;  
+    overflow: hidden; 
 }
 
 .carousel-container {
     display: flex;
     transition: transform 0.5s ease;
-    flex-wrap: nowrap; /* Assure que tous les éléments restent sur une ligne */
+    flex-wrap: nowrap; 
 }
 
 .review-slide {
-    flex: 0 0 auto; /* Les colonnes ne rétréciront pas */
-    width: 25%; /* La largeur de chaque avis (par exemple, 25% pour 4 avis visibles) */
+    flex: 0 0 auto; 
+    width: 25%; 
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ddd;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-right: 10px; /* Un petit espace entre chaque avis */
+    margin-right: 10px; 
     text-align: center;
     box-sizing: border-box;
 }
@@ -1182,7 +802,6 @@ label.required {
     color: #e0e000;
 }
 
-
 .modal {
     display: none;
     position: fixed;
@@ -1220,8 +839,10 @@ label.required {
     border: none;
     border-radius: 11px;
     cursor: pointer;
-    margin-left: 92vh;
+    margin-left: 96vh;
     font-size: 2vh;
+    margin-top: 3vh;
+    margin-bottom: 1vh;
 }
 
 /* Style pour le formulaire dans la modal */
@@ -1254,6 +875,35 @@ label.required {
     color: #ffb800;
 }
 
+button.submit-button {
+    border-radius: 8px;
+    width: 50%;
+    margin-left: 16vh;
+    background-color: #dedf00;
+}
+
+.alert.alert-success {
+    margin-left: 76vh;
+    border: 2px solid green;
+    border-radius: 7px;
+    padding: 1vh;
+    background-color: green;
+    width: 51vh;
+    margin-bottom: 1vh;
+    color: white;
+}
+
+.alert {
+    opacity: 1;
+    /* L'animation démarre après 5 secondes, puis dure 0.5 seconde pour effectuer la disparition */
+    animation: fadeOut 0.5s ease-out 5s forwards;
+  }
+
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
 /* ________________________________Footer_______________________________________________ */
 
 .full-footer {
@@ -1265,8 +915,8 @@ label.required {
 img.logo_footer {
     width: 27vh;
     position: relative;
-    margin-left: -37vh;
-    bottom: -6vh;
+    margin-left: -29vh;
+    bottom: -4vh;
 }
 
 
@@ -1319,25 +969,25 @@ p.mention {
 /*________________________________ resaux sociaux __________________________________*/
 
 img.icone_fb {
-    width: 6vh;
-    height: 6vh;
+    width: 5vh;
+    height: 5vh;
     margin-top: 3px;
 }
 
 img.icone_twitter {
-    width: 11vh;
-    height: 7vh;
+    width: 10vh;
+    height: 6vh;
 }
 
 img.icone_insta {
-    width: 8vh;
-    height: 7vh;
+    width: 7vh;
+    height: 6vh;
     margin-bottom: 2vh;
 }
 
 .footer-media {
     display: flex;
-    margin-left: 89vh;
+    margin-top: 11vh;
 }
 
 /*_________________________________ info garage_____________________________________*/
@@ -1394,7 +1044,344 @@ p.email {
 
 
 .footer-a_propos {
-    font-size: 11px;
+    font-size: 73%;
     margin-top: 37px;
-    margin-right: -45vh;
+    width: 34vh;
+    margin-left: -16vh;
+}
+
+.footer-horaires {
+    margin-top: 37px;
+    font-size: 73%;
+   
+}
+
+/* _________________________________responsive_____________________________________ */
+
+
+/* Responsive Styles for Entire Website */
+@media screen and (max-width: 768px) {
+    /* Global Responsive Adjustments */
+    body {
+        font-size: 14px;
+    }
+
+    /* Header and Navigation */
+    .header-container {
+        flex-direction: column;
+    }
+
+    .logo {
+        width: 14vh;
+        position: absolute;
+        bottom: 87vh;
+        left: -1vh;
+        z-index: 0;
+    }
+
+    .navbar {
+        width: 300px !important;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px !important;
+        clip-path: none !important;
+        margin-left: 0 !important;
+    }
+
+    .navbar div {
+        margin: 5px 0;
+        width: 100% !important;
+        justify-content: center;
+    }
+
+    .menu {
+        flex-direction: column;
+        height: auto !important;
+        margin-left: -6vh;
+    }
+
+    .menu .item {
+        margin: 10px 0;
+    }
+
+    .menu .separation {
+        display: none;
+    }
+
+    /* Hero Section */
+    section.hero {
+        height: 31vh;
+        position: relative;
+    }
+
+    .skyline_img {
+        height: 50vh;
+        object-fit: cover;
+    }
+
+    .hero-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .titre_header {
+        font-size: 2vh !important;
+        text-align: center;
+        left: 50% !important;
+        transform: translateX(-50%);
+        width: 46vh;
+        margin-bottom: 17vh;
+    }
+
+    .logo_main {
+        width: 50% !important;
+        position: static !important;
+        margin: 0 auto;
+        margin-top: 25vh;
+    }
+
+    .hero .opacity {
+        background-color: #0000008c;
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        height: 206px;
+        bottom: -4px;
+    }
+
+
+    img.icone_email {
+        width: 3vh;
+        height: 3vh;
+        padding-right: 1vh;
+        margin-left: 21vh;
+    }
+
+
+    .texte_email {
+        
+        margin-left: 0%;
+        font-size: 9px;
+    }
+
+    /* Services Section */
+
+
+    h3.titre_services {
+        background-color: #fff51a;
+        padding-top: 24px;
+        font-size: 4vh;
+        padding-bottom: 7vh;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 12vh;
+        color: black;
+    }
+
+    .full_services {
+        flex-direction: column;
+    }
+
+    .div_meca, .div_carrosserie, .div_vente_voiture {
+        width: 87%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .icone_meca, .icone_carrosserie, .icone_vente_voiture {
+        display: block;
+        margin: 0 auto;
+        padding-left: 0 !important;
+    }
+
+    .sous_titre_m, .sous_titre_c, .sous_titre_v {
+        text-align: center;
+        margin-left: 0 !important;
+    }
+
+    .texte_meca, .texte_carrosserie, .texte_vente_voiture {
+        width: 100% !important;
+        margin-left: 0 !important;
+        text-align: center;
+    }
+
+    .button_meca, .button_carrosserie, .button_vente_voiture {
+        display: block;
+        width: 200px;
+        margin: 15px auto !important;
+    }
+
+    /* Contact Section */
+    .contact-section {
+        flex-direction: column;
+        height: auto;
+    }
+
+    img.img_lambo_contact {
+        width: 100%;
+        height: 40vh;
+        padding-left: 0vh;
+        padding-top: 0vh;
+    }
+
+    .contact-form {
+        width: 90%;
+        margin: 20px auto !important;
+        height: 77vh;
+    }
+
+    .texte_contact, .texte_contact2 {
+        text-align: center;
+        margin-left: 0 !important;
+        font-size: 3vh;
+    }
+
+    
+
+    .form-control {
+        width: 82%;
+    }
+
+    .btn-submit {
+        background: #0066cc;
+        color: white;
+        padding: 6px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 34%;
+        margin-left: 13vh;
+    }
+
+    /* Venez Nous Voir Section */
+    .full_choisir {
+        flex-direction: column;
+    }
+
+    .venez, .serenite {
+        padding-left: 0 !important;
+        text-align: center;
+    }
+
+    .div_moteur, .div_clef {
+        width: 86%;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .div_reparation{
+        padding-left: 2vh;
+    }
+
+    .div_diag {
+        padding-left: 1vh;
+    }
+
+    .icone_moteur, .icone_clef, .icone_diag, .icone_reparation {
+        display: block;
+        margin-left: 19vh;
+        padding-left: 0 !important;
+    }
+
+    .texte_moteur,.texte_diag {
+        text-align: center;
+        padding-left: 0 !important;
+        margin-left: 10vh;
+    }
+
+    p.texte_garentie{
+        padding-left: 12vh;
+    }
+
+    p.texte_essaie{
+        padding-left: 5vh;
+    }
+    /* Reviews Carousel */
+    .reviews-carousel {
+        padding-top: 20px;
+    }
+
+    .carousel-container {
+        flex-direction: column;
+    }
+
+    .review-slide {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .review-button {
+        margin-left: 0 !important;
+        display: block;
+        width: 200px;
+        margin: 15px auto !important;
+    }
+
+    /* Footer */
+    .full-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-info-garage {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-a_propos, .footer-horaires {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-media {
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo_footer {
+        position: static !important;
+        margin: 0 auto !important;
+    }
+
+    .footer-legal {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-legal p {
+        margin: 10px 0;
+    }
+
+    /* Ensure images are responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Intermediate Screen Sizes */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Less drastic adjustments for medium-sized screens */
+    .navbar {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .full_services > div {
+        padding: 20px;
+    }
+
+    .contact-form {
+        width: 80%;
+    }
+
+    .titre_header {
+        font-size: 6vh;
+    }
 }

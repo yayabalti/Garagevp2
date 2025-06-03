@@ -1,60 +1,94 @@
-FROM php:8.2-fpm-alpine
+  FROM php:8.2-fpm-alpine
 
-# Installation des dépendances
-RUN apk update && apk add --no-cache \
-    postgresql-dev \
-    icu-dev \
-    libxml2-dev \
-    $PHPIZE_DEPS \
-    git \
-    unzip \
-    zip \
-    npm \
-    shadow # Ajout de shadow pour usermod
+  # Installation des dépendances
+  RUN apk update && apk add --no-cache \
+      postgresql-dev \
+      icu-dev \
+      libxml2-dev \
+      $PHPIZE_DEPS \
+      git \
+      unzip \
+      zip \
+      npm \
+      shadow \
+      dos2unix  
+      
 
-# Configuration et installation des extensions PHP
-RUN docker-php-ext-configure pgsql \
-    && docker-php-ext-install -j$(nproc) \
-    intl \
-    pdo \
-    pdo_pgsql \
-    && docker-php-ext-enable pdo_pgsql
+  # Configuration et installation des extensions PHP
+  RUN docker-php-ext-configure pgsql \
+      && docker-php-ext-install -j$(nproc) \
+      intl \
+      pdo \
+      pdo_pgsql \
+      && docker-php-ext-enable pdo_pgsql
 
-# Installation de Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+  RUN sed -i 's/listen = 127.0.0.1:9000/listen = 0.0.0.0:9000/g' /usr/local/etc/php-fpm.d/www.conf
 
-# Création du dossier de travail
-WORKDIR /var/www/html
+  # Installation de Composer
+  COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Création des dossiers var avec les bonnes permissions
-RUN mkdir -p /var/www/html/var/cache /var/www/html/var/log \
-    && chown -R www-data:www-data /var/www/html
+  # Définir le dossier de travail
+  WORKDIR /var/www/html
 
-# Copie des fichiers du projet
-COPY --chown=www-data:www-data . .
+ 
 
-# Configuration de git
-RUN git config --global --add safe.directory '*'
+  # Création des dossiers var avec les bonnes permissions
+  RUN mkdir -p /var/www/html/var/cache /var/www/html/var/log /var/www/html/public/uploads \
+      && chown -R www-data:www-data /var/www/html/var /var/www/html/public/uploads
 
-# Passer à l'utilisateur www-data pour l'installation de Composer
-USER www-data
+  # Copier d'abord les fichiers de configuration
+  COPY --chown=www-data:www-data composer.json composer.lock ./
 
-# Installation des dépendances avec Composer
-RUN composer install --optimize-autoloader --no-scripts
+  # Copier et configurer le script d'entrée
+  COPY docker-entrypoint.sh /usr/local/bin/
+  RUN dos2unix /usr/local/bin/docker-entrypoint.sh && \
+      chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# S'assurer que les permissions sont correctes pour var
-RUN chmod -R 777 var
+  # Configuration de git
+  RUN git config --global --add safe.directory '*'
 
-EXPOSE 9000
+  # Passer à l'utilisateur www-data
+  USER www-data
 
-# Copier et configurer le script d'entrée
-COPY docker-entrypoint.sh /usr/local/bin/
-USER root
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-USER www-data
+  # Installation des dépendances avec Composer
+  RUN composer install --prefer-dist --no-scripts --no-progress --no-interaction
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-CMD ["php-fpm"]
+  # Copier le reste des fichiers du projet
+  COPY --chown=www-data:www-data . .
+
+  # Vérifier et corriger les permissions
+  RUN chmod -R 777 var
+
+  # Exposer le port PHP-FPM
+  EXPOSE 9000
+
+  # Définir l'entrypoint et la commande
+  ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+  CMD ["php-fpm"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
 
 
 

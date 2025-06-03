@@ -5,13 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}garagevp{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
+
+        {# Balises SEO #}
+        <title>garagevp</title>
+        <meta name="description" content="{% block meta_description %}Garage VP - Votre expert automobile pour l'entretien, la réparation et la vente de véhicules d'occasion{% endblock %}">
+        <meta name="keywords" content="{% block meta_keywords %}garage, mécanique, entretien, réparation, carrosserie, vente de voiture{% endblock %}">
+        <meta name="author" content="Garage VP">
+        
+        {# Balises Open Graph (Facebook) #}
+        <meta property="og:title" content="{% block og_title %}Garage VP - Entretien et Vente de Véhicules{% endblock %}">
+        <meta property="og:description" content="{% block og_description %}Nous assurons l'entretien, la réparation et la vente de véhicules d'occasion à Toulouse{% endblock %}">
+        <meta property="og:image" content="{% block og_image %}{{ asset('images/logo.png') }}{% endblock %}">
+        <meta property="og:url" content="{{ app.request.uri }}">
+        <meta property="og:type" content="website">
+
+        {# Balises Twitter Card #}
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{% block twitter_title %}Garage VP - Votre expert automobile{% endblock %}">
+        <meta name="twitter:description" content="{% block twitter_description %}Entretien, réparation et vente de voitures d'occasion à Toulouse{% endblock %}">
+        <meta name="twitter:image" content="{% block twitter_image %}{{ asset('images/logo.png') }}{% endblock %}">
     </head>
 
     <body>
+    
         <!-- Header -->
         {% block header %}
         <header>
             <div class="header-container">
+            <div id="burger-menu-container"></div>
                 <div class="logo">
                 </div>
                 <nav class="navbar">
@@ -28,42 +49,44 @@
                         <p class="texte_email">Contact-garagevp@gmail.com</p>
                     </div>
                 </nav>
-                <ul class="menu">
-                    <img class="logo" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
-                    <li class="item"><a class="bouton_nav" href="{{ path('app_home') }}">Accueil</a></li>
-                    <p class="separation">|</p>
-                    <li class="item"><a class="bouton_nav" href="{{ path('app_nos_services') }}">Découvrez nos services</a></li>
-                    <p class="separation">|</p>
-                    <li class="item"><a class="bouton_nav" href="{{ path('app_login') }}">connexion</a></li>
-                    <p class="separation">|</p>
-                    <li class="item"><a class="bouton_nav" href="{{ path('app_contact') }}">Contact</a></li>
-                    {# boutton pour acceder a easy admin  #}
-                    {% if is_granted('ROLE_ADMIN') %}
-                     <li class="boutton_admin">
-                        <a href="{{ path('admin_dashboard') }}" class="btn btn-primary">
-                              <i class="fas fa-cogs"></i> Accès Admin
-                        </a>
-                        <a href="{{ path('app_logout') }}" class="boutton_deconex_admin">
-                          <i class="fas fa-times"></i>
-                        </a>
-                    </li>
-                    {% endif %}
-                             
-                    {% if is_granted('ROLE_EMPLOYE') %}
-                        <li class="boutton_employe">
-                            <a href="{{ path('employe_dashboard')}}" class="btn btn-primary"><i class="fas fa-user-cog me-2">
-                                <i class="fas fa-cogs"></i>Accès Employés
+                <nav aria-label="Menu principal">
+                    <ul class="menu">
+                        <img class="logo" src="{{ asset('images/logo.png') }}" alt="Garage Auto">
+                        <li class="item"><a class="bouton_nav" href="{{ path('app_home') }}">Accueil</a></li>
+                        <p class="separation">|</p>
+                        <li class="item"><a class="bouton_nav" href="{{ path('app_nos_services') }}">Découvrez nos services</a></li>
+                        <p class="separation">|</p>
+                        <li class="item"><a class="bouton_nav" href="{{ path('app_login') }}">connexion</a></li>
+                        <p class="separation">|</p>
+                        <li class="item"><a class="bouton_nav" href="{{ path('app_contact') }}">Contact</a></li>
+                        {# boutton pour acceder a easy admin  #}
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li class="boutton_admin">
+                            <a href="{{ path('admin_dashboard') }}" class="btn btn-primary">
+                                <i class="fas fa-cogs"></i> Accès Admin
                             </a>
-                            <a href="{{ path('app_logout') }}" class="boutton_deconex_employe">
-                               <i class="fas fa-times"></i>
-                           </a>
-                        </li>                 
-                    {% endif %} 
-                </ul>
+                            <a href="{{ path('app_logout') }}" class="boutton_deconex_admin">
+                            <i class="fas fa-times"></i>
+                            </a>
+                        </li>
+                        {% endif %}
+                                
+                        {% if is_granted('ROLE_EMPLOYE') %}
+                            <li class="boutton_employe">
+                                <a href="{{ path('employe_dashboard')}}" class="btn btn-primary"><i class="fas fa-user-cog me-2">
+                                    <i class="fas fa-cogs"></i>Accès Employés
+                                </a>
+                                <a href="{{ path('app_logout') }}" class="boutton_deconex_employe">
+                                <i class="fas fa-times"></i>
+                            </a>
+                            </li>                 
+                        {% endif %} 
+                    </ul>
+                </nav>
             </div>
         </header>
         {% endblock %}
-
+        
         <main>
             <section class="hero">
                 <img class="skyline_img" src="{{ asset('images/imgheader.png') }}" alt="Garage Auto" >
@@ -192,7 +215,7 @@
 
                         <div class="div_moteur"> 
                             <img class="icone_moteur" src="{{ asset('images/icone_moteur.png') }}" alt="supercar">
-                            <p class="texte_moteur">Moteur certifier et garantie</p>
+                            <p class="texte_moteur">Moteurs certifiés et garantis</p>
                         </div>
                         
                         <div class="div_clef"> 
@@ -209,7 +232,7 @@
                         
                         <div class="div_reparation"> 
                             <img class="icone_reparation" src="{{ asset('images/icone_reparation.png') }}" alt="supercar">
-                            <p class="texte_garentie">Réparations garantie</p>
+                            <p class="texte_garentie">Réparations garanties</p>
                         </div>
                         
                     </div>
@@ -239,11 +262,17 @@
     <!-- Flèches de navigation -->
     <button class="carousel-prev" onclick="moveSlide(-1)">&#10094;</button>
     <button class="carousel-next" onclick="moveSlide(1)">&#10095;</button>
+    <button class="review-button" onclick="openReviewModal()">Laisser un avis</button>
 </div>
-
-            {# Bouton pour ouvrir la popup #}
-            <button class="review-button" onclick="openReviewModal()">Laisser un avis</button>
-
+            
+            {# Affichage des messages flash #}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %} 
             {# Modal pour le formulaire d'avis #}
             <div id="reviewModal" class="modal">
                 <div class="modal-content">
@@ -292,12 +321,13 @@
                                 <p>de 8h a 21h</p>
                                 <p>samedi de 9h a 19h</p>
                             </div>
-                        </div>    
                             <div class="footer-media">
                                 <img class="icone_fb" src="{{ asset('images/icone_fb.png') }}" alt="Garage Auto">
                                 <img class="icone_twitter" src="{{ asset('images/icone_twitter.png') }}" alt="Garage Auto">
                                 <img class="icone_insta" class src="{{ asset('images/icone_insta.png') }}" alt="Garage Auto">
                             </div>
+                        </div>    
+                            
                             <hr class="trait-footer">
                         <div class="footer-legal">
                             <p class="mention"><a href="{{ path('app_mention_legale') }}">Mentions légales</a></p>
@@ -314,5 +344,7 @@
             <script src="{{ asset('js/contact.js') }}"></script>
             {# pop up page avis  #}
             <script src="{{ asset('js/review.js') }}"></script>
+            {# pop up page menu burger  #}
+            <script src="{{ asset('js/burger-menu.js') }}"></script>
     </body>
 </html>
