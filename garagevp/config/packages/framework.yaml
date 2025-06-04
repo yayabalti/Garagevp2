@@ -81,6 +81,12 @@ framework:
        cookie_secure: auto                                  # HTTPS si dispo
        cookie_samesite: 'lax'                              # Anti-CSRF
        cookie_httponly: true                               # Anti-XSS
+
+
+   #  Proxies et hôtes de confiance pour HTTPS / proxy inverse comme Render 
+
+   trusted_proxies: '%env(TRUSTED_PROXIES)%'
+   trusted_hosts: '%env(TRUSTED_HOSTS)%'
    
    esi: false
    fragments: false
