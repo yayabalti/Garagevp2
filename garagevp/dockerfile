@@ -137,7 +137,7 @@ RUN apk add --no-cache nginx curl bash \
 RUN docker-php-ext-install intl pdo
 
 # Préparer NGINX
-COPY conf.d/default.conf /etc/nginx/conf.d/default.conf
+COPY docker/conf.d/default.conf /etc/nginx/conf.d/default.conf
 RUN chmod 644 /etc/nginx/conf.d/default.conf
 
 # Modifier PHP-FPM pour écouter sur toutes les interfaces
