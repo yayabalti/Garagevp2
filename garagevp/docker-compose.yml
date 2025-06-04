@@ -82,94 +82,105 @@
 
 
 
-  services:
-    app:
-        build:
-          context: .
-          dockerfile: Dockerfile
-        container_name: symfony_app
-        environment:
-            APP_ENV: dev
-            DATABASE_URL: "postgresql://postgres:armanie@db:5432/garagevp?serverVersion=13.0&charset=utf8"
-            TEST_DATABASE_URL: "postgresql://postgres:armanie@db:5433/garagevp_test?serverVersion=13.0&charset=utf8"
-            POSTGRES_DB: garagevp
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: armanie
-        working_dir: /var/www/html
-        user: "1000:1000"
-        volumes:
-            - ./:/var/www/html:rw
-            - symfony_cache:/var/www/html/var/cache
-            - symfony_log:/var/www/html/var/log
-            - ./docker/php/symfony.ini:/usr/local/etc/php/conf.d/symfony.ini:ro
-            - ./public/uploads:/var/www/html/public/uploads:rw
-        ports:
-            - "9000:9000"
-        networks:
-            - symfony
-        depends_on:
-            db:
-                condition: service_started
-        command: php-fpm
-        restart: unless-stopped
 
-    db:
-        image: postgres:13-alpine
-        container_name: symfony_db
-        environment:
-            POSTGRES_DB: garagevp
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: armanie
-            LANG: en_US.UTF-8
-            LANGUAGE: en_US.UTF-8
-            LC_ALL: en_US.UTF-8
-            POSTGRES_HOST_AUTH_METHOD: md5
-        volumes:
-            - postgres_data:/var/lib/postgresql/data
-        networks:
-            - symfony
-        ports:
-            - "5432:5432"
-        healthcheck:
-            test: ["CMD-SHELL", "pg_isready -U postgres"]
-            interval: 10s
-            timeout: 5s
-            retries: 5
-        restart: unless-stopped 
 
-    nginx:
-        build:
-            context: ./docker/nginx
-            dockerfile: Dockerfile  
-        container_name: symfony_nginx
-        volumes:
-            - ./:/var/www/html:cached
-            - ./docker/nginx/conf.d:/etc/nginx/conf.d:rw
-            - ./docker/ssl:/etc/ssl/private/
-        environment:
-            - NGINX_HOST=garagevp.local
-        ports:
-            - "80:80"
-            - "443:443"
-        depends_on:
-            - app
-        networks:
-            - symfony
-        healthcheck:
-            test: ["CMD", "nginx", "-t"]
-            interval: 10s
-            timeout: 5s
-            retries: 5
-        restart: unless-stopped
 
-  networks:
-      symfony:
-          driver: bridge
 
-  volumes:
-      symfony_cache:
-      postgres_data:
-      symfony_log:
+
+
+
+
+
+# desactivation complet du code pour render (hebergeur)
+
+#   services:
+#     app:
+#         build:
+#           context: .
+#           dockerfile: Dockerfile
+#         container_name: symfony_app
+#         environment:
+#             APP_ENV: dev
+#             DATABASE_URL: "postgresql://postgres:armanie@db:5432/garagevp?serverVersion=13.0&charset=utf8"
+#             TEST_DATABASE_URL: "postgresql://postgres:armanie@db:5433/garagevp_test?serverVersion=13.0&charset=utf8"
+#             POSTGRES_DB: garagevp
+#             POSTGRES_USER: postgres
+#             POSTGRES_PASSWORD: armanie
+#         working_dir: /var/www/html
+#         user: "1000:1000"
+#         volumes:
+#             - ./:/var/www/html:rw
+#             - symfony_cache:/var/www/html/var/cache
+#             - symfony_log:/var/www/html/var/log
+#             - ./docker/php/symfony.ini:/usr/local/etc/php/conf.d/symfony.ini:ro
+#             - ./public/uploads:/var/www/html/public/uploads:rw
+#         ports:
+#             - "9000:9000"
+#         networks:
+#             - symfony
+#         depends_on:
+#             db:
+#                 condition: service_started
+#         command: php-fpm
+#         restart: unless-stopped
+
+#     db:
+#         image: postgres:13-alpine
+#         container_name: symfony_db
+#         environment:
+#             POSTGRES_DB: garagevp
+#             POSTGRES_USER: postgres
+#             POSTGRES_PASSWORD: armanie
+#             LANG: en_US.UTF-8
+#             LANGUAGE: en_US.UTF-8
+#             LC_ALL: en_US.UTF-8
+#             POSTGRES_HOST_AUTH_METHOD: md5
+#         volumes:
+#             - postgres_data:/var/lib/postgresql/data
+#         networks:
+#             - symfony
+#         ports:
+#             - "5432:5432"
+#         healthcheck:
+#             test: ["CMD-SHELL", "pg_isready -U postgres"]
+#             interval: 10s
+#             timeout: 5s
+#             retries: 5
+#         restart: unless-stopped 
+
+#     nginx:
+#         build:
+#             context: ./docker/nginx
+#             dockerfile: Dockerfile  
+#         container_name: symfony_nginx
+#         volumes:
+#             - ./:/var/www/html:cached
+#             - ./docker/nginx/conf.d:/etc/nginx/conf.d:rw
+#             - ./docker/ssl:/etc/ssl/private/
+#         environment:
+#             - NGINX_HOST=garagevp.local
+#         ports:
+#             - "80:80"
+#             - "443:443"
+#         depends_on:
+#             - app
+#         networks:
+#             - symfony
+#         healthcheck:
+#             test: ["CMD", "nginx", "-t"]
+#             interval: 10s
+#             timeout: 5s
+#             retries: 5
+#         restart: unless-stopped
+
+#   networks:
+#       symfony:
+#           driver: bridge
+
+#   volumes:
+#       symfony_cache:
+#       postgres_data:
+#       symfony_log:
 
 
 

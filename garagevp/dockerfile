@@ -134,7 +134,7 @@ RUN apk add --no-cache nginx curl bash \
     postgresql-dev icu-dev libxml2-dev $PHPIZE_DEPS git unzip zip npm shadow dos2unix
 
 # Installer les extensions PHP nécessaires à Symfony
-RUN docker-php-ext-install intl pdo pdo_pgsql
+RUN docker-php-ext-install intl pdo
 
 # Préparer NGINX
 COPY conf.d/default.conf /etc/nginx/conf.d/default.conf
