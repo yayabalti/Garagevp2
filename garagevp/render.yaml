@@ -6,7 +6,7 @@ services:
     plan: free
     repo: https://github.com/yayabalti/Garagevp2
     branch: main
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: garagevp/Dockerfile
     buildCommand: ""
     startCommand: ""
     envVars:
